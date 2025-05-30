@@ -1,0 +1,127 @@
+{
+	"Hero": {
+		"title": "Leads for your",
+		"span": "auto business",
+		"desc": "Get clients directly, with no intermediaries, no commissions.",
+		"btn": "Register Business"
+	},
+	"Service": {
+		"title": "Who is the service for",
+		"span1": "For Sellers",
+		"span2": "For Service Stations, Paint Shops, Body Shops",
+		"span3": "For Hybrid Battery Repair Specialists, Detailing Centers, Auto Electricians",
+		"desc1": "For sellers of <br /> auto parts",
+		"desc2": "Service stations, paint shops, <br /> body repair workshops",
+		"desc3": "Specialists in hybrid battery repair, detailing centers, auto electricians"
+	},
+	"BusinessProblems": {
+		"title": "Business Problems",
+		"desc1": "No customers in season / <br /> bad weather",
+		"desc2": "Most don't have <br /> Instagram or a website",
+		"desc3": "Sitting at markets all <br /> day without requests",
+		"desc4": "Easy with Tez Kyzmat PRO — <br /> but you’re not in the system"
+	},
+	"Instruction": {
+		"solution": {
+			"title": "Solution from Tez Kyzmat",
+			"description": [
+				"Requests come directly to your phone",
+				"Only relevant clients",
+				"You choose what to respond to"
+			]
+		},
+		"advantages": {
+			"title": "Advantages <br /> of Tez Kyzmat PRO",
+			"description": [
+				"Smart request filters",
+				"Push notifications and analytics",
+				"No commission — only paid plans",
+				"VIP request priority"
+			]
+		},
+		"howToConnect": {
+			"title": "How to connect",
+			"description": [
+				"Download the app",
+				"Register as a company",
+				"Specify categories and filters",
+				"Receive requests"
+			]
+		}
+	},
+	"Applications": {
+		"title": "Filtering Requests",
+		"description": "Filter by car brand, model, part number, date added, request status, and other parameters."
+	},
+	"Reviews": {
+		"title": "Partner Reviews",
+		"card1_name": "Aleksei Vadim",
+		"card1_desc": "If you're coaching individuals or teams in specific areas like sports, business, or fitness, you may receive feedback in the form of improved performance metrics.",
+		"card2_name": "Alex Smith",
+		"card2_span": "Coaching of Halal Lab",
+		"card2_desc": "If you're coaching individuals or teams in specific areas like sports, business 😎 or fitness, you may receive feedback in the form of improved performance metrics, such as increased revenue, improved athletic performance.",
+		"card4_name": "Alex Smith",
+		"card4_span": "Coaching of Halal Lab",
+		"card4_desc": "If you're coaching individuals or teams in specific areas like sports, business 👍 or fitness, you may receive feedback in the form of improved performance metrics, such as increased revenue, improved athletic performance."
+	},
+	"Group": {
+		"title": "LLC 'Tez Kyzmat Group'",
+		"desc": "— a team of specialists united by one goal: to simplify and speed up the process of finding auto parts and services in Kyrgyzstan.",
+		"btn": "Contact us",
+		"member1_name": "Danyshbek Beisheev",
+		"member1_desc": "Founder and CEO. Responsible for strategic development and partnerships.",
+		"member2_name": "Samuil Zaidov",
+		"member2_desc": "Co-founder, CFO, and Head of Sales. Ensures the company's stability and growth.",
+		"member3_name": "Dastan Mukeev",
+		"member3_desc": "Co-founder, CTO, and Product Manager. Oversees the technical implementation and platform development."
+	},
+	"WeTeam": {
+		"title": "We are a team born from the real pains of Kyrgyz drivers and sellers.",
+		"desc": "We personally experienced the chaos of finding spare parts, high prices, and lack of service. That's why we launched Tez Kyzmat — a platform where anyone can quickly find the right part, and businesses can get a stable flow of customers.",
+		"title2": "The project includes two directions",
+		"block1": {
+			"span": "Tez Kyzmat (for clients)",
+			"desc": "— a service for fast search of spare parts and auto services <br /> without intermediaries."
+		},
+		"block2": {
+			"span": "Tez Kyzmat PRO (for sellers and services)",
+			"desc": "— a platform for receiving requests from real clients <br /> across the country."
+		}
+	},
+	"Tariffs": {
+		"title": "Business Tariffs",
+		"desc": "Promote your business on the Tez Kyzmat PRO platform and choose a suitable plan:",
+		"btn": "Start",
+		"title_card1": "Basic",
+		"desc1_card1": "Be listed in the stores",
+		"desc2_card1": "Receive customer requests",
+
+		"desc1_card2": "VIP badge (above Basic)",
+		"desc2_card2": "Receive requests before Basic",
+		"desc3_card2": "Analytics: views, responses, demand by regions and models",
+
+		"desc1_card3": "PREMIUM badge (top level)",
+		"desc2_card3": "Receive requests first",
+		"desc3_card3": "Advanced analytics",
+		"desc4_card3": "Displayed on the main page as a 'trusted partner'",
+		"month": "/month",
+		"price": "s"
+	},
+	"Footer": {
+		"title": "Contact us via Email",
+		"span1": "Privacy Policy",
+		"span2": "User Agreement",
+		"input": "Enter your email"
+	},
+	"Navbar": {
+		"forWhom": "Who it's for",
+		"solution": "Solution",
+		"advantages": "Advantages",
+		"reviews": "Reviews",
+		"about": "About us"
+	},
+	"BurgerMenu": {
+		"contact": "Contacts",
+		"location": "Selpovskaya 8, Bishkek"
+	}
+}
