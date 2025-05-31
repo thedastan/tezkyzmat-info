@@ -6,6 +6,9 @@ class PublicPage {
 	REVIEV = "#reviews"
 	ABOUT = "#about"
 
+	CLIENT = "/client"
+
+
 	 
 }
 

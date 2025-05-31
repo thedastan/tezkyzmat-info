@@ -21,7 +21,7 @@ const Group = () => {
 		{
 			ava: ava,
 			title: t("Group.member2_name"),
-			link: "danyshbek_beisheev",
+			link: "zaidov_s",
 			desc: t("Group.member2_desc"),
 		},
 		{
