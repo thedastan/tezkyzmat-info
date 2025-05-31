@@ -118,10 +118,115 @@
 		"solution": "Solution",
 		"advantages": "Advantages",
 		"reviews": "Reviews",
-		"about": "About us"
+		"about": "About us",
+		"client": "For Clients"
+
 	},
 	"BurgerMenu": {
 		"contact": "Contacts",
 		"location": "Selpovskaya 8, Bishkek"
+	},
+
+
+
+	"Order": {
+		"title": "Didn't find the right spare part in KG? Order directly from the UAE!",
+		"desc": "We deliver original and used parts from Sharjah. Up to 70% cheaper, guaranteed, VIN selection.",
+		"btn1": "Reviews from the UAE",
+		"btn2": "Order from the UAE",
+
+		"title2": "Why Sharjah?",
+		"desc2": "Why does everyone order spare parts from Sharjah (UAE)?",
+		"desc3": "Sharjah is the spare parts capital of the Middle East. There's a huge market where thousands of cars from Japan, Korea, Europe, and America are dismantled every week. Everything is in great condition, original, and cheaper than here.",
+		"btn3": "Submit a request"
+	},
+	"Shop": {
+		"title": "Tez Zap — our store at Kudaybergen market",
+		"desc": "Tez Zap — our warehouse at the Kudaybergen market. The photo shows our real container shop."
+	},
+	"Cards": {
+		"title": "Management",
+		"desc1": "• Tez Kyzmat Group (one of the co-owners)",
+		"desc2": "• Bayaman, Nadyirbek",
+		"desc3": "• And other team members working on warehouse development",
+		"title_2": "What we sell",
+		"desc1_2": "• Lighting parts",
+		"desc2_2": "• Body parts",
+		"desc3_2": "• Engines"
+	},
+	"Forma": {
+		"title": "Order from UAE",
+		"desc": "Fill out the application and we will contact you",
+		"btn": "Submit application",
+
+		"select1": "Car brand",
+		"select2": "Car model",
+		"select3": "Country of manufacture",
+		"select4": "Fuel type",
+		"select5": "Engine capacity",
+
+		"code": "VIN code",
+		"textare": "Need a front left tire",
+		"add": "Add"
+	},
+	"Application": {
+		"App": "Available on"
+	},
+
+
+
+
+	"Herocl": {
+		"title": "Need a spare part",
+		"or": "or",
+		"span": "car service?",
+		"desc": "Submit a request — stores will offer their prices",
+		"btn": "Submit a request"
+	},
+	"Servicecl": {
+		"title": "Who is this service for",
+		"span1": "Spare parts",
+		"span2": "Services",
+		"desc1": "Drivers, <br /> car owners",
+		"desc2": "Those looking for a car service, wash, <br /> LPG, etc."
+	},
+	"BusinessProblemscl": {
+		"title": "Customer problems",
+		"desc1": "It's hard to find the right <br /> part.",
+		"desc2": "Kudaibergen is far away. It's not a mall — it's dirty and overcrowded.",
+		"desc3": "It's hard for people in the regions — only small items and consumables are sold locally.",
+		"desc4": "Going to Bishkek is time-consuming and expensive (fuel, time, hassle)"
+	},
+	"Instructioncl": {
+		"solution": {
+			"title": "Advantages of <br /> Tez Kyzmat",
+			"description": [
+				"Free and fast",
+				"Multiple offers at once",
+				"Direct communication with sellers"
+			]
+		},
+		"advantages": {
+			"title": "How it works",
+			"description": [
+				"Choose a category (part/service)",
+				"Specify your car (make, model, year, etc.)",
+				"Get offers"
+			]
+		}
+	},
+	"Applicationscl": {
+		"title": "Service Catalog"
+	},
+	"Reviewscl": {
+		"title": "Partner Reviews",
+		"card1_name": "Aleksei Vadim",
+		"card1_desc": "If you're coaching individuals or teams in specific areas like sports, business, or fitness, you may receive feedback in the form of improved performance metrics.",
+		"card2_name": "Alex Smith",
+		"card2_span": "Coaching of Halal Lab",
+		"card2_desc": "If you're coaching individuals or teams in specific areas like sports, business 😎 or fitness, you may receive feedback in the form of improved performance metrics, such as increased revenue, improved athletic performance.",
+		"card4_name": "Alex Smith",
+		"card4_span": "Coaching of Halal Lab",
+		"card4_desc": "If you're coaching individuals or teams in specific areas like sports, business 👍 or fitness, you may receive feedback in the form of improved performance metrics, such as increased revenue, improved athletic performance."
 	}
 }

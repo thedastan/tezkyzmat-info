@@ -1,0 +1,42 @@
+.phoneInput {
+	background: #F2F2F2 !important;
+	border-radius: 14px !important;
+	max-height: 55px !important;
+	width: 100% !important;
+	input {
+		width: 100%;
+		font-size: 16px !important;
+		line-height: 18.26px !important;
+		font-weight: 400 !important;
+		color: #303030 !important;
+		background: transparent !important;
+		height: 55px !important;
+		border: none !important;
+		border-top-right-radius: 14px !important;
+		border-bottom-right-radius: 14px !important;
+		padding-left: 10 !important;
+		overflow: hidden;
+	}
+	.react-international-phone-country-selector {
+		max-height: 55px !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		button {
+			border-top-left-radius: 14px !important;
+			border-bottom-left-radius: 14px !important;
+			overflow: hidden;
+			max-height: 55px !important;
+			justify-content: end;
+			width: 40px;
+			background:  transparent !important;
+			border: none;
+			img {
+				width: 24px;
+				height: 18px;
+				margin: 0;
+			}
+		}
+	}
+}
+ 

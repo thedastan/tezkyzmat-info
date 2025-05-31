@@ -1,14 +1,12 @@
-'use client'
+"use client";
 import { Description } from "@/components/ui/text/Description";
 import Image from "next/image";
 import img from "@/assets/images/hero-mobiles.png";
-import { MdArrowRightAlt } from "react-icons/md";
 import { FaGooglePlay } from "react-icons/fa6";
 import { BsApple } from "react-icons/bs";
 import Link from "next/link";
 import { useLanguageStore } from "@/stores/useLanguageStore";
 const Hero = () => {
-
 	const { t } = useLanguageStore();
 
 	return (
@@ -23,31 +21,22 @@ const Hero = () => {
 								Tez Kyzmat PRO
 							</Description>
 
-							<div className="flex md:hidden mt-[50px]">
-								<DeviceHero />
-							</div>
-
+							 
 							<h1 className="md:text-[64px] text-[26px] mt-2 font-[700] leading-[110%] text-white">
-							{t("Hero.title")} <br />
+								{t("Hero.title")} <br />
 								<span className="text-[#FADD13]">{t("Hero.span")}</span>
 							</h1>
 							<Description className="text-white">
 								{/* Получайте клиентов напрямую, без посредников, без комиссий. */}
 								{t("Hero.desc")}
 							</Description>
-							<button className="bg-white rounded-[50px] md:w-[340px] w-full mt-6 md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
-							{t("Hero.btn")}{" "}
-								<span className="text-[32px]">
-									<MdArrowRightAlt />
-								</span>
-							</button>
+							<div className="mt-6 w-full">
+								<DeviceHero />
+							</div>
 						</div>
 
 						<div className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[350px]   relative">
 							<Image src={img} objectFit="contain" fill alt="image-mobile" />
-							<div className=" absolute z-10 bottom-6 left-4 md:flex hidden">
-								<DeviceHero />
-							</div>
 						</div>
 
 						<div className="flex md:hidden text-center">
@@ -62,33 +51,35 @@ const Hero = () => {
 	);
 };
 
-const data = [
-	{
-		icon: <FaGooglePlay />,
-		span: "Доступно в",
-		title: "Google Play",
-		link: "/",
-	},
-	{
-		icon: <BsApple />,
-		span: "Доступно в",
-		title: "App Store",
-		link: "/",
-	},
-];
-
 export const DeviceHero = () => {
+	const { t } = useLanguageStore();
+
+	const data = [
+		{
+			icon: <FaGooglePlay />,
+			span: t("Application.App"),
+			title: "Google Play",
+			link: "/",
+		},
+		{
+			icon: <BsApple />,
+			span: t("Application.App"),
+			title: "App Store",
+			link: "/",
+		},
+	];
+
 	return (
-		<div className="flex gap-2">
+		<div className="flex gap-2 w-full max-w-[400px] md:max-w-[350px]">
 			{data.map((el, index) => (
 				<Link
 					key={index}
 					href={el.link}
-					className="inline-flex justify-center items-center gap-2 text-black bg-white p-2 rounded-[5px] border border-black min-w-[100px] max-w-max">
-					<h1 className="md:text-[26px] text-[22px]">{el.icon}</h1>
+					className="inline-flex justify-center items-center gap-2 text-black bg-white p-2 rounded-[5px] border border-black  w-full max-w-[100%]">
+					<h1 className="md:text-[26px] text-[28px]">{el.icon}</h1>
 					<div className="flex flex-col">
-						<p className="text-[7px]">{el.span}</p>
-						<h1 className="md:text-[18px] text-[16px] leading-[110%] font-bold whitespace-nowrap">
+						<p className="text-[10px]">{el.span}</p>
+						<h1 className="md:text-[18px] text-[18px] leading-[110%] font-bold whitespace-nowrap">
 							{el.title}
 						</h1>
 					</div>

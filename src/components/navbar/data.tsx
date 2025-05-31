@@ -26,5 +26,10 @@ export const useNavbar = () => {
 			href: PAGE.ABOUT,
 			name: t("Navbar.about"),
 		},
+
+		{
+			href: PAGE.CLIENT,
+			name:t("Navbar.client"),
+		},
 	];
 };
