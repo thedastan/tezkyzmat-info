@@ -5,7 +5,7 @@ import PhoneInputComponent from "@/components/ui/input/PhoneInputComponent";
 import { TextareaComponent } from "@/components/ui/input/TextareaComponent";
 import { Select } from "@/components/ui/select/Select";
 import { Description } from "@/components/ui/text/Description";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { IoCloseOutline } from "react-icons/io5";
@@ -16,14 +16,14 @@ interface IForma {
 }
 
 interface FormData {
-  phone?: string;
-  mySelect?: string;
-  text?: string;
-  images?: FileList | File[];
-  description?: string;
+	phone?: string;
+	mySelect?: string;
+	text?: string;
+	images?: FileList | File[];
+	description?: string;
 }
 const Forma = ({ setModalOpen }: IForma) => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Forma");
 
 	const {
 		register,
@@ -34,8 +34,8 @@ const Forma = ({ setModalOpen }: IForma) => {
 	} = useForm();
 
 	const onSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(data);
-  };
+		console.log(data);
+	};
 
 	const options = [
 		{ label: "Option 1", value: "opt1" },
@@ -57,12 +57,8 @@ const Forma = ({ setModalOpen }: IForma) => {
 						<IoCloseOutline />
 					</button>
 					<div className="md:flex hidden flex-col pb-10">
-						<h1 className="text-center font-bold text-[36px]">
-							{t("Forma.title")}
-						</h1>
-						<Description className="text-center mt-2">
-							{t("Forma.desc")}
-						</Description>
+						<h1 className="text-center font-bold text-[36px]">{t("title")}</h1>
+						<Description className="text-center mt-2">{t("desc")}</Description>
 					</div>
 					<form
 						onSubmit={handleSubmit(onSubmit)}
@@ -70,10 +66,10 @@ const Forma = ({ setModalOpen }: IForma) => {
 						<div className=" w-full  flex  md:flex-row flex-col gap-4 ">
 							<div className="flex md:hidden flex-col">
 								<h1 className="text-center font-bold text-[36px]">
-									{t("Forma.title")}
+									{t("title")}
 								</h1>
 								<Description className="text-center mt-2">
-									{t("Forma.desc")}
+									{t("desc")}
 								</Description>
 							</div>
 							<div className="flex w-full flex-col gap-4">
@@ -85,7 +81,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 								</div>
 
 								<Select
-									placeholder={t("Forma.select1")}
+									placeholder={t("select1")}
 									options={options}
 									registration={register("mySelect", {
 										required: "Please select an option",
@@ -94,7 +90,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 								/>
 
 								<Select
-									placeholder={t("Forma.select2")}
+									placeholder={t("select2")}
 									options={options}
 									registration={register("mySelect", {
 										required: "Please select an option",
@@ -103,7 +99,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 								/>
 
 								<Select
-									placeholder={t("Forma.select3")}
+									placeholder={t("select3")}
 									options={options}
 									registration={register("mySelect", {
 										required: "Please select an option",
@@ -112,7 +108,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 								/>
 
 								<Select
-									placeholder={t("Forma.select4")}
+									placeholder={t("select4")}
 									options={options}
 									registration={register("mySelect", {
 										required: "Please select an option",
@@ -122,7 +118,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 							</div>
 							<div className="flex w-full h-f flex-col gap-4">
 								<Select
-									placeholder={t("Forma.select5")}
+									placeholder={t("select5")}
 									options={options}
 									registration={register("mySelect", {
 										required: "Please select an option",
@@ -131,7 +127,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 								/>
 
 								<InputComponent
-									placeholder={t("Forma.code")}
+									placeholder={t("code")}
 									type="text"
 									registration={register("text")}
 								/>
@@ -142,13 +138,13 @@ const Forma = ({ setModalOpen }: IForma) => {
 								/>
 
 								<TextareaComponent
-									placeholder={t("Forma.textare")}
+									placeholder={t("textare")}
 									registration={register("description")}
 								/>
 							</div>
 						</div>
 						<button className="bg-[#111218] text-white rounded-[50px]  w-full mt-6 md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
-							{t("Forma.btn")}{" "}
+							{t("btn")}{" "}
 							<span className="text-[32px]">
 								<MdArrowRightAlt />
 							</span>

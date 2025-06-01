@@ -1,83 +1,68 @@
-import { useLanguageStore } from "@/stores/useLanguageStore";
-import React, { useState, useRef, useEffect } from "react";
+ 
+"use client";
 
-const languageLabels: Record<"ru" | "kg" | "en", string> = {
-	ru: "РУС",
-	kg: "КГ",
-	en: "ENG",
+import { useParams, usePathname, useRouter } from "next/navigation";
+import { useState, useRef  } from "react";
+import { IoIosArrowDown } from "react-icons/io";
+
+
+type LanguageSelectProps = {
+	textColor?: string; // например, "text-white" или "text-black"
 };
 
-interface ILanguage {
-	setIsOpen: (isOpen: boolean) => void;
-}
 
-export default function LanguageSelect({ setIsOpen }: ILanguage) {
-	const { language, setLanguage } = useLanguageStore();
-	const [open, setOpen] = useState(false);
-	const containerRef = useRef<HTMLDivElement>(null);
+const LanguageSelect = ({ textColor = "text-white" }: LanguageSelectProps) => {
+	const pathname = usePathname();
+	const { push: navigate } = useRouter();
+	const params = useParams();
+	const { locale } = params;
+	const [isOpen, setIsOpen] = useState(false);
+	const menuRef = useRef<HTMLDivElement>(null);
 
-	// Закрыть меню при клике вне компонента
-	useEffect(() => {
-		function handleClickOutside(event: MouseEvent) {
-			if (
-				containerRef.current &&
-				!containerRef.current.contains(event.target as Node)
-			) {
-				setOpen(false);
-			}
-		}
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => document.removeEventListener("mousedown", handleClickOutside);
-	}, []);
+	const options = [
+		{ value: "ru", label: "РУС" },
+		{ value: "kg", label: "КГ" },
+		{ value: "en", label: "ENG" },
+	];
 
-	const options: ("ru" | "kg" | "en")[] = ["ru", "kg", "en"];
-
-	const handleSelect = (lang: "ru" | "kg" | "en") => {
-		setLanguage(lang);
-		setOpen(false);
+	const LanguageChange = (newLocale: string) => {
+		const newPathname = pathname.replace(`/${params.locale}`, `/${newLocale}`);
+		navigate(newPathname);
+		setTimeout(() => {
+			window.location.reload();
+		}, 1000);
 	};
+ 
+ 
 
 	return (
-		<div
-			ref={containerRef}
-			className="relative w-18 text-14 select-none font-sans">
-			{/* Заголовок селекта */}
-			<div
-				onClick={() => setOpen(!open)}
-				className=" md:text-white text-black text-14 rounded-md md:px-3 px-0 md:py-2 py-0 cursor-pointer flex justify-between items-center bg-transparent">
-				<span className="uppercase text-[16px] md:text-[14px]">
-					{languageLabels[language]}
+		<div className="relative inline-block" ref={menuRef}>
+			<button
+				className={`flex items-center gap-2 w-[70px]    bg-transparent   ${textColor}   text-[14px]   transition-all`}
+				onClick={() => setIsOpen(!isOpen)}>
+				{options.find((opt) => opt.value === locale)?.label}
+				<span className={`transition-transform ${isOpen ? "rotate-180" : ""}`}>
+				<IoIosArrowDown />
 				</span>
-				<svg
-					className={`w-4 h-4 ml-2 transition-transform duration-200 ${
-						open ? "rotate-180" : ""
-					}`}
-					viewBox="0 0 24 24"
-					fill="none"
-					stroke="currentColor"
-					strokeWidth="2">
-					<path d="M6 9l6 6 6-6" />
-				</svg>
-			</div>
+			</button>
 
-			{/* Выпадающий список */}
-			{open && (
-				<ul className="absolute top-full w-32 left-0 right-0 mt-1 rounded-md bg-[#505050] shadow-md max-h-36 overflow-y-auto z-50">
-					{options.map((lang) => (
-						<li key={lang} onClick={() => setIsOpen(false)}>
-							<button
-								onClick={() => handleSelect(lang)}
-								className={`w-full text-left px-3 py-2 focus:outline-none ${
-									lang === language
-										? "bg-[#FADD13] text-black"
-										: "md:hover:bg-[#696969] text-white"
-								}`}>
-								{languageLabels[lang]}
-							</button>
-						</li>
+			{isOpen && (
+				<div className="absolute left-0 mt-2 w-24 bg-[#4d4d4d]  text-white border-gray-200 rounded-lg shadow-lg z-10 overflow-hidden animate-fadeIn">
+					{options.map((option) => (
+						<div
+							key={option.value}
+							className="px-4 py-2 text-sm hover:bg-[#FADD13] hover:text-black cursor-pointer transition-all flex items-center gap-2"
+							onClick={() => {
+								LanguageChange(option.value);
+								setIsOpen(false);
+							}}>
+							{option.label}
+						</div>
 					))}
-				</ul>
+				</div>
 			)}
 		</div>
 	);
-}
+};
+
+export default LanguageSelect;

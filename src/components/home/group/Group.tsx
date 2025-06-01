@@ -6,29 +6,29 @@ import { MdArrowRightAlt } from "react-icons/md";
 import ava from "@/assets/images/men.png";
 import { TbBrandInstagramFilled } from "react-icons/tb";
 import Link from "next/link";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const Group = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Group");
 
 	const piple = [
 		{
 			ava: ava,
-			title: t("Group.member1_name"),
+			title: t("member1_name"),
 			link: "danyshbek_beisheev",
-			desc: t("Group.member1_desc"),
+			desc: t("member1_desc"),
 		},
 		{
 			ava: ava,
-			title: t("Group.member2_name"),
+			title: t("member2_name"),
 			link: "zaidov_s",
-			desc: t("Group.member2_desc"),
+			desc: t("member2_desc"),
 		},
 		{
 			ava: ava,
-			title: t("Group.member3_name"),
+			title: t("member3_name"),
 			link: "dastan.mukeev",
-			desc: t("Group.member3_desc"),
+			desc: t("member3_desc"),
 		},
 	];
 	return (
@@ -44,12 +44,12 @@ const Group = () => {
 					className="w-full h-[550px] rounded-[20px] md:p-10 p-0">
 					<div className="bg-[#000000bd]   md:w-[550px] w-full md:h-[283px] gap-8 md:gap-0 h-[100%] rounded-[20px] flex flex-col md:justify-between justify-center items-start p-6">
 						<h1 className="text-white md:text-[32px] text-[24px] font-[700] leading-[120%]">
-							{t("Group.title")}
+							{t("title")}
 						</h1>
-						<Description className="text-white">{t("Group.desc")}</Description>
+						<Description className="text-white">{t("desc")}</Description>
 						<Link className="md:w-[236px] w-full" href={"#footer"}>
 							<button className="bg-white rounded-[50px] md:w-[236px] w-full md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
-								{t("Group.btn")}{" "}
+								{t("btn")}{" "}
 								<span className="text-[32px]">
 									<MdArrowRightAlt />
 								</span>

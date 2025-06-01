@@ -120,14 +120,11 @@
 		"reviews": "Reviews",
 		"about": "About us",
 		"client": "For Clients"
-
 	},
 	"BurgerMenu": {
 		"contact": "Contacts",
 		"location": "Selpovskaya 8, Bishkek"
 	},
-
-
 
 	"Order": {
 		"title": "Didn't find the right spare part in KG? Order directly from the UAE!",
@@ -152,7 +149,9 @@
 		"title_2": "What we sell",
 		"desc1_2": "• Lighting parts",
 		"desc2_2": "• Body parts",
-		"desc3_2": "• Engines"
+		"desc3_2": "• Engines",
+		"contact": "Contacts",
+		"location": "Selpovskaya 8, Bishkek"
 	},
 	"Forma": {
 		"title": "Order from UAE",
@@ -172,9 +171,6 @@
 	"Application": {
 		"App": "Available on"
 	},
-
-
-
 
 	"Herocl": {
 		"title": "Need a spare part",

@@ -1,35 +1,35 @@
 "use client";
 import { PAGE } from "@/config/pages/public-page.config";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 export const useNavbar = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Navbar");
 
 	return [
 		{
 			href: PAGE.FORWHOM,
-			name: t("Navbar.forWhom"),
+			name: t("forWhom"),
 		},
 		{
 			href: PAGE.SOLUTION,
-			name: t("Navbar.solution"),
+			name: t("solution"),
 		},
 		{
 			href: PAGE.ADVANTAGES,
-			name: t("Navbar.advantages"),
+			name: t("advantages"),
 		},
 		{
 			href: PAGE.REVIEV,
-			name: t("Navbar.reviews"),
+			name: t("reviews"),
 		},
 		{
 			href: PAGE.ABOUT,
-			name: t("Navbar.about"),
+			name: t("about"),
 		},
 
 		{
 			href: PAGE.CLIENT,
-			name:t("Navbar.client"),
+			name:t("client"),
 		},
 	];
 };

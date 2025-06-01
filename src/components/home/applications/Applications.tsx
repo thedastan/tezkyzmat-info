@@ -5,7 +5,7 @@ import img1 from "@/assets/images/applications1.png";
 import img2 from "@/assets/images/applications2.png";
 import img3 from "@/assets/images/applications3.png";
 import Image from "next/image";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const images = [
 	{
@@ -20,15 +20,16 @@ const images = [
 ];
 const Applications = () => {
 
-	const { t } = useLanguageStore();
+	const t = useTranslations("Applications");
+
 
 	return (
 		<section className="py-20 w-full">
 			<div className="container">
 				<div className="w-full flex flex-col justify-center items-center">
-					<Title className="text-center">{t("Applications.title")}</Title>
+					<Title className="text-center">{t("title")}</Title>
 					<Description className="text-center max-w-[660px] w-full mt-4">
-					{t("Applications.description")}
+					{t("description")}
 					</Description>
 				</div>
 

@@ -1,30 +1,30 @@
 "use client";
 import { Description } from "@/components/ui/text/Description";
 import { Title } from "@/components/ui/text/Title";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 import React from "react";
 import { FaCheck } from "react-icons/fa6";
 import { MdArrowRightAlt } from "react-icons/md";
 
 const Tariffs = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Tariffs");
 
 	const card = [
 		{
-			title: t("Tariffs.title_card1"),
+			title: t("title_card1"),
 			price: "0",
 			description: [
-				{ desc: t("Tariffs.desc1_card1") },
-				{ desc: t("Tariffs.desc1_card1") },
+				{ desc: t("desc1_card1") },
+				{ desc: t("desc1_card1") },
 			],
 		},
 		{
 			title: "VIP",
 			price: "999",
 			description: [
-				{ desc: t("Tariffs.desc1_card2") },
-				{ desc: t("Tariffs.desc2_card2") },
-				{ desc: t("Tariffs.desc3_card2") },
+				{ desc: t("desc1_card2") },
+				{ desc: t("desc2_card2") },
+				{ desc: t("desc3_card2") },
 			],
 		},
 	];
@@ -34,10 +34,10 @@ const Tariffs = () => {
 			title: "PREMIUM",
 			price: "2500",
 			description: [
-				{ desc: t("Tariffs.desc1_card3") },
-				{ desc: t("Tariffs.desc2_card3") },
-				{ desc: t("Tariffs.desc3_card3") },
-				{ desc: t("Tariffs.desc4_card3") },
+				{ desc: t("desc1_card3") },
+				{ desc: t("desc2_card3") },
+				{ desc: t("desc3_card3") },
+				{ desc: t("desc4_card3") },
 			],
 		},
 	];
@@ -46,9 +46,9 @@ const Tariffs = () => {
 		<section className="bg-[#1C1C1C] py-10 rounded-tl-[40px] rounded-tr-[40px]">
 			<div className="container">
 				<div className="w-full flex flex-col justify-center items-center">
-					<Title className="text-center text-white">{t("Tariffs.title")}</Title>
+					<Title className="text-center text-white">{t("title")}</Title>
 					<Description className="text-center max-w-[490px] w-full mt-4 text-white">
-						{t("Tariffs.desc")}
+						{t("desc")}
 					</Description>
 				</div>
 
@@ -83,7 +83,9 @@ const TariffCard = ({
 	data: TariffItem;
 	premium?: boolean;
 }) => {
-	const { t } = useLanguageStore();
+
+	const t = useTranslations("Tariffs");
+
 	return (
 		<div
 			className={`relative flex flex-col justify-between items-center max-w-[400px] overflow-hidden md:max-w-[320px] w-full p-6 rounded-[10px] ${
@@ -108,11 +110,11 @@ const TariffCard = ({
 						className={`border-b-2 ${
 							premium ? "border-black" : "border-white"
 						}`}>
-						{t("Tariffs.price")}
+						{t("price")}
 					</span>{" "}
 					<span
 						className={`${premium ? "text-black" : "text-white"} text-[14px]`}>
-						{t("Tariffs.month")}
+						{t("month")}
 					</span>
 				</h1>
 
@@ -142,7 +144,7 @@ const TariffCard = ({
 						? "bg-black text-white"
 						: "bg-transparent border border-white text-white"
 				} rounded-[50px] w-full mt-6 md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]`}>
-				{t("Tariffs.btn")}{" "}
+				{t("btn")}{" "}
 				<span className="text-[32px]">
 					<MdArrowRightAlt />
 				</span>

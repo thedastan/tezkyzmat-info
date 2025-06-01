@@ -43,7 +43,7 @@ const Header = () => {
 						</div>
 
 						<div className="md:flex hidden">
-							 <LanguageSelect setIsOpen={setIsOpen}/>
+							 <LanguageSelect  textColor="text-white"/>
 						</div>
 
 						<div className="md:hidden text-white flex">

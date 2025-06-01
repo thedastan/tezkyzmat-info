@@ -6,27 +6,28 @@ import icon3 from "@/assets/images/icon3cl.png";
 import icon4 from "@/assets/images/icon4cl.png";
 
 import Image from "next/image";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const BusinessProblems = () => {
-	const { t } = useLanguageStore();
+	 
+	const t = useTranslations("BusinessProblemscl");
 
 	const card = [
 		{
 			icon: icon1,
-			desc: t("BusinessProblemscl.desc1"),
+			desc: t("desc1"),
 		},
 		{
 			icon: icon2,
-			desc: t("BusinessProblemscl.desc2"),
+			desc: t("desc2"),
 		},
 		{
 			icon: icon3,
-			desc: t("BusinessProblemscl.desc3"),
+			desc: t("desc3"),
 		},
 		{
 			icon: icon4,
-			desc: t("BusinessProblemscl.desc4"),
+			desc: t("desc4"),
 		},
 	];
 	 
@@ -34,7 +35,7 @@ const BusinessProblems = () => {
 		<section className="bg-white py-20">
 			<div className="container">
 				<Title className="text-center md:text-start">
-					{t("BusinessProblemscl.title")}
+					{t("title")}
 				</Title>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-6 gap-10 mt-10">
 					{card.map((el, index) => (
