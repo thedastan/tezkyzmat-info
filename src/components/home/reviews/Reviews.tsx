@@ -7,14 +7,17 @@ import reviewsava1 from "@/assets/images/Reviews-ava.png";
 import reviewsava2 from "@/assets/images/Reviews-ava2.png";
 import { Description } from "@/components/ui/text/Description";
 import { FaPlay } from "react-icons/fa";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+ 
+import { useTranslations } from "next-intl";
 
 const Reviews = () => {
-	const { t } = useLanguageStore();
+	
+		const t = useTranslations("Reviews");
+	
 
 	return (
 		<section id="reviews">
-			<Title className="text-center">{t("Reviews.title")}</Title>
+			<Title className="text-center">{t("title")}</Title>
 			<div
 				className="w-full overflow-x-auto mt-10 px-[calc((100%-1300px)/2)]"
 				style={{
@@ -31,9 +34,9 @@ const Reviews = () => {
 							</button>
 						</div>
 						<div className="flex flex-col p-6 gap-2">
-							<h1 className="text-[24px] font-bold">{t("Reviews.card1_name")}</h1>
+							<h1 className="text-[24px] font-bold">{t("card1_name")}</h1>
 							<Description className="text-[#2A4A45] text-[16px]">
-							{t("Reviews.card1_desc")}
+							{t("card1_desc")}
 								 
 							</Description>
 						</div>
@@ -44,14 +47,14 @@ const Reviews = () => {
 						<div className="flex items-center gap-3">
 							<Image width={50} height={50} src={reviewsava1} alt="ava" />
 							<div>
-								<h2 className="text-[15px] font-bold">{t("Reviews.card2_name")}</h2>
+								<h2 className="text-[15px] font-bold">{t("card2_name")}</h2>
 								<p className="text-[12px] text-[#6F6A6A]">
-								 {t("Reviews.card2_span")}
+								 {t("card2_span")}
 								</p>
 							</div>
 						</div>
 						<Description className="mt-4 text-[16px]">
-						{t("Reviews.card2_desc")}
+						{t("card2_desc")}
 						</Description>
 					</div>
 
@@ -68,14 +71,14 @@ const Reviews = () => {
 						<div className="flex items-center gap-3">
 							<Image width={50} height={50} src={reviewsava2} alt="ava" />
 							<div>
-								<h2 className="text-[15px] font-bold">{t("Reviews.card4_name")}</h2>
+								<h2 className="text-[15px] font-bold">{t("card4_name")}</h2>
 								<p className="text-[12px] text-[#6F6A6A]">
-								{t("Reviews.card4_span")}
+								{t("card4_span")}
 								</p>
 							</div>
 						</div>
 						<Description className="mt-4 text-[16px]">
-						{t("Reviews.card4_desc")}
+						{t("card4_desc")}
 						</Description>
 					</div>
 				</div>

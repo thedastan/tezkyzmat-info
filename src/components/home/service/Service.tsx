@@ -4,33 +4,34 @@ import service1 from "@/assets/images/service1.png";
 import service2 from "@/assets/images/service2.png";
 import service3 from "@/assets/images/service3.png";
 import Image from "next/image";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const Service = () => {
-	const { t } = useLanguageStore();
+ 
+	const t = useTranslations("Service");
 
 	const card = [
 		{
 			img: service1,
-			span: t("Service.span1"),
-			desc: t("Service.desc1"),
+			span: t("span1"),
+			desc: t("desc1"),
 		},
 		{
 			img: service2,
-			span: t("Service.span2"),
-			desc: t("Service.desc2"),
+			span: t("span2"),
+			desc: t("desc2"),
 		},
 		{
 			img: service3,
-			span: t("Service.span3"),
-			desc: t("Service.desc3"),
+			span: t("span3"),
+			desc: t("desc3"),
 		},
 	];
 
 	return (
 		<section id="forwhom" className="bg-white py-20">
 			<div className="container">
-				<Title>{t("Service.title")}</Title>
+				<Title>{t("title")}</Title>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
 					{card.map((el, index) => (
 						<div

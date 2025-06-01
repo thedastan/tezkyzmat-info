@@ -5,9 +5,9 @@ import img from "@/assets/images/hero-mobile.png";
 import { FaGooglePlay } from "react-icons/fa6";
 import { BsApple } from "react-icons/bs";
 import Link from "next/link";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 const Hero = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Herocl");
 
 	return (
 		<section className="bg-[#000000]">
@@ -20,17 +20,16 @@ const Hero = () => {
 							<Description className="uppercase md:flex hidden text-white">
 								Tez Kyzmat
 							</Description>
- 
 
 							<h1 className="md:text-[64px] text-[26px] mt-2 font-[700] leading-[110%] text-white">
-								{t("Herocl.title")} <br />
-								<span className="md:pr-3 pr-2">{t("Herocl.or")}</span>
+								{t("title")} <br />
+								<span className="md:pr-3 pr-2">{t("or")}</span>
 								{""}
-								<span className="text-[#FADD13]">{t("Herocl.span")}</span>
+								<span className="text-[#FADD13]">{t("span")}</span>
 							</h1>
 							<Description className="text-white">
 								{/* Получайте клиентов напрямую, без посредников, без комиссий. */}
-								{t("Herocl.desc")}
+								{t("desc")}
 							</Description>
 
 							<div className="mt-6 w-full">
@@ -55,18 +54,18 @@ const Hero = () => {
 };
 
 export const DeviceHero = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Application");
 
 	const data = [
 		{
 			icon: <FaGooglePlay />,
-			span: t("Application.App"),
+			span: t("App"),
 			title: "Google Play",
 			link: "/",
 		},
 		{
 			icon: <BsApple />,
-			span: t("Application.App"),
+			span: t("App"),
 			title: "App Store",
 			link: "/",
 		},

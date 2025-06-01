@@ -5,9 +5,9 @@ import img from "@/assets/images/hero-mobiles.png";
 import { FaGooglePlay } from "react-icons/fa6";
 import { BsApple } from "react-icons/bs";
 import Link from "next/link";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 const Hero = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Hero");
 
 	return (
 		<section className="bg-[#000000]">
@@ -23,12 +23,12 @@ const Hero = () => {
 
 							 
 							<h1 className="md:text-[64px] text-[26px] mt-2 font-[700] leading-[110%] text-white">
-								{t("Hero.title")} <br />
-								<span className="text-[#FADD13]">{t("Hero.span")}</span>
+								{t("title")} <br />
+								<span className="text-[#FADD13]">{t("span")}</span>
 							</h1>
 							<Description className="text-white">
 								{/* Получайте клиентов напрямую, без посредников, без комиссий. */}
-								{t("Hero.desc")}
+								{t("desc")}
 							</Description>
 							<div className="mt-6 w-full">
 								<DeviceHero />
@@ -52,18 +52,20 @@ const Hero = () => {
 };
 
 export const DeviceHero = () => {
-	const { t } = useLanguageStore();
+
+	const t = useTranslations("Application");
+
 
 	const data = [
 		{
 			icon: <FaGooglePlay />,
-			span: t("Application.App"),
+			span: t("App"),
 			title: "Google Play",
 			link: "/",
 		},
 		{
 			icon: <BsApple />,
-			span: t("Application.App"),
+			span: t("App"),
 			title: "App Store",
 			link: "/",
 		},

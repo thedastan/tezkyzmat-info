@@ -4,10 +4,10 @@ import Cards from "@/components/client/cards/Cards";
 import Hero from "@/components/client/hero/Hero";
 import Instruction from "@/components/client/instruction/Instruction";
 import Order from "@/components/client/order/Order";
-import Reviews from "@/components/client/reviews/Reviews";
 import Service from "@/components/client/service/Service";
 import Shop from "@/components/client/shop/Shop";
 import Group from "@/components/home/group/Group";
+import Reviews from "@/components/home/reviews/Reviews";
 import WeTeam from "@/components/home/we-team/WeTeam";
 import React from "react";
 

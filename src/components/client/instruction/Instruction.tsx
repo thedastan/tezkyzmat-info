@@ -4,33 +4,33 @@ import Image from "next/image";
 import { FaCheck } from "react-icons/fa6";
 import img1 from "@/assets/images/instruction1cl.png";
 import img2 from "@/assets/images/instruction2cl.png";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const Instruction = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Instructioncl");
 
 	const data = [
 		{
 			id: "advantages",
 			image: img1,
-			title: t("Instructioncl.solution.title"), // содержит <br /> если нужно
+			title: t("solution.title"), // содержит <br /> если нужно
 			description: [
-				{ desc: t("Instructioncl.solution.description.0") },
-				{ desc: t("Instructioncl.solution.description.1") },
-				{ desc: t("Instructioncl.solution.description.2") },
+				{ desc: t("solution.description.0") },
+				{ desc: t("solution.description.1") },
+				{ desc: t("solution.description.2") },
 			],
 		},
 		{
 			id: "solution",
 			image: img2,
-			title: t("Instructioncl.advantages.title"),
+			title: t("advantages.title"),
 			description: [
-				{ desc: t("Instructioncl.advantages.description.0") },
-				{ desc: t("Instructioncl.advantages.description.1") },
-				{ desc: t("Instructioncl.advantages.description.2") },
-				{ desc: t("Instructioncl.advantages.description.3") },
+				{ desc: t("advantages.description.0") },
+				{ desc: t("advantages.description.1") },
+				{ desc: t("advantages.description.2") },
+				{ desc: t("advantages.description.3") },
 			],
-		} 
+		},
 	];
 
 	return (

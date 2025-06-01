@@ -1,33 +1,38 @@
 "use client";
 
-import { Description } from "@/components/ui/text/Description";
 import img1 from "@/assets/images/shop.jpg";
 import img2 from "@/assets/images/shop2.png";
-import { useLanguageStore } from "@/stores/useLanguageStore";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+import { useTranslations } from "next-intl";
+import { Description } from "@/components/ui/text/Description";
 
 const Shop = () => {
-	const { t } = useLanguageStore();
+	 const t = useTranslations("Shop");
 
-	const prevRef = useRef<HTMLButtonElement>(null);
-	const nextRef = useRef<HTMLButtonElement>(null);
+	 const prevRef = useRef<HTMLButtonElement>(null);
+	 const nextRef = useRef<HTMLButtonElement>(null);
+	 const [isMounted, setIsMounted] = useState(false);
+ 
+	 useEffect(() => {
+		 setIsMounted(true);
+	 }, []);
 
 	const slides = [
 		{
 			img: img2.src,
-			titleKey: "Shop.title",
-			descKey: "Shop.desc",
+			titleKey: "title",
+			descKey: "desc",
 		},
 		{
 			img: img1.src,
-			titleKey: "Shop.title",
-			descKey: "Shop.desc",
+			titleKey: "title",
+			descKey: "desc",
 		} 
 	];
 
@@ -35,25 +40,26 @@ const Shop = () => {
 		<section>
 			<div className="container">
 				<div className="relative">
-					<Swiper
-						modules={[Navigation]}
-						navigation={{
-							prevEl: prevRef.current,
-							nextEl: nextRef.current,
-						}}
-						onBeforeInit={(swiper) => {
-							if (
-								swiper.params.navigation &&
-								typeof swiper.params.navigation === "object"
-							) {
-								swiper.params.navigation.prevEl = prevRef.current;
-								swiper.params.navigation.nextEl = nextRef.current;
-							}
-						}}
-						slidesPerView={1}
-						loop={true}
-						className="w-full">
-						{slides.map(({ img, titleKey, descKey }, index) => (
+					{isMounted && (
+						<Swiper
+							modules={[Navigation]}
+							navigation={{
+								prevEl: prevRef.current,
+								nextEl: nextRef.current,
+							}}
+							onBeforeInit={(swiper) => {
+								if (
+									swiper.params.navigation &&
+									typeof swiper.params.navigation === "object"
+								) {
+									swiper.params.navigation.prevEl = prevRef.current;
+									swiper.params.navigation.nextEl = nextRef.current;
+								}
+							}}
+							slidesPerView={1}
+							loop={true}
+							className="w-full">
+							{slides.map(({ img, titleKey, descKey }, index) => (
 							<SwiperSlide key={index}>
 								<div
 									style={{
@@ -74,11 +80,12 @@ const Shop = () => {
 								</div>
 							</SwiperSlide>
 						))}
-					</Swiper>
+						</Swiper>
+					)}
 
 					{/* Arrows */}
 					<div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-6 z-10">
-						<button
+					<button
 							ref={prevRef}
 							className="text-white text-2xl bg-black/60 border border-black hover:bg-black/60 p-2 rounded-[10px] transition">
 							<MdArrowBackIosNew />
@@ -96,3 +103,5 @@ const Shop = () => {
 };
 
 export default Shop;
+
+

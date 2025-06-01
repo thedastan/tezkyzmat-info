@@ -3,7 +3,7 @@
 import { ImCamera } from "react-icons/im";
 import { IoAdd } from "react-icons/io5";
 import { useState } from "react";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 interface Props {
 	onChange?: (files: FileList | null) => void;
@@ -14,7 +14,8 @@ interface Props {
 export function FileUpload({ onChange, error, multiple = false }: Props) {
 	const [images, setImages] = useState<string[]>([]);
 
-	const { t } = useLanguageStore();
+ 
+	const t = useTranslations("Forma");
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const files = e.target.files;
@@ -42,7 +43,7 @@ export function FileUpload({ onChange, error, multiple = false }: Props) {
 				<label className="flex flex-col justify-center items-center w-full h-[55px] bg-[#F2F2F2] text-gray-600 text-sm rounded-[14px] cursor-pointer hover:opacity-80 transition">
 					<div className="flex items-center gap-3 text-[#8F8F95]">
 						<ImCamera size={20} />
-						<span className="text-[#8F8F95]">{t("Forma.add")}</span>
+						<span className="text-[#8F8F95]">{t("add")}</span>
 					</div>
 
 					<input

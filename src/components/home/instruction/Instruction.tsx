@@ -5,42 +5,43 @@ import { FaCheck } from "react-icons/fa6";
 import img1 from "@/assets/images/instruction1.png";
 import img2 from "@/assets/images/instruction2.png";
 import img3 from "@/assets/images/instruction3.png";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const Instruction = () => {
-	const { t } = useLanguageStore();
+ 
+	const t = useTranslations("Instruction");
 
 	const data = [
 		{
 			id: "solution",
 			image: img1,
-			title: t("Instruction.solution.title"), // содержит <br /> если нужно
+			title: t("solution.title"), // содержит <br /> если нужно
 			description: [
-				{ desc: t("Instruction.solution.description.0") },
-				{ desc: t("Instruction.solution.description.1") },
-				{ desc: t("Instruction.solution.description.2") },
+				{ desc: t("solution.description.0") },
+				{ desc: t("solution.description.1") },
+				{ desc: t("solution.description.2") },
 			],
 		},
 		{
 			id: "advantages",
 			image: img2,
-			title: t("Instruction.advantages.title"),
+			title: t("advantages.title"),
 			description: [
-				{ desc: t("Instruction.advantages.description.0") },
-				{ desc: t("Instruction.advantages.description.1") },
-				{ desc: t("Instruction.advantages.description.2") },
-				{ desc: t("Instruction.advantages.description.3") },
+				{ desc: t("advantages.description.0") },
+				{ desc: t("advantages.description.1") },
+				{ desc: t("advantages.description.2") },
+				{ desc: t("advantages.description.3") },
 			],
 		},
 		{
 			id: "",
 			image: img3,
-			title: t("Instruction.howToConnect.title"),
+			title: t("howToConnect.title"),
 			description: [
-				{ desc: t("Instruction.howToConnect.description.0") },
-				{ desc: t("Instruction.howToConnect.description.1") },
-				{ desc: t("Instruction.howToConnect.description.2") },
-				{ desc: t("Instruction.howToConnect.description.3") },
+				{ desc: t("howToConnect.description.0") },
+				{ desc: t("howToConnect.description.1") },
+				{ desc: t("howToConnect.description.2") },
+				{ desc: t("howToConnect.description.3") },
 			],
 		},
 	];

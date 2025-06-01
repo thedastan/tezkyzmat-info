@@ -26,10 +26,10 @@ import { FaFacebookF, FaInstagram } from "react-icons/fa6";
 import { RiTiktokLine } from "react-icons/ri";
 import { FiYoutube } from "react-icons/fi";
 import { Description } from "@/components/ui/text/Description";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const Footer = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Footer");
 	const navbar = useNavbar();
 	return (
 		<footer id="footer" className="bg-[#000000] py-4 ">
@@ -97,11 +97,11 @@ const Footer = () => {
 					<div className="flex flex-col justify-between">
 						<div>
 							<h1 className="text-white md:text-[32px] text-[24px] font-bold">
-								{t("Footer.title")}
+								{t("title")}
 							</h1>
 							<div className="flex md:mt-6 mt-8">
 								<input
-									placeholder={t("Footer.input")}
+									placeholder={t("input")}
 									className="bg-[#FFFFFF1A] text-white md:w-[443px] w-full h-[72px] rounded-tl-[20px] rounded-bl-[20px] px-6"
 									type="text"
 								/>
@@ -152,10 +152,10 @@ const Footer = () => {
 							© 2025 Tez Kyzmat
 						</Description>
 						<Description className="text-[#8F8F95]">
-							{t("Footer.span1")}
+							{t("span1")}
 						</Description>
 						<Description className="text-[#8F8F95]">
-							{t("Footer.span2")}
+							{t("span2")}
 						</Description>
 					</div>
 

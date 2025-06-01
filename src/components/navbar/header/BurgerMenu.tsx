@@ -17,7 +17,7 @@ import {
 	WHATSAPP_LINK,
 } from "@/constants/constants";
 import LanguageSelect from "./LanguageModal";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const BurgerMenu = ({
 	isOpen,
@@ -28,7 +28,7 @@ const BurgerMenu = ({
 }) => {
 	const navbar = useNavbar();
 
-	const { t } = useLanguageStore();
+	const t = useTranslations("BurgerMenu");
 
 	return (
 		<div
@@ -68,19 +68,20 @@ const BurgerMenu = ({
 							</Link>
 						))}
 						<div className="flex">
-							<LanguageSelect setIsOpen={setIsOpen}/>
+							<LanguageSelect textColor="text-black"/>
 						</div>
+						
 					</div>
 
 					<div className="mt-12">
-						<h1 className="text-[20px] font-[600]">{t("BurgerMenu.contact")}</h1>
+						<h1 className="text-[20px] font-[600]">{t("contact")}</h1>
 
 						<div className="flex flex-col gap-4 mt-5">
 							<Link
 								href={LOCATION_LINK}
 								target={"_blank"}
 								className="text-[18px] font-[600] gap-2 flex items-center">
-								<HiLocationMarker size={26} /> {t("BurgerMenu.location")} <GoArrowUpRight />
+								<HiLocationMarker size={26} /> {t("location")} <GoArrowUpRight />
 							</Link>
 
 							<Link

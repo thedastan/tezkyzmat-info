@@ -14,28 +14,28 @@ import {
 } from "@/constants/constants";
 import { HiLocationMarker } from "react-icons/hi";
 import { TbBrandInstagramFilled } from "react-icons/tb";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const Cards = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("Cards");
 
 	const cards = [
 		{
 			img: img1,
-			title: t("Cards.title"),
+			title: t("title"),
 			description: [
-				{ desc: t("Cards.desc1") },
-				{ desc: t("Cards.desc2") },
-				{ desc: t("Cards.desc3") },
+				{ desc: t("desc1") },
+				{ desc: t("desc2") },
+				{ desc: t("desc3") },
 			],
 		},
 		{
 			img: img2,
-			title: t("Cards.title_2"),
+			title: t("title_2"),
 			description: [
-				{ desc: t("Cards.desc1_2") },
-				{ desc: t("Cards.desc2_2") },
-				{ desc: t("Cards.desc3_2") },
+				{ desc: t("desc1_2") },
+				{ desc: t("desc2_2") },
+				{ desc: t("desc3_2") },
 			],
 		},
 	];
@@ -65,13 +65,13 @@ const Cards = () => {
 						<div className="h-[225px] w-full relative overflow-hidden rounded-[12px]">
 							<Image fill objectFit="cover" src={img3} alt="img" />
 						</div>
-						<h1 className="md:text-[32px] text-[26px] font-[600]">{t("BurgerMenu.contact")}</h1>
+						<h1 className="md:text-[32px] text-[26px] font-[600]">{t("contact")}</h1>
 						<div className="flex flex-col gap-2">
 							<Link
 								href={LOCATION_LINK}
 								target={"_blank"}
 								className="text-[18px] font-[400] gap-2 flex items-center">
-								<HiLocationMarker size={26} /> {t("BurgerMenu.location")} {" "}
+								<HiLocationMarker size={26} /> {t("location")} {" "}
 								<GoArrowUpRight />
 							</Link>
 

@@ -6,21 +6,21 @@ import img from "@/assets/images/we-team.png";
 
 import img1 from "@/assets/images/project1.png";
 import img2 from "@/assets/images/project2.png";
-import { useLanguageStore } from "@/stores/useLanguageStore";
+import { useTranslations } from "next-intl";
 
 const WeTeam = () => {
-	const { t } = useLanguageStore();
+	const t = useTranslations("WeTeam");
 
 	const card = [
 		{
 			img: img1,
-			span: t("WeTeam.block1.span"),
-			desc: t("WeTeam.block1.desc"),
+			span: t("block1.span"),
+			desc: t("block1.desc"),
 		},
 		{
 			img: img2,
-			span: t("WeTeam.block2.span"),
-			desc: t("WeTeam.block2.desc"),
+			span: t("block2.span"),
+			desc: t("block2.desc"),
 		},
 	];
 
@@ -29,8 +29,8 @@ const WeTeam = () => {
 			<div className="container">
 				<div className="flex justify-between gap-4 sm:items-center items-start flex-col md:flex-row">
 					<div className="flex md:max-w-[650px] max-w-[360px] w-full flex-col gap-5">
-						<Title>{t("WeTeam.title")}</Title>
-						<Description>{t("WeTeam.desc")}</Description>
+						<Title>{t("title")}</Title>
+						<Description>{t("desc")}</Description>
 					</div>
 					<div className="max-w-[512px] md:mt-0 mt-2 w-full md:h-[600px] h-[268px] relative overflow-hidden rounded-[24px]">
 						<Image src={img} fill objectFit="cover" alt="img" />
@@ -38,7 +38,7 @@ const WeTeam = () => {
 				</div>
 				<div className="flex flex-col items-center mt-20">
 					<Title className="md:w-[550px] w-[300px] text-center">
-						{t("WeTeam.title2")}
+						{t("title2")}
 					</Title>
 					<div className="grid grid-cols-1 w-full md:grid-cols-2 lg:grid-cols-2 gap-6 mt-10">
 						{card.map((el, index) => (
