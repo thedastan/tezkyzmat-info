@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Главная страница -->
+  <url>
+    <loc>https://tezkyzmat-web.vercel.app/ru</loc>
+    <lastmod>2025-06-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tezkyzmat-web.vercel.app/en</loc>
+    <lastmod>2025-06-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tezkyzmat-web.vercel.app/kg</loc>
+    <lastmod>2025-06-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Страница /client -->
+  <url>
+    <loc>https://tezkyzmat-web.vercel.app/ru/client</loc>
+    <lastmod>2025-06-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tezkyzmat-web.vercel.app/en/client</loc>
+    <lastmod>2025-06-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://tezkyzmat-web.vercel.app/kg/client</loc>
+    <lastmod>2025-06-03</lastmod>
+    <priority>1.0</priority>
+  </url>
+</urlset>

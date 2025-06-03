@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+
+Sitemap: https://tezkyzmat-web.vercel.app/sitemap.xml
