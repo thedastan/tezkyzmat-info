@@ -1,10 +1,10 @@
 "use client";
 
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, ReactNode } from "react";
 import { twMerge } from "tailwind-merge";
 
 interface Props extends HTMLAttributes<HTMLHeadingElement> {
-	children: string;
+	children: ReactNode;
 }
 
 export function Description({ children, className, ...props }: Props) {

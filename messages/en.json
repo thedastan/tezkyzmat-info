@@ -110,7 +110,8 @@
 	"Footer": {
 		"title": "Contact us via Email",
 		"span1": "Privacy Policy",
-		"span2": "User Agreement",
+		"span2": "Public Offer",
+		"span3": "Return Policy",
 		"input": "Enter your email"
 	},
 	"Navbar": {
@@ -224,5 +225,190 @@
 		"card4_name": "Alex Smith",
 		"card4_span": "Coaching of Halal Lab",
 		"card4_desc": "If you're coaching individuals or teams in specific areas like sports, business 👍 or fitness, you may receive feedback in the form of improved performance metrics, such as increased revenue, improved athletic performance."
+	},
+	"PrivacyPolicy": {
+		"title": "Privacy Policy",
+		"titleComponent_1": "Last updated: June 11, 2025",
+		"desc_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company, We, Us) respects users' privacy and is committed to protecting your personal data. This Privacy Policy describes what data we collect, how we use and protect it within our website and mobile application.",
+
+		"titleComponent_2": "1. General Provisions",
+		"desc_2": "This Privacy Policy is developed in accordance with the legislation of the Kyrgyz Republic, including the Law of the Kyrgyz Republic \"On Personal Data\" and other regulatory acts governing the protection of personal data.",
+
+		"titleComponent_3": "2. What Data We Collect",
+		"desc_3": "We may collect the following categories of personal data:",
+		"desc_3_1": "Last name and first name",
+		"desc_3_2": "Date of birth",
+		"desc_3_3": "Phone number",
+		"desc_3_4": "Email address",
+		"desc_3_5": "Information about requests",
+		"desc_3_6": "IP address, device type, geolocation (with your consent)",
+		"desc_3_7": "Payment data (not stored by us, transmitted in encrypted form to the payment provider)",
+
+		"titleComponent_4": "3. Purposes of Data Collection and Use",
+		"desc_4": "We use personal data for:",
+		"desc_4_1": "Processing your requests and providing services",
+		"desc_4_2": "Communicating with you (notifications, feedback)",
+		"desc_4_3": "Fulfillment of contractual obligations",
+		"desc_4_4": "Improving service quality and user experience",
+		"desc_4_5": "Analytics and statistics using Yandex Metrica and other tools (anonymously)",
+
+		"titleComponent_5": "4. Legal Grounds for Data Processing",
+		"desc_5": "Processing of your personal data is carried out based on:",
+		"desc_5_1": "Your consent",
+		"desc_5_2": "The necessity to perform a contract",
+		"desc_5_3": "Requirements of the legislation of the Kyrgyz Republic",
+
+		"titleComponent_6": "5. Data Transfer to Third Parties",
+		"desc_6": "Personal data may be transferred to:",
+		"desc_6_1": "Payment providers for payment processing (in encrypted form)",
+		"desc_6_2": "Government authorities on legal grounds",
+		"desc_6_3": "Partners and contractors providing technical support and maintenance",
+
+		"titleComponent_7": "6. Data Security",
+		"desc_7": "We take necessary technical and organizational measures to protect personal data from unauthorized access, loss, alteration, or disclosure.",
+
+		"titleComponent_8": "7. Data Retention Periods",
+		"desc_8": "Personal data is stored for the period necessary to achieve the purposes of processing or until you withdraw your consent, unless otherwise provided by law.",
+
+		"titleComponent_9": "8. Cookies and Tracking Technologies",
+		"desc_9": "We use cookies and similar technologies for:",
+		"desc_9_1": "Saving user settings",
+		"desc_9_2": "Collecting analytics and visit statistics via Yandex Metrica and other analytics services",
+		"desc_9_3": "Data is processed anonymously. You can disable cookies in your browser settings, but this may limit the functionality of the service.",
+
+		"titleComponent_10": "9. User Rights",
+		"desc_10": "You have the right to:",
+		"desc_10_1": "Request information about your personal data",
+		"desc_10_2": "Request correction or deletion of data",
+		"desc_10_3": "Withdraw consent to processing at any time",
+		"desc_10_4": "Complain to authorized data protection authorities",
+
+		"titleComponent_11": "10. Contacts",
+		"companyName": "LLC \"Tez Kyzmat Group\"",
+		"email": "📧 Email: info@tezkyzmat.kg",
+		"phone": "📞 Phone: +996 556 051 299",
+		"address": "📍 Address: Bishkek, Tabishalieva St., 3",
+
+		"titleComponent_12": "11. Changes to the Policy",
+		"desc_12": "We may update this Privacy Policy from time to time. Changes are published on the website and in the application. We recommend regularly checking the current version."
+	},
+
+	"RublicOffer": {
+		"title": "Public Offer",
+		"lastUpdate": "Last updated: June 11, 2025",
+		"intro_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company, We, Us) invites you (the User, Client) to review the terms of service provision through the Tez Kyzmat website and mobile application.",
+		"intro_2": "This public offer constitutes an official proposal to conclude a service agreement under the terms set forth in this document.",
+
+		"general": {
+			"title": "General Provisions",
+			"point_1": "The Offer governs the procedure and terms for rendering services by the Company via the website and mobile application.",
+			"point_2": "Use of the website or application constitutes full and unconditional acceptance by the User of the terms of this Offer.",
+			"point_3": "The Company reserves the right to amend the terms of the Offer at any time. The updated version becomes effective upon publication on the website and/or in the application."
+		},
+
+		"subject": {
+			"title": "Subject of the Agreement",
+			"point_1": "The Company provides services for searching and selecting performers to carry out various tasks and services, as well as other services presented on the website and in the application.",
+			"point_2": "The User undertakes to use the services in accordance with the terms of the Offer and the legislation of the Kyrgyz Republic."
+		},
+
+		"procedure": {
+			"title": "Procedure for Providing Services",
+			"point_1": "To receive services, the User registers on the website or in the application, providing accurate personal data.",
+			"point_2": "Services are provided after confirmation of the request and making payment (if applicable).",
+			"point_3": "The Company reserves the right to refuse service if the User violates the terms of the Offer."
+		},
+
+		"pricing": {
+			"title": "Price and Payment Procedure",
+			"point_1": "All prices are listed in the national currency — Kyrgyz soms (KGS). Other currencies (USD, EUR, TENGE, RUB) may be indicated for user convenience.",
+			"point_2": "Payment is made using the payment systems indicated on the website and in the application (Visa, Mastercard, Elkart).",
+			"point_3": "The Company is not responsible for the operation of payment systems and possible delays in processing payments."
+		},
+
+		"rights": {
+			"title": "Rights and Obligations of the Parties",
+			"company": "The Company undertakes to:",
+			"company_1": "Provide services in accordance with the description on the website and in the application.",
+			"company_2": "Ensure confidentiality of personal data.",
+			"company_3": "Timely inform about changes to the terms.",
+			"user": "The User undertakes to:",
+			"user_1": "Provide accurate information during registration.",
+			"user_2": "Comply with the terms of the Offer and the legislation.",
+			"user_3": "Not use the services for illegal purposes."
+		},
+
+		"refund": {
+			"title": "Refund of Funds",
+			"point_1": "The conditions for refunding funds are set out in a separate “Refund Terms” section available on the website and in the application.",
+			"point_2": "Refunds are possible in cases provided by law and the terms of the Offer."
+		},
+
+		"liability": {
+			"title": "Liability of the Parties",
+			"point_1": "The Company is not responsible for the actions of third parties and performers found through the service.",
+			"point_2": "The Company is not responsible for technical failures caused by external factors.",
+			"point_3": "Disputes are resolved through negotiations, and if not possible – in court in accordance with the legislation of the Kyrgyz Republic."
+		},
+
+		"privacy": {
+			"title": "Confidentiality and Processing of Personal Data",
+			"point_1": "The Company processes the User’s personal data in accordance with the Privacy Policy.",
+			"point_2": "By registering, the User gives consent to the processing of their personal data."
+		},
+
+		"forceMajeure": {
+			"title": "Force Majeure",
+			"text": "The Company is not liable for non-fulfillment of obligations due to circumstances arising from force majeure."
+		},
+
+		"contacts": {
+			"title": "Contact Information",
+			"company": "LLC \"Tez Kyzmat Group\"",
+			"email": "📧 Email: info@tezkyzmat.kg",
+			"phone": "📞 Phone: +996 556 051 299",
+			"address": "📍 Address: Bishkek, Tabishalieva St., 3"
+		},
+
+		"footer": "By using the Tez Kyzmat website or application, you confirm that you have read and fully agree to the terms of this public offer."
+	},
+	
+	"ReturnPolicy": {
+		"title": "Refund Policy",
+		"titleComponent_1": "Last updated: June 11, 2025",
+		"desc_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company) establishes the following rules for refunding money when providing services through the Tez Kyzmat website and mobile application.",
+
+		"titleComponent_2": "1. General Provisions",
+		"desc_2": "1.1. These conditions govern the procedure for refunding money to Users who have paid for the Company's services.\n1.2. A refund is possible only if the requirements specified in this document and the current legislation of the Kyrgyz Republic are met.",
+
+		"titleComponent_3": "2. Grounds for a Refund",
+		"desc_3": "2.1. Refunds are possible in the following cases:",
+		"desc_3_1": "The service provided does not match the one stated on the website or app",
+		"desc_3_2": "Technical errors or failures in the service confirmed by the Company",
+		"desc_3_3": "Service cancellation initiated by the Company",
+		"desc_3_4": "Other cases provided by the legislation of the Kyrgyz Republic",
+
+		"titleComponent_4": "2.2. Refunds are not issued in cases of:",
+		"desc_4": "",
+		"desc_4_1": "The User refused the service without a valid reason",
+		"desc_4_2": "Violation of the offer terms by the User",
+		"desc_4_3": "Use of services for fraudulent or illegal purposes",
+
+		"titleComponent_5": "3. Refund Procedure",
+		"desc_5": "",
+		"desc_5_1": "3.1. To initiate a refund, the User must send a written request to the email: info@tezkyzmat.kg, specifying the reason for the refund and the bank/payment details.",
+		"desc_5_2": "3.2. The Company reviews the request within 10 (ten) business days.",
+		"desc_5_3": "3.3. Based on the review, the Company makes a decision to approve or deny the refund and notifies the User in writing.",
+		"desc_5_4": "3.4. If approved, the money is refunded to the same payment system used for the original payment within 15 (fifteen) business days.",
+
+		"titleComponent_6": "4. Special Conditions",
+		"desc_6": "",
+		"desc_6_1": "4.1. No refunds are made for services that have been fully rendered and accepted by the User.",
+		"desc_6_2": "4.2. In the case of partially rendered services, a proportional refund may be issued.",
+		"desc_6_3": "4.3. The Company reserves the right to change the refund policy without prior notice by publishing the updated version on the website and app.",
+
+		"titleComponent_7": "5. Contact Information",
+		"email": "📧 Email: info@tezkyzmat.kg",
+		"phone": "📞 Phone: +996 556 051 299"
 	}
 }
