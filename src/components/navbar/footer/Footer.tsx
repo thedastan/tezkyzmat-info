@@ -3,7 +3,7 @@ import { PAGE } from "@/config/pages/public-page.config";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {   useNavbar } from "../data";
+import { useNavbar } from "../data";
 
 import logo from "@/assets/images/logo.png";
 
@@ -147,16 +147,21 @@ const Footer = () => {
 				<div className="bg-[#7E7E7E] flex md:hidden md:w-[1px] w-full md:h-[330px] h-[1px]" />
 
 				<div className="flex md:mt-0 mt-10 justify-between items-center gap-10 pb-2 md:flex-row flex-col-reverse">
-					<div className="flex gap-4 md:flex-row flex-col md:text-start text-center">
+					<div className="flex gap-6 md:flex-row flex-col md:text-start text-center">
 						<Description className="text-[#8F8F95]">
 							© 2025 Tez Kyzmat
 						</Description>
-						<Description className="text-[#8F8F95]">
-							{t("span1")}
-						</Description>
-						<Description className="text-[#8F8F95]">
-							{t("span2")}
-						</Description>
+						<Link href={PAGE.PRIVACY}>
+							<Description className="text-[#8F8F95]">{t("span1")}</Description>
+						</Link>
+
+						<Link href={PAGE.PUBLIC}>
+							<Description className="text-[#8F8F95]">{t("span2")}</Description>
+						</Link>
+
+						<Link href={PAGE.RETURN}>
+							<Description className="text-[#8F8F95]">{t("span3")}</Description>
+						</Link>
 					</div>
 
 					<div className="flex gap-4">

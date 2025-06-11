@@ -9,6 +9,10 @@ class PublicPage {
 	CLIENT = "/client"
 
 
+  PRIVACY = "/privacy-policy"
+	PUBLIC = "/public-offer"
+	RETURN = "/refund-policy"
+
 	 
 }
 
