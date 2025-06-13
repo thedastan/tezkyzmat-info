@@ -5,10 +5,13 @@ import service2 from "@/assets/images/service2.png";
 import service3 from "@/assets/images/service3.png";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const Service = () => {
  
 	const t = useTranslations("Service");
+
+	useAos()
 
 	const card = [
 		{
@@ -29,13 +32,15 @@ const Service = () => {
 	];
 
 	return (
-		<section id="forwhom" className="bg-white py-20">
+		<section  id="forwhom" className="bg-white py-20">
 			<div className="container">
 				<Title>{t("title")}</Title>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
 					{card.map((el, index) => (
 						<div
 							key={index}
+							data-aos="fade-up"
+							data-aos-delay={index * 200}
 							className="bg-[#F2F2F2] w-full rounded-[20px] flex justify-start items-center flex-col p-6">
 							<div className="w-[300px] h-[280px] relative">
 								<Image src={el.img} fill objectFit="contain" alt="img" />

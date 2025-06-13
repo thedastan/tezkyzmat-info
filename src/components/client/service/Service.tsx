@@ -4,9 +4,12 @@ import service1 from "@/assets/images/service1.png";
 import service2 from "@/assets/images/service2.png";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const Service = () => {
 	const t = useTranslations("Servicecl");
+
+	useAos()
 
 	const card = [
 		{
@@ -29,6 +32,8 @@ const Service = () => {
 					{card.map((el, index) => (
 						<div
 							key={index}
+							data-aos="fade-up"
+							data-aos-delay={index * 200}
 							className="bg-[#F2F2F2] w-full rounded-[20px] flex justify-start items-center flex-col p-6">
 							<div className="w-[300px] h-[280px] relative">
 								<Image src={el.img} fill objectFit="contain" alt="img" />

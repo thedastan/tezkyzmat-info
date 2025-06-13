@@ -9,14 +9,17 @@ import Forma from "../forma/Forma";
 import Link from "next/link";
 import { INSTAGRAM_DUBAY_LINK } from "@/constants/constants";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const Order = () => {
 	const [isModalOpen, setModalOpen] = useState(false);
 
 	const t = useTranslations("Order");
 
+	useAos();
+
 	return (
-		<section className="flex  relative flex-col ">
+		<section className="flex  relative flex-col " data-aos="fade-up">
 			<div
 				style={{
 					backgroundImage: `url(${img.src})`,
@@ -26,7 +29,7 @@ const Order = () => {
 				}}
 				className="w-full h-full mt-[70px] min-h-[787px] rounded-tr-[40px] z-10 rounded-tl-[40px] relative overflow-hidden flex justify-center items-center">
 				<div className="bg-[#00000099] w-full h-full absolute" />
-				<div className="container">
+				<div className="container" data-aos="fade-up">
 					<div className=" relative z-10 flex justify-center items-center flex-col gap-4">
 						<Title className="text-white text-center w-full max-w-[850px]">
 							{t("title")}
@@ -59,11 +62,15 @@ const Order = () => {
 			<div className="py-20 bg-white rounded-tr-[40px] mt-[-70px] rounded-tl-[40px] relative z-20">
 				<div className="container">
 					<div className="flex flex-col md:flex-row justify-between items-start gap-16">
-						<h1 className="md:text-[64px] text-[34px] font-[700] leading-[120%] w-full max-w-[550px]">
+						<h1
+							data-aos="fade-up"
+							className="md:text-[64px] text-[34px] font-[700] leading-[120%] w-full max-w-[550px]">
 							{t("title2")}
 						</h1>
 
-						<div className="flex flex-col gap-4 w-full max-w-[480px]">
+						<div
+							data-aos="fade-up"
+							className="flex flex-col gap-4 w-full max-w-[480px]">
 							<h3 className="text-[26px] font-[600]">{t("desc2")}</h3>
 							<Description>{t("desc3")}</Description>
 							<Link href={"#footer"}>

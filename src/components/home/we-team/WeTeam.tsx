@@ -7,9 +7,12 @@ import img from "@/assets/images/we-team.png";
 import img1 from "@/assets/images/project1.png";
 import img2 from "@/assets/images/project2.png";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const WeTeam = () => {
 	const t = useTranslations("WeTeam");
+
+	useAos()
 
 	const card = [
 		{
@@ -28,11 +31,15 @@ const WeTeam = () => {
 		<section className="w-full py-10 bg-white">
 			<div className="container">
 				<div className="flex justify-between gap-4 sm:items-center items-start flex-col md:flex-row">
-					<div className="flex md:max-w-[650px] max-w-[360px] w-full flex-col gap-5">
+					<div
+						data-aos="fade-up"
+						className="flex md:max-w-[650px] max-w-[360px] w-full flex-col gap-5">
 						<Title>{t("title")}</Title>
 						<Description>{t("desc")}</Description>
 					</div>
-					<div className="max-w-[512px] md:mt-0 mt-2 w-full md:h-[600px] h-[268px] relative overflow-hidden rounded-[24px]">
+					<div
+						data-aos="fade-up"
+						className="max-w-[512px] md:mt-0 mt-2 w-full md:h-[600px] h-[268px] relative overflow-hidden rounded-[24px]">
 						<Image src={img} fill objectFit="cover" alt="img" />
 					</div>
 				</div>
@@ -44,6 +51,8 @@ const WeTeam = () => {
 						{card.map((el, index) => (
 							<div
 								key={index}
+								data-aos="fade-up"
+											data-aos-delay={index * 200}
 								className="bg-[#F2F2F2] w-full rounded-[20px] flex justify-start items-center flex-col p-6">
 								<div className="w-full h-[280px] relative">
 									<Image src={el.img} fill alt="img" objectFit="contain" />

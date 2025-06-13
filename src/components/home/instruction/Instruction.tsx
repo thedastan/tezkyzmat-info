@@ -6,11 +6,11 @@ import img1 from "@/assets/images/instruction1.png";
 import img2 from "@/assets/images/instruction2.png";
 import img3 from "@/assets/images/instruction3.png";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const Instruction = () => {
- 
 	const t = useTranslations("Instruction");
-
+useAos()
 	const data = [
 		{
 			id: "solution",
@@ -58,13 +58,17 @@ const Instruction = () => {
 								index % 2 !== 0 ? "md:flex-row-reverse" : "md:flex-row"
 							}`}>
 							<div className="md:max-w-[550px] max-w-[500px] w-full">
-								<h1
+								<h1 data-aos="fade-up"
 									className="text-white md:text-[48px] text-[26px] font-[700] leading-[120%] "
 									dangerouslySetInnerHTML={{ __html: el.title }}
 								/>
 								<div className="flex flex-col gap-4 mt-6">
 									{el.description.map((item, index) => (
-										<div key={index} className="flex items-center gap-3  ">
+										<div
+											key={index}
+											className="flex items-center gap-3  "
+											data-aos="fade-up"
+											data-aos-delay={index * 200}>
 											<h1 className="bg-[#FADD13] flex rounded-[50px] p-1">
 												<FaCheck />
 											</h1>
@@ -75,7 +79,7 @@ const Instruction = () => {
 									))}
 								</div>
 							</div>
-							<div className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[320px]   relative">
+							<div data-aos="fade-up" className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[320px]   relative">
 								<Image
 									src={el.image}
 									objectFit="contain"

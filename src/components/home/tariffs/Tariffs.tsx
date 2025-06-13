@@ -1,6 +1,7 @@
 "use client";
 import { Description } from "@/components/ui/text/Description";
 import { Title } from "@/components/ui/text/Title";
+import useAos from "@/hooks/useAos";
 import { useTranslations } from "next-intl";
 import React from "react";
 import { FaCheck } from "react-icons/fa6";
@@ -9,14 +10,13 @@ import { MdArrowRightAlt } from "react-icons/md";
 const Tariffs = () => {
 	const t = useTranslations("Tariffs");
 
+	useAos();
+
 	const card = [
 		{
 			title: t("title_card1"),
 			price: "0",
-			description: [
-				{ desc: t("desc1_card1") },
-				{ desc: t("desc1_card1") },
-			],
+			description: [{ desc: t("desc1_card1") }, { desc: t("desc1_card1") }],
 		},
 		{
 			title: "VIP",
@@ -83,15 +83,15 @@ const TariffCard = ({
 	data: TariffItem;
 	premium?: boolean;
 }) => {
-
 	const t = useTranslations("Tariffs");
 
 	return (
 		<div
+			data-aos="fade-up"
 			className={`relative flex flex-col justify-between items-center max-w-[400px] overflow-hidden md:max-w-[320px] w-full p-6 rounded-[10px] ${
 				premium ? "bg-[#FFE951] h-[541px]" : "bg-[#2D2D2D] h-[491px]"
 			}`}>
-			<div className="absolute md:top-[-18vw] top-[-10vw] left-4 transform -translate-x-1/2 md:w-[70%] w-[100%] h-[30vw] blur-[80px] bg-[radial-gradient(circle,_rgba(175,171,145,0.5)_0%,_rgba(175,171,145,0.1)_60%,_rgba(175,171,145,0)_100%)] z-0 pointer-events-none" />
+			<div  className="absolute md:top-[-18vw] top-[-10vw] left-4 transform -translate-x-1/2 md:w-[70%] w-[100%] h-[30vw] blur-[80px] bg-[radial-gradient(circle,_rgba(175,171,145,0.5)_0%,_rgba(175,171,145,0.1)_60%,_rgba(175,171,145,0)_100%)] z-0 pointer-events-none" />
 
 			<div className="text-center w-full">
 				<Description
@@ -119,7 +119,7 @@ const TariffCard = ({
 				</h1>
 
 				<div className="flex flex-col gap-4 text-start mt-6">
-				{data.description.map((item: { desc: string }, i: number) => (
+					{data.description.map((item: { desc: string }, i: number) => (
 						<div key={i} className="flex items-center gap-3">
 							<h1
 								className={`${
