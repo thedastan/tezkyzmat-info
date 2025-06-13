@@ -7,13 +7,14 @@ import reviewsava1 from "@/assets/images/Reviews-ava.png";
 import reviewsava2 from "@/assets/images/Reviews-ava2.png";
 import { Description } from "@/components/ui/text/Description";
 import { FaPlay } from "react-icons/fa";
- 
+
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const Reviews = () => {
-	
-		const t = useTranslations("Reviews");
-	
+	const t = useTranslations("Reviews");
+
+	useAos();
 
 	return (
 		<section id="reviews">
@@ -24,7 +25,9 @@ const Reviews = () => {
 					scrollbarWidth: "none",
 					msOverflowStyle: "none",
 				}}>
-				<div className="flex w-full flex-nowrap gap-4 px-4  ">
+				<div
+					data-aos="fade-up"
+					className="flex w-full flex-nowrap gap-4 px-4  ">
 					{/* Карточка с видео и текстом */}
 					<div className="flex-shrink-0  w-[310px] h-[462px] bg-[#F6F2D1] rounded-[23px] overflow-hidden">
 						<div className="relative w-full h-[232px]">
@@ -36,8 +39,7 @@ const Reviews = () => {
 						<div className="flex flex-col p-6 gap-2">
 							<h1 className="text-[24px] font-bold">{t("card1_name")}</h1>
 							<Description className="text-[#2A4A45] text-[16px]">
-							{t("card1_desc")}
-								 
+								{t("card1_desc")}
 							</Description>
 						</div>
 					</div>
@@ -48,13 +50,11 @@ const Reviews = () => {
 							<Image width={50} height={50} src={reviewsava1} alt="ava" />
 							<div>
 								<h2 className="text-[15px] font-bold">{t("card2_name")}</h2>
-								<p className="text-[12px] text-[#6F6A6A]">
-								 {t("card2_span")}
-								</p>
+								<p className="text-[12px] text-[#6F6A6A]">{t("card2_span")}</p>
 							</div>
 						</div>
 						<Description className="mt-4 text-[16px]">
-						{t("card2_desc")}
+							{t("card2_desc")}
 						</Description>
 					</div>
 
@@ -72,13 +72,11 @@ const Reviews = () => {
 							<Image width={50} height={50} src={reviewsava2} alt="ava" />
 							<div>
 								<h2 className="text-[15px] font-bold">{t("card4_name")}</h2>
-								<p className="text-[12px] text-[#6F6A6A]">
-								{t("card4_span")}
-								</p>
+								<p className="text-[12px] text-[#6F6A6A]">{t("card4_span")}</p>
 							</div>
 						</div>
 						<Description className="mt-4 text-[16px]">
-						{t("card4_desc")}
+							{t("card4_desc")}
 						</Description>
 					</div>
 				</div>

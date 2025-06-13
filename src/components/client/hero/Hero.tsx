@@ -6,8 +6,10 @@ import { FaGooglePlay } from "react-icons/fa6";
 import { BsApple } from "react-icons/bs";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 const Hero = () => {
 	const t = useTranslations("Herocl");
+	useAos();
 
 	return (
 		<section className="bg-[#000000]">
@@ -16,7 +18,9 @@ const Hero = () => {
 
 				<div className="container relative">
 					<div className="flex flex-col-reverse md:flex-row justify-between items-center">
-						<div className="flex flex-col md:gap-6 gap-4 items-start">
+						<div
+							className="flex flex-col md:gap-6 gap-4 items-start"
+							data-aos="fade-up">
 							<Description className="uppercase md:flex hidden text-white">
 								Tez Kyzmat
 							</Description>
@@ -37,7 +41,9 @@ const Hero = () => {
 							</div>
 						</div>
 
-						<div className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[350px]   relative">
+						<div
+							data-aos="fade-up"
+							className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[350px]   relative">
 							<Image src={img} objectFit="contain" fill alt="image-mobile" />
 						</div>
 

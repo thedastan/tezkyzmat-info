@@ -6,17 +6,20 @@ import { FaGooglePlay } from "react-icons/fa6";
 import { BsApple } from "react-icons/bs";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 const Hero = () => {
 	const t = useTranslations("Hero");
 
+	useAos();
+
 	return (
 		<section className="bg-[#000000]">
-			<div className="relative bg-[#1C1C1C] w-full md:h-[700px] h-full flex justify-center items-center overflow-hidden py-10 rounded-tl-[40px] rounded-tr-[40px]">
-				<div className="absolute md:top-[-15vw] top-[-10vw] left-1/2 transform -translate-x-1/2 md:w-[70%] w-[100%] h-[30vw] blur-[80px] bg-[radial-gradient(circle,_rgba(175,171,145,0.5)_0%,_rgba(175,171,145,0.1)_60%,_rgba(175,171,145,0)_100%)] z-0 pointer-events-none" />
+			<div  className="relative bg-[#1C1C1C] w-full md:h-[700px] h-full flex justify-center items-center overflow-hidden py-10 rounded-tl-[40px] rounded-tr-[40px]">
+				<div   className="absolute md:top-[-15vw] top-[-10vw] left-1/2 transform -translate-x-1/2 md:w-[70%] w-[100%] h-[30vw] blur-[80px] bg-[radial-gradient(circle,_rgba(175,171,145,0.5)_0%,_rgba(175,171,145,0.1)_60%,_rgba(175,171,145,0)_100%)] z-0 pointer-events-none" />
 
 				<div className="container relative z-10">
 					<div className="flex flex-col-reverse md:flex-row justify-between items-center">
-						<div className="flex flex-col md:gap-6 gap-4 items-start">
+						<div data-aos="fade-up" className="flex flex-col md:gap-6 gap-4 items-start">
 							<Description className="uppercase md:flex hidden text-white">
 								Tez Kyzmat PRO
 							</Description>
@@ -35,11 +38,11 @@ const Hero = () => {
 							</div>
 						</div>
 
-						<div className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[350px]   relative">
+						<div data-aos="fade-up" className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[350px]   relative">
 							<Image src={img} objectFit="contain" fill alt="image-mobile" />
 						</div>
 
-						<div className="flex md:hidden text-center">
+						<div data-aos="fade-up" className="flex md:hidden text-center">
 							<Description className="uppercase text-white pb-8 text-center   w-full">
 								Tez Kyzmat PRO
 							</Description>

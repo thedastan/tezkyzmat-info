@@ -7,9 +7,11 @@ import ava from "@/assets/images/men.png";
 import { TbBrandInstagramFilled } from "react-icons/tb";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const Group = () => {
 	const t = useTranslations("Group");
+	useAos();
 
 	const piple = [
 		{
@@ -42,7 +44,9 @@ const Group = () => {
 						backgroundRepeat: "no-repeat",
 					}}
 					className="w-full h-[550px] rounded-[20px] md:p-10 p-0">
-					<div className="bg-[#000000bd]   md:w-[550px] w-full md:h-[283px] gap-8 md:gap-0 h-[100%] rounded-[20px] flex flex-col md:justify-between justify-center items-start p-6">
+					<div
+						data-aos="fade-up"
+						className="bg-[#000000bd]   md:w-[550px] w-full md:h-[283px] gap-8 md:gap-0 h-[100%] rounded-[20px] flex flex-col md:justify-between justify-center items-start p-6">
 						<h1 className="text-white md:text-[32px] text-[24px] font-[700] leading-[120%]">
 							{t("title")}
 						</h1>
@@ -60,7 +64,11 @@ const Group = () => {
 
 				<div className="gap-3 py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
 					{piple.map((el, index) => (
-						<div key={index} className="bg-[#F2F2F2] rounded-[20px] w-full">
+						<div
+							key={index}
+							data-aos="fade-up"
+							data-aos-delay={index * 200}
+							className="bg-[#F2F2F2] rounded-[20px] w-full">
 							<div className="w-full h-[330px] relative rounded-tl-[20px] rounded-tr-[20px] overflow-hidden">
 								<Image src={ava} objectFit="cover" fill alt="ava" />
 							</div>

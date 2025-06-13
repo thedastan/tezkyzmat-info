@@ -7,10 +7,11 @@ import icon4 from "@/assets/images/icon4cl.png";
 
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const BusinessProblems = () => {
-	 
 	const t = useTranslations("BusinessProblemscl");
+	useAos()
 
 	const card = [
 		{
@@ -30,17 +31,17 @@ const BusinessProblems = () => {
 			desc: t("desc4"),
 		},
 	];
-	 
+
 	return (
 		<section className="bg-white py-20">
 			<div className="container">
-				<Title className="text-center md:text-start">
-					{t("title")}
-				</Title>
+				<Title className="text-center md:text-start">{t("title")}</Title>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-6 gap-10 mt-10">
 					{card.map((el, index) => (
 						<div
 							key={index}
+							data-aos="fade-up"
+							data-aos-delay={index * 200}
 							className="  w-full  flex justify-start md:items-start items-center md:flex-col flex-row gap-6">
 							<Image width={56} height={56} src={el.icon} alt="img" />
 							<p

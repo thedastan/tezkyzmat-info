@@ -8,9 +8,12 @@ import icon4 from "@/assets/images/icon4.png";
 import Image from "next/image";
  
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const BusinessProblems = () => {
 	const t = useTranslations("BusinessProblems");
+
+	useAos()
 
 	const card = [
 		{
@@ -40,6 +43,8 @@ const BusinessProblems = () => {
 					{card.map((el, index) => (
 						<div
 							key={index}
+							data-aos="fade-up"
+							data-aos-delay={index * 200}
 							className="  w-full  flex justify-start md:items-start items-center md:flex-col flex-row gap-6">
 							<Image width={56} height={56} src={el.icon} alt="img" />
 							<p

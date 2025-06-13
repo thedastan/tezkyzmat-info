@@ -31,6 +31,8 @@ const Applications = () => {
 					{images.map((el, index) => (
 						<div
 							key={index}
+							data-aos="fade-up"
+							data-aos-delay={index * 200}
 							className=" overflow-hidden bg-[#F2F2F2] rounded-[20px] w-full h-[400px] flex justify-center items-end">
 							<div className=" relative w-[233px] h-[330px]">
 								<div className="w-[222px] h-[330px] bg-[#DDDDDD] absolute right-4 rounded-tr-[20px] rounded-tl-[20px]" />
