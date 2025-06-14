@@ -372,7 +372,7 @@
 
 		"footer": "By using the Tez Kyzmat website or application, you confirm that you have read and fully agree to the terms of this public offer."
 	},
-	
+
 	"ReturnPolicy": {
 		"title": "Refund Policy",
 		"titleComponent_1": "Last updated: June 11, 2025",
@@ -410,5 +410,9 @@
 		"titleComponent_7": "5. Contact Information",
 		"email": "📧 Email: info@tezkyzmat.kg",
 		"phone": "📞 Phone: +996 556 051 299"
+	},
+	"NotFound": {
+		"title": "Oops! Page not found",
+		"btn": "Return to home page"
 	}
 }

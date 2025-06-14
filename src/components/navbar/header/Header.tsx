@@ -6,7 +6,7 @@ import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
 
 import logo from "@/assets/images/logo.png";
-import {  useNavbar } from "../data";
+import { useNavbar } from "../../../lib/data";
 import { AiOutlineMenu } from "react-icons/ai";
 import LanguageSelect from "./LanguageModal";
 
@@ -17,7 +17,7 @@ const Header = () => {
 	const toggleBox = () => {
 		setIsOpen((prevState) => !prevState);
 	};
- 
+
 	return (
 		<header className="w-full  bg-transparent h-[60px] ">
 			<div className=" fixed flex items-center z-50 w-full h-[60px] bg-black">
@@ -43,7 +43,7 @@ const Header = () => {
 						</div>
 
 						<div className="md:flex hidden">
-							 <LanguageSelect  textColor="text-white"/>
+							<LanguageSelect textColor="text-white" />
 						</div>
 
 						<div className="md:hidden text-white flex">

@@ -19,7 +19,7 @@ const Order = () => {
 	useAos();
 
 	return (
-		<section className="flex  relative flex-col " data-aos="fade-up">
+		<section className="flex   flex-col ">
 			<div
 				style={{
 					backgroundImage: `url(${img.src})`,
