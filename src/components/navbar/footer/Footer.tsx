@@ -3,7 +3,7 @@ import { PAGE } from "@/config/pages/public-page.config";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { useNavbar } from "../data";
+import { useNavbar } from "../../../lib/data";
 
 import logo from "@/assets/images/logo.png";
 

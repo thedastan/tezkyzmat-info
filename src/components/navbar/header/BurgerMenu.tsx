@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useNavbar } from "../data";
+import { useNavbar } from "../../../lib/data";
 import { PAGE } from "@/config/pages/public-page.config";
 import { IoCloseOutline } from "react-icons/io5";
 import Image from "next/image";
@@ -11,11 +11,7 @@ import { TbBrandInstagramFilled } from "react-icons/tb";
 import { GoArrowUpRight } from "react-icons/go";
 import { RiWhatsappFill } from "react-icons/ri";
 import { HiLocationMarker } from "react-icons/hi";
-import {
-	INSTAGRAM,
-	LOCATION_LINK,
-	WHATSAPP_LINK,
-} from "@/constants/constants";
+import { INSTAGRAM, LOCATION_LINK, WHATSAPP_LINK } from "@/constants/constants";
 import LanguageSelect from "./LanguageModal";
 import { useTranslations } from "next-intl";
 
@@ -68,9 +64,8 @@ const BurgerMenu = ({
 							</Link>
 						))}
 						<div className="flex">
-							<LanguageSelect textColor="text-black"/>
+							<LanguageSelect textColor="text-black" />
 						</div>
-						
 					</div>
 
 					<div className="mt-12">
@@ -81,7 +76,8 @@ const BurgerMenu = ({
 								href={LOCATION_LINK}
 								target={"_blank"}
 								className="text-[18px] font-[600] gap-2 flex items-center">
-								<HiLocationMarker size={26} /> {t("location")} <GoArrowUpRight />
+								<HiLocationMarker size={26} /> {t("location")}{" "}
+								<GoArrowUpRight />
 							</Link>
 
 							<Link
