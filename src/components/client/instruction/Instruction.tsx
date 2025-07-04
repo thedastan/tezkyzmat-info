@@ -28,7 +28,6 @@ const Instruction = () => {
 				{ desc: t("advantages.description.0") },
 				{ desc: t("advantages.description.1") },
 				{ desc: t("advantages.description.2") },
-				{ desc: t("advantages.description.3") },
 			],
 		},
 	];
