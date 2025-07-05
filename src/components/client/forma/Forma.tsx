@@ -11,6 +11,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { IoCloseOutline } from "react-icons/io5";
 import { MdArrowRightAlt } from "react-icons/md";
 import { useFormOptions } from "./FormaOptions";
+import axios from "axios";
+
+import { toast, Toaster } from "sonner";
 
 interface IForma {
 	setModalOpen: (value: boolean) => void;
@@ -28,8 +31,16 @@ interface FormData {
 	obem?: string;
 }
 
+interface TelegramPhotoMedia {
+	type: "photo";
+	media: string;
+	caption?: string;
+	parse_mode?: "HTML" | "Markdown";
+}
+
 const Forma = ({ setModalOpen }: IForma) => {
 	const t = useTranslations("Forma");
+	const [allFiles, setAllFiles] = React.useState<File[]>([]);
 
 	const {
 		register,
@@ -39,7 +50,11 @@ const Forma = ({ setModalOpen }: IForma) => {
 		watch,
 		reset,
 		formState: { errors },
-	} = useForm<FormData>();
+	} = useForm<FormData>({
+		defaultValues: {
+			phone: "",
+		},
+	});
 
 	const selectedBrandId = watch("brandId");
 
@@ -52,7 +67,132 @@ const Forma = ({ setModalOpen }: IForma) => {
 		modelsLoading,
 	} = useFormOptions(selectedBrandId ? Number(selectedBrandId) : undefined);
 
-	const onSubmit: SubmitHandler<FormData> = (data) => {
+	const messageModel = (
+		data: FormData & {
+			brandName?: string;
+			modelName?: string;
+			countryName?: string;
+			fuelName?: string;
+		}
+	) => {
+		let messageTg = `📢 <b>Заявка на запчасти из ОАЭ</b>\n\n`;
+		messageTg += `Телефон: <b>${data.phone}</b>\n`;
+		messageTg += `Марка: <b>${data.brandName}</b>\n`;
+		messageTg += `Модель: <b>${data.modelName}</b>\n`;
+		messageTg += `Страна: <b>${data.countryName}</b>\n`;
+		messageTg += `Топливо: <b>${data.fuelName}</b>\n`;
+		messageTg += `Объем: <b>${data.obem}</b>\n`;
+		messageTg += `VIN-код: <b>${data.text || "—"}</b>\n`;
+		messageTg += `Описание: <b>${data.description || "—"}</b>\n`;
+
+		return messageTg;
+	};
+
+	const sendToTelegram = async (
+		data: FormData & {
+			brandName?: string;
+			modelName?: string;
+			countryName?: string;
+			fuelName?: string;
+		}
+	) => {
+		try {
+			const TOKEN = process.env.NEXT_PUBLIC_TG_TOKEN;
+			const CHAT_ID = process.env.NEXT_PUBLIC_TG_CHAT_ID;
+
+			if (!TOKEN || !CHAT_ID) {
+				console.error("Telegram TOKEN или CHAT_ID не установлены");
+				return false;
+			}
+
+			// Генерация текста сообщения
+			const message = messageModel(data);
+
+			// Обработка изображений
+			let files: File[] = [];
+			if (data.images) {
+				if (data.images instanceof FileList) {
+					files = Array.from(data.images);
+				} else if (Array.isArray(data.images)) {
+					files = data.images;
+				}
+			}
+
+			console.log("Файлы для отправки:", files.length, files);
+
+			if (files.length > 1) {
+				// Отправка группы изображений
+				const media: TelegramPhotoMedia[] = files.map((file, index) => {
+					const item: TelegramPhotoMedia = {
+						type: "photo",
+						media: `attach://photo_${index}`,
+					};
+					if (index === 0) {
+						item.caption = message;
+						item.parse_mode = "HTML";
+					}
+					return item;
+				});
+
+				const formData = new FormData();
+				formData.append("chat_id", CHAT_ID);
+				formData.append("media", JSON.stringify(media));
+				files.forEach((file, index) => {
+					formData.append(`photo_${index}`, file);
+				});
+
+				await axios.post(
+					`https://api.telegram.org/bot${TOKEN}/sendMediaGroup`,
+					formData,
+					{
+						headers: {
+							"Content-Type": "multipart/form-data",
+						},
+					}
+				);
+			} else if (files.length === 1) {
+				// Отправка одного изображения
+				const formData = new FormData();
+				formData.append("chat_id", CHAT_ID);
+				formData.append("photo", files[0]);
+				formData.append("caption", message);
+				formData.append("parse_mode", "HTML");
+
+				await axios.post(
+					`https://api.telegram.org/bot${TOKEN}/sendPhoto`,
+					formData,
+					{
+						headers: {
+							"Content-Type": "multipart/form-data",
+						},
+					}
+				);
+			} else {
+				// Отправка текста без изображений
+				await axios.post(`https://api.telegram.org/bot${TOKEN}/sendMessage`, {
+					chat_id: CHAT_ID,
+					parse_mode: "HTML",
+					text: message,
+				});
+			}
+
+			return true;
+		} catch (error) {
+			console.error("Ошибка при отправке в Telegram:", error);
+			return false;
+		}
+	};
+
+	const onSubmit: SubmitHandler<FormData> = async (data) => {
+		console.log("Данные формы перед отправкой:", {
+			...data,
+			imagesCount: data.images
+				? data.images instanceof FileList
+					? data.images.length
+					: data.images.length
+				: 0,
+		});
+
 		const selectedBrand = brandOptions.find((b) => b.value === data.brandId);
 		const selectedModel = modelOptions.find((m) => m.value === data.modelId);
 		const selectedCountry = manufacturerCountries.find(
@@ -68,24 +208,44 @@ const Forma = ({ setModalOpen }: IForma) => {
 			fuelName: selectedFuel?.label,
 		};
 
-		alert("Сообщение в console")
+		try {
+			const success = await sendToTelegram(result);
+			if (success) {
+				toast.success(t("Successfully"));
 
-		console.log(result);
-
-		reset();
+				reset({
+					phone: "",
+					brandId: undefined,
+					modelId: undefined,
+					country: undefined,
+					topliva: undefined,
+					obem: undefined,
+					text: undefined,
+					description: undefined,
+					images: undefined,
+				});
+				setAllFiles([]);
+			} else {
+				alert("Произошла ошибка при отправке");
+			}
+		} catch (error) {
+			console.error("Ошибка:", error);
+			alert("Произошла ошибка при отправке");
+		}
 	};
 
 	return (
-		<div className="fixed z-50 inset-0   bg-black bg-opacity-50 flex justify-center items-center  ">
+		<div className="fixed z-50 inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+			<Toaster position="top-center" />
 			<div className="container">
 				<div
-					className="flex z-50  relative flex-col items-center justify-center bg-[#ffffff] rounded-[20px] py-10 md:py-4 px-4 w-full md:max-h-[100%] max-h-[80vh]  "
+					className="flex z-50 relative flex-col items-center justify-center bg-[#ffffff] rounded-[20px] py-10 md:py-4 px-4 w-full md:max-h-[100%] max-h-[80vh]"
 					style={{
 						scrollbarWidth: "none",
 						msOverflowStyle: "none",
 					}}>
 					<button
-						className=" absolute text-[32px] z-10    right-2 top-2"
+						className="absolute text-[32px] z-10 right-2 top-2"
 						onClick={() => setModalOpen(false)}>
 						<IoCloseOutline />
 					</button>
@@ -96,7 +256,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 					<form
 						onSubmit={handleSubmit(onSubmit)}
 						className="w-full max-w-[810px] overflow-y-auto md:overflow-y-visible">
-						<div className=" w-full  flex  md:flex-row flex-col gap-4 ">
+						<div className="w-full flex md:flex-row flex-col gap-4">
 							<div className="flex md:hidden flex-col">
 								<h1 className="text-center font-bold text-[36px]">
 									{t("title")}
@@ -106,10 +266,7 @@ const Forma = ({ setModalOpen }: IForma) => {
 								</Description>
 							</div>
 							<div className="flex w-full flex-col gap-4">
-								{/* телефн номер  */}
 								<PhoneInputComponent control={control} />
-
-								{/* Марка авто */}
 
 								<Select
 									placeholder={t("select1")}
@@ -119,8 +276,6 @@ const Forma = ({ setModalOpen }: IForma) => {
 									})}
 									error={errors.brandId?.message?.toString()}
 								/>
-
-								{/* модель авто */}
 
 								<Select
 									placeholder={t("select2")}
@@ -132,8 +287,6 @@ const Forma = ({ setModalOpen }: IForma) => {
 									disabled={!selectedBrandId || modelsLoading}
 								/>
 
-								{/* страна */}
-
 								<Select
 									placeholder={t("select3")}
 									options={manufacturerCountries}
@@ -142,8 +295,6 @@ const Forma = ({ setModalOpen }: IForma) => {
 									})}
 									error={errors.country?.message?.toString()}
 								/>
-
-								{/* тип топлива */}
 
 								<Select
 									placeholder={t("select4")}
@@ -155,8 +306,6 @@ const Forma = ({ setModalOpen }: IForma) => {
 								/>
 							</div>
 
-							{/* объем двигателя  */}
-
 							<div className="flex w-full h-f flex-col gap-4">
 								<Select
 									placeholder={t("select5")}
@@ -167,32 +316,42 @@ const Forma = ({ setModalOpen }: IForma) => {
 									error={errors.obem?.message?.toString()}
 								/>
 
-								{/* VIN-код */}
-
 								<InputComponent
 									placeholder={t("code")}
 									type="text"
 									registration={register("text")}
 								/>
 
-								{/* картинки */}
-
 								<FileUpload
-									onChange={(files) => {
-										if (files) setValue("images", files);
-									}}
 									multiple
+									files={allFiles}
+									onChange={(files) => {
+										if (files) {
+											const filesArray = Array.from(files);
+											setAllFiles((prev) => [...prev, ...filesArray]);
+											setValue("images", [...allFiles, ...filesArray]);
+										}
+									}}
+									onRemove={(fileToRemove) => {
+										setAllFiles((prev) => {
+											const filtered = prev.filter(
+												(file) => file !== fileToRemove
+											);
+											setValue("images", filtered);
+											return filtered;
+										});
+									}}
 								/>
-								{/* сообщение */}
-
 								<TextareaComponent
 									placeholder={t("textare")}
 									registration={register("description")}
 								/>
 							</div>
 						</div>
-						<button className="bg-[#111218] text-white rounded-[50px]  w-full mt-6 md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
-							{t("btn")}{" "}
+						<button
+							type="submit"
+							className="bg-[#111218] text-white rounded-[50px] w-full mt-6 md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
+							{t("btn")}
 							<span className="text-[32px]">
 								<MdArrowRightAlt />
 							</span>

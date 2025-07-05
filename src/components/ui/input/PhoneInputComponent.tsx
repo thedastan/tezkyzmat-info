@@ -21,30 +21,43 @@ const PhoneInputComponent = <T extends FieldValues>({
 	const t = useTranslations("PhoneInput");
 
 	return (
-		<div className={twMerge(  margin)}>
+		<div className={twMerge(margin)}>
 			<Controller
 				name={name}
 				control={control}
 				rules={
 					control && {
 						required: required ? "Введите номер телефона" : required,
-						validate: (value) =>
-							value && value.length < 13 ? t("message") : true,
+						validate: (value) => {
+							if (!value || value.trim() === "") {
+								return required ? "Введите номер телефона" : true;
+							}
+							const digitsOnly = value.replace(/\D/g, "");
+							return digitsOnly.length < 9 ? t("message") : true;
+						},
 					}
 				}
-				render={({ field, fieldState }) => (
-					<>
-						<PhoneInput
-							defaultCountry="kg"
-							value={field.value || ""}
-							onChange={field.onChange}
-							className="phoneInput"
-						/>
+				render={({ field, fieldState }) => {
+					// Отладка
+					// console.log("PhoneInput value:", field.value);
 
-						{fieldState.error && <p className="mt-1 text-sm text-red-500">{fieldState.error.message}</p>}
-						 
-					</>
-				)}
+					return (
+						<>
+							<PhoneInput
+								defaultCountry="kg"
+								value={field.value || ""}
+								onChange={field.onChange}
+								onBlur={field.onBlur}
+								className="phoneInput"
+							/>
+							{fieldState.error && (
+								<p className="mt-1 text-sm text-red-500">
+									{fieldState.error.message}
+								</p>
+							)}
+						</>
+					);
+				}}
 			/>
 		</div>
 	);
