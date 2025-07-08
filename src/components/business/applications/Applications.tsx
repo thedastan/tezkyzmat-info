@@ -1,8 +1,14 @@
 "use client";
 import { Title } from "@/components/ui/text/Title";
-import img1 from "@/assets/images/applications1cl.png";
-import img2 from "@/assets/images/applications2cl.png";
-import img3 from "@/assets/images/applications3cl.png";
+// import img1 from "@/assets/images/applications1cl.png";
+// import img2 from "@/assets/images/applications2cl.png";
+// import img3 from "@/assets/images/applications3cl.png";
+
+import img1 from "@/assets/images/men.png";
+import img2 from "@/assets/images/men.png";
+import img3 from "@/assets/images/men.png";
+
+
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
@@ -17,6 +23,7 @@ const images = [
 		img: img3,
 	},
 ];
+
 const Applications = () => {
 	const t = useTranslations("Applicationscl");
 

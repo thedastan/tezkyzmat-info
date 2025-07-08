@@ -1,4 +1,4 @@
-// import Applications from "@/components/business/applications/Applications";
+import Applications from "@/components/business/applications/Applications";
 import BusinessProblems from "@/components/business/business-problems/BusinessProblems";
 import Cards from "@/components/business/cards/Cards";
 import Hero from "@/components/business/hero/Hero";
@@ -27,7 +27,7 @@ const Home = () => {
 			<BusinessProblems />
 
 			<Instruction />
-			{/* <Applications /> */}
+			<Applications />
 
 			{/* // */}
 			{/* <Reviews /> */}

@@ -1,7 +1,7 @@
 "use client";
 import { FC, ReactNode, useState } from "react";
-// import Header from "./header/Header";
-// import Footer from "./footer/Footer";
+import Header from "./header/Header";
+import Footer from "./footer/Footer";
 import {
 	QueryClient,
 	QueryClientProvider,
@@ -26,9 +26,9 @@ const LayoutPage: FC<LayoutPageProps> = ({ children }) => {
 	return (
 		<div className="flex flex-col justify-between min-h-[100vh]">
 			<QueryClientProvider client={client}>
-				{/* <Header /> */}
+				<Header />
 				<main>{children}</main>
-				{/* <Footer /> */}
+				<Footer />
 			</QueryClientProvider>
 		</div>
 	);
