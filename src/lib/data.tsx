@@ -1,9 +1,14 @@
 "use client";
+import { usePathname } from "next/navigation";
 import { PAGE } from "@/config/pages/public-page.config";
 import { useTranslations } from "next-intl";
 
 export const useNavbar = () => {
 	const t = useTranslations("Navbar");
+	const pathname = usePathname();
+
+	const isBusinessPage = pathname.endsWith(PAGE.BUSINESS);
+
 
 	return [
 		{
@@ -26,10 +31,9 @@ export const useNavbar = () => {
 			href: PAGE.ABOUT,
 			name: t("about"),
 		},
-
 		{
-			href: PAGE.CLIENT,
-			name:t("client"),
+			href: isBusinessPage ? PAGE.CLIENT : PAGE.BUSINESS,
+			name: isBusinessPage ? t("business") : t("client"),
 		},
 	];
 };

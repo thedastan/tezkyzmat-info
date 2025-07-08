@@ -1,16 +1,18 @@
 "use client";
 import { Title } from "@/components/ui/text/Title";
-import icon1 from "@/assets/images/icon1cl.png";
-import icon2 from "@/assets/images/icon2cl.png";
-import icon3 from "@/assets/images/icon3cl.png";
-import icon4 from "@/assets/images/icon4cl.png";
+import icon1 from "@/assets/images/icon1.png";
+import icon2 from "@/assets/images/icon2.png";
+import icon3 from "@/assets/images/icon3.png";
+import icon4 from "@/assets/images/icon4.png";
 
 import Image from "next/image";
+ 
 import { useTranslations } from "next-intl";
 import useAos from "@/hooks/useAos";
 
 const BusinessProblems = () => {
-	const t = useTranslations("BusinessProblemscl");
+	const t = useTranslations("BusinessProblems");
+
 	useAos()
 
 	const card = [
@@ -31,11 +33,12 @@ const BusinessProblems = () => {
 			desc: t("desc4"),
 		},
 	];
-
 	return (
 		<section className="bg-white py-20">
 			<div className="container">
-				<Title className="text-center md:text-start">{t("title")}</Title>
+				<Title className="text-center md:text-start">
+					{t("title")}
+				</Title>
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-6 gap-10 mt-10">
 					{card.map((el, index) => (
 						<div

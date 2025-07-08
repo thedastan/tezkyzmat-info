@@ -1,10 +1,12 @@
-"use client";
+'use client'
+import { Description } from "@/components/ui/text/Description";
 import { Title } from "@/components/ui/text/Title";
-import img1 from "@/assets/images/applications1cl.png";
-import img2 from "@/assets/images/applications2cl.png";
-import img3 from "@/assets/images/applications3cl.png";
+import img1 from "@/assets/images/applications1.png";
+import img2 from "@/assets/images/applications2.png";
+import img3 from "@/assets/images/applications3.png";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import useAos from "@/hooks/useAos";
 
 const images = [
 	{
@@ -18,31 +20,28 @@ const images = [
 	},
 ];
 const Applications = () => {
-	const t = useTranslations("Applicationscl");
+
+	const t = useTranslations("Applications");
+	useAos()
+
 
 	return (
 		<section className="py-20 w-full">
 			<div className="container">
 				<div className="w-full flex flex-col justify-center items-center">
 					<Title className="text-center">{t("title")}</Title>
+					<Description className="text-center max-w-[660px] w-full mt-4">
+					{t("description")}
+					</Description>
 				</div>
 
 				<div className="gap-3 mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
 					{images.map((el, index) => (
-						<div
-							key={index}
-							data-aos="fade-up"
-							data-aos-delay={index * 200}
-							className=" overflow-hidden bg-[#F2F2F2] rounded-[20px] w-full h-[400px] flex justify-center items-end">
+						<div key={index} data-aos="fade-up"
+						data-aos-delay={index * 200} className=" overflow-hidden bg-[#F2F2F2] rounded-[20px] w-full h-[400px] flex justify-center items-end">
 							<div className=" relative w-[233px] h-[330px]">
-								<div className="w-[222px] h-[330px] bg-[#DDDDDD] absolute right-4 rounded-tr-[20px] rounded-tl-[20px]" />
-								<Image
-									className="mt-3"
-									fill
-									objectFit="contain"
-									src={el.img}
-									alt="img"
-								/>
+                <div className="w-[222px] h-[330px] bg-[#DDDDDD] absolute right-4 rounded-tr-[20px] rounded-tl-[20px]"/>
+								<Image className="mt-3" fill objectFit="contain" src={el.img} alt="img" />
 							</div>
 						</div>
 					))}

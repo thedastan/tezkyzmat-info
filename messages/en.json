@@ -121,7 +121,9 @@
 		"advantages": "Advantages",
 		"reviews": "Reviews",
 		"about": "About us",
-		"client": "For Clients"
+		"client": "For Clients",
+		"business": "For Business"
+
 	},
 	"BurgerMenu": {
 		"contact": "Contacts",
