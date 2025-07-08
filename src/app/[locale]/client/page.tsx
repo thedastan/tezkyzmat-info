@@ -7,7 +7,6 @@ import Order from "@/components/client/order/Order";
 import Service from "@/components/client/service/Service";
 import Shop from "@/components/client/shop/Shop";
 import Group from "@/components/home/group/Group";
-import Reviews from "@/components/home/reviews/Reviews";
 import WeTeam from "@/components/home/we-team/WeTeam";
 import { generateMetadata } from "@/lib/seo";
 import React from "react";
@@ -28,7 +27,7 @@ const ClientPage = () => {
 			<BusinessProblems />
 			<Instruction />
 			<Applications />
-			<Reviews />
+			{/* <Reviews /> */}
 
 			{/* // */}
 
