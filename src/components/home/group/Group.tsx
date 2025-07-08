@@ -3,11 +3,16 @@ import img from "@/assets/images/Group.png";
 import { Description } from "@/components/ui/text/Description";
 import Image from "next/image";
 import { MdArrowRightAlt } from "react-icons/md";
-import ava from "@/assets/images/men.png";
+import ava from "@/assets/images/dastan.jpg";
+import ava2 from "@/assets/images/samuil.jpg";
+import ava3 from "@/assets/images/men.png";
+
+
 import { TbBrandInstagramFilled } from "react-icons/tb";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import useAos from "@/hooks/useAos";
+import { INSTAGRAM_LINK } from "@/constants/constants";
 
 const Group = () => {
 	const t = useTranslations("Group");
@@ -15,13 +20,13 @@ const Group = () => {
 
 	const piple = [
 		{
-			ava: ava,
+			ava: ava3,
 			title: t("member1_name"),
 			link: "danyshbek_beisheev",
 			desc: t("member1_desc"),
 		},
 		{
-			ava: ava,
+			ava: ava2,
 			title: t("member2_name"),
 			link: "zaidov_s",
 			desc: t("member2_desc"),
@@ -51,7 +56,7 @@ const Group = () => {
 							{t("title")}
 						</h1>
 						<Description className="text-white">{t("desc")}</Description>
-						<Link className="md:w-[236px] w-full" href={"#footer"}>
+						<Link className="md:w-[236px] w-full" href={INSTAGRAM_LINK} target={"_blank"}>
 							<button className="bg-white rounded-[50px] md:w-[236px] w-full md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
 								{t("btn")}{" "}
 								<span className="text-[32px]">
@@ -70,7 +75,7 @@ const Group = () => {
 							data-aos-delay={index * 200}
 							className="bg-[#F2F2F2] rounded-[20px] w-full">
 							<div className="w-full h-[330px] relative rounded-tl-[20px] rounded-tr-[20px] overflow-hidden">
-								<Image src={ava} objectFit="cover" fill alt="ava" />
+								<Image src={el.ava} objectFit="cover" fill alt="ava" />
 							</div>
 							<div className="bg-[#F2F2F2] rounded-[20px] p-4 flex flex-col gap-3">
 								<h1 className="text-[24px] font-[600]">{el.title}</h1>

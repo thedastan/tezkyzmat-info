@@ -3,7 +3,7 @@ export const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 export const FRONT_VERCEL = "https://tezkyzmat-web.vercel.app";
 
-export const PHONE_NUMBER = "+996 987 678 987";
+export const PHONE_NUMBER = "+996 556 051 299";
 
 export const WHATSAPP_NUMBER = PHONE_NUMBER;
 
@@ -14,7 +14,7 @@ export const INSTAGRAM_DUBAY = "tez.kyzmat.dubai";
 export const TIKTOK = "@tez_kyzmat";
 
 export const FACEBOOK = "";
-export const YOUTUBE = "";
+export const YOUTUBE = "@tezkyzmat";
 
 
 export const LOCATION = "Сельповская 8, Бишкек";
@@ -31,7 +31,7 @@ export const INSTAGRAM_LINK = `https://www.instagram.com/${INSTAGRAM}`;
 export const INSTAGRAM_DUBAY_LINK = `https://www.instagram.com/${INSTAGRAM}`;
 
 export const FACEBOOK_LINK = ``;
-export const YOUTUBE_LINK = ``;
+export const YOUTUBE_LINK = `https://www.youtube.com/${YOUTUBE}`;
 
 export const TELEGRAM_LINK = `https://t.me/${WHATSAPP_NUMBER.split(" ").join(
 	""

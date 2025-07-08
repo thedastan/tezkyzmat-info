@@ -15,14 +15,12 @@ import qr from "@/assets/images/QRCode.png";
 import {
 	EMAIL_ADDRESS,
 	EMAIL_ADDRESS_LINK,
-	FACEBOOK_LINK,
 	INSTAGRAM_LINK,
 	PHONE_NUMBER,
 	TIKTOK_LINK,
 	YOUTUBE_LINK,
 } from "@/constants/constants";
-import { MdArrowRightAlt } from "react-icons/md";
-import { FaFacebookF, FaInstagram } from "react-icons/fa6";
+import {   FaInstagram } from "react-icons/fa6";
 import { RiTiktokLine } from "react-icons/ri";
 import { FiYoutube } from "react-icons/fi";
 import { Description } from "@/components/ui/text/Description";
@@ -94,8 +92,8 @@ const Footer = () => {
 
 					<div className="bg-[#7E7E7E] md:flex hidden md:w-[1px] w-full md:h-[330px] h-[1px]" />
 
-					<div className="flex flex-col justify-between">
-						<div>
+					<div className="flex flex-col  items-center md:items-start">
+						{/* <div>
 							<h1 className="text-white md:text-[32px] text-[24px] font-bold">
 								{t("title")}
 							</h1>
@@ -111,15 +109,12 @@ const Footer = () => {
 									</button>
 								</div>
 							</div>
-						</div>
-						<div className="flex gap-3 md:mt-0 mt-10">
-							<Link
-								className="text-white "
-								target={"_blank"}
-								href={FACEBOOK_LINK}>
-								<FaFacebookF size={28} />
-							</Link>
+						</div> */}
 
+						<h1 className="text-white md:text-[32px] text-[24px] font-bold">
+							{t("we")}
+						</h1>
+						<div className="flex gap-3 md:mt-10 mt-10">
 							<Link
 								className="text-white "
 								target={"_blank"}

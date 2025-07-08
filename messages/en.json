@@ -112,7 +112,8 @@
 		"span1": "Privacy Policy",
 		"span2": "Public Offer",
 		"span3": "Return Policy",
-		"input": "Enter your email"
+		"input": "Enter your email",
+		"we": "We are on social media"
 	},
 	"Navbar": {
 		"forWhom": "Who it's for",
@@ -158,7 +159,7 @@
 		"title": "Order from UAE",
 		"desc": "Fill out the application and we will contact you",
 		"btn": "Submit application",
-		"selectBrandRequired":"Please select an option",
+		"selectBrandRequired": "Please select an option",
 		"select1": "Car brand",
 		"select2": "Car model",
 		"select3": "Country of manufacture",
@@ -416,7 +417,7 @@
 		"title": "Oops! Page not found",
 		"btn": "Return to home page"
 	},
-	"PhoneInput":{
-		"message":"Please enter a valid phone number"
+	"PhoneInput": {
+		"message": "Please enter a valid phone number"
 	}
 }

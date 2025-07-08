@@ -73,14 +73,14 @@ const Order = () => {
 							className="flex flex-col gap-4 w-full max-w-[480px]">
 							<h3 className="text-[26px] font-[600]">{t("desc2")}</h3>
 							<Description>{t("desc3")}</Description>
-							<Link href={"#footer"}>
-								<button className="bg-[#000000] text-white rounded-[50px] md:w-[300px] w-full mt-6 md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
+								<button
+									onClick={() => setModalOpen(true)}
+									className="bg-[#000000] text-white rounded-[50px] md:w-[300px] w-full mt-6 md:py-4 py-3 flex items-center justify-center gap-2 text-[18px]">
 									{t("btn3")}  {" "}
 									<span className="text-[32px]">
 										<MdArrowRightAlt />
 									</span>
 								</button>
-							</Link>
 						</div>
 					</div>
 				</div>
