@@ -1,10 +1,10 @@
-// import Applications from "@/components/business/applications/Applications";
-// import BusinessProblems from "@/components/business/business-problems/BusinessProblems";
+import Applications from "@/components/business/applications/Applications";
+import BusinessProblems from "@/components/business/business-problems/BusinessProblems";
 // import Cards from "@/components/business/cards/Cards";
-// import Hero from "@/components/business/hero/Hero";
-// import Instruction from "@/components/business/instruction/Instruction";
+import Hero from "@/components/business/hero/Hero";
+import Instruction from "@/components/business/instruction/Instruction";
 // import Order from "@/components/business/order/Order";
-// import Service from "@/components/business/service/Service";
+import Service from "@/components/business/service/Service";
 // import Shop from "@/components/business/shop/Shop";
 // import Group from "@/components/client/group/Group";
 // import WeTeam from "@/components/client/we-team/WeTeam";
@@ -22,13 +22,11 @@ export const metadata = generateMetadata({
 const Home = () => {
 	return (
 		<>
-
-		home
-			{/* <Hero /> */}
-			{/* <Service /> */}
-			{/* <BusinessProblems /> */}
-			{/* <Instruction /> */}
-			{/* <Applications /> */}
+			<Hero />
+			<Service />
+			<BusinessProblems />
+			<Instruction />
+			<Applications />
 
 			{/* // */}
 			{/* <Reviews /> */}
