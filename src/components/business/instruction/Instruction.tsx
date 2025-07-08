@@ -2,18 +2,16 @@
 import { Description } from "@/components/ui/text/Description";
 import Image from "next/image";
 import { FaCheck } from "react-icons/fa6";
-import img1 from "@/assets/images/instruction1.png";
-import img2 from "@/assets/images/instruction2.png";
-import img3 from "@/assets/images/instruction3.png";
+import img1 from "@/assets/images/instruction1cl.png";
+import img2 from "@/assets/images/instruction2cl.png";
 import { useTranslations } from "next-intl";
-import useAos from "@/hooks/useAos";
 
 const Instruction = () => {
-	const t = useTranslations("Instruction");
-useAos()
+	const t = useTranslations("Instructioncl");
+
 	const data = [
 		{
-			id: "solution",
+			id: "advantages",
 			image: img1,
 			title: t("solution.title"), // содержит <br /> если нужно
 			description: [
@@ -23,25 +21,13 @@ useAos()
 			],
 		},
 		{
-			id: "advantages",
+			id: "solution",
 			image: img2,
 			title: t("advantages.title"),
 			description: [
 				{ desc: t("advantages.description.0") },
 				{ desc: t("advantages.description.1") },
 				{ desc: t("advantages.description.2") },
-				{ desc: t("advantages.description.3") },
-			],
-		},
-		{
-			id: "",
-			image: img3,
-			title: t("howToConnect.title"),
-			description: [
-				{ desc: t("howToConnect.description.0") },
-				{ desc: t("howToConnect.description.1") },
-				{ desc: t("howToConnect.description.2") },
-				{ desc: t("howToConnect.description.3") },
 			],
 		},
 	];
@@ -55,10 +41,11 @@ useAos()
 							id={el.id}
 							key={index}
 							className={`flex justify-between items-center md:gap-4 gap-8 flex-col ${
-								index % 2 !== 0 ? "md:flex-row-reverse" : "md:flex-row"
+								index % 2 == 0 ? "md:flex-row-reverse" : "md:flex-row"
 							}`}>
 							<div className="md:max-w-[550px] max-w-[500px] w-full">
-								<h1 data-aos="fade-up"
+								<h1
+									data-aos="fade-up"
 									className="text-white md:text-[48px] text-[26px] font-[700] leading-[120%] "
 									dangerouslySetInnerHTML={{ __html: el.title }}
 								/>
@@ -66,9 +53,9 @@ useAos()
 									{el.description.map((item, index) => (
 										<div
 											key={index}
-											className="flex items-center gap-3  "
 											data-aos="fade-up"
-											data-aos-delay={index * 200}>
+											data-aos-delay={index * 200}
+											className="flex items-center gap-3  ">
 											<h1 className="bg-[#FADD13] flex rounded-[50px] p-1">
 												<FaCheck />
 											</h1>
@@ -79,7 +66,9 @@ useAos()
 									))}
 								</div>
 							</div>
-							<div data-aos="fade-up" className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[320px]   relative">
+							<div
+								data-aos="fade-up"
+								className="md:max-w-[600px] max-w-[500px] w-full md:h-[520px] sm:h-[420px]  h-[320px]   relative">
 								<Image
 									src={el.image}
 									objectFit="contain"
