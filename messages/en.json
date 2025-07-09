@@ -123,7 +123,6 @@
 		"about": "About us",
 		"client": "For Clients",
 		"business": "For Business"
-
 	},
 	"BurgerMenu": {
 		"contact": "Contacts",
@@ -147,8 +146,8 @@
 	},
 	"Cards": {
 		"title": "Management",
-		"desc1": "• Tez Kyzmat Group (one of the co-owners)",
-		"desc2": "• Bayaman, Nadyirbek",
+		"desc1": "• Tez Kyzmat Group LLC",
+		"desc2": "• Nadirbek, Bayastan, Marat",
 		"desc3": "• And other team members working on warehouse development",
 		"title_2": "What we sell",
 		"desc1_2": "• Lighting parts",
