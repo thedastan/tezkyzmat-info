@@ -5,7 +5,7 @@ import Image from "next/image";
 import { MdArrowRightAlt } from "react-icons/md";
 import ava from "@/assets/images/dastan.jpg";
 import ava2 from "@/assets/images/samuil.jpg";
-import ava3 from "@/assets/images/men.png";
+import ava3 from "@/assets/images/danyshbek2.png";
 
 
 import { TbBrandInstagramFilled } from "react-icons/tb";
