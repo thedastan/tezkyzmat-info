@@ -1,6 +1,6 @@
 "use client";
 
-import img1 from "@/assets/images/shop.jpg";
+import img1 from "@/assets/images/shop2.png";
 import img2 from "@/assets/images/shop2.png";
 
 import { Swiper, SwiperSlide } from "swiper/react";
