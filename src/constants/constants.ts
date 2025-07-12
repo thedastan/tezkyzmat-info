@@ -28,7 +28,7 @@ export const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER.split(" ").join(
 export const EMAIL_ADDRESS_LINK = `mailto:${EMAIL_ADDRESS}`;
 
 export const INSTAGRAM_LINK = `https://www.instagram.com/${INSTAGRAM}`;
-export const INSTAGRAM_DUBAY_LINK = `https://www.instagram.com/${INSTAGRAM}`;
+export const INSTAGRAM_DUBAY_LINK = `https://www.instagram.com/tez.kyzmat.dubai`;
 
 export const FACEBOOK_LINK = ``;
 export const YOUTUBE_LINK = `https://www.youtube.com/${YOUTUBE}`;
