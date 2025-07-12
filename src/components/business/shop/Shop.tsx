@@ -1,7 +1,9 @@
 "use client";
 
 import img1 from "@/assets/images/shop2.png";
-import img2 from "@/assets/images/shop2.png";
+import img2 from "@/assets/images/shop3.png";
+import img3 from "@/assets/images/shop4.png";
+import img4 from "@/assets/images/shop5.png";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -16,7 +18,7 @@ import useAos from "@/hooks/useAos";
 const Shop = () => {
 	const t = useTranslations("Shop");
 
-	useAos()
+	useAos();
 
 	const prevRef = useRef<HTMLButtonElement>(null);
 	const nextRef = useRef<HTMLButtonElement>(null);
@@ -28,12 +30,22 @@ const Shop = () => {
 
 	const slides = [
 		{
+			img: img1.src,
+			titleKey: "title",
+			descKey: "desc",
+		},
+		{
 			img: img2.src,
 			titleKey: "title",
 			descKey: "desc",
 		},
 		{
-			img: img1.src,
+			img: img3.src,
+			titleKey: "title",
+			descKey: "desc",
+		},
+		{
+			img: img4.src,
 			titleKey: "title",
 			descKey: "desc",
 		},
