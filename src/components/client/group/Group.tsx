@@ -22,7 +22,7 @@ const Group = () => {
 		{
 			ava: ava3,
 			title: t("member1_name"),
-			link: "danyshbek_beisheev",
+			link: "danyshbek.beisheev", 
 			desc: t("member1_desc"),
 		},
 		{
