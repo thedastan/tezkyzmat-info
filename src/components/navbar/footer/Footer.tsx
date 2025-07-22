@@ -2,7 +2,7 @@
 import { PAGE } from "@/config/pages/public-page.config";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useMemo } from "react";
 import { useNavbar } from "../../../lib/data";
 
 import logo from "@/assets/images/logo.png";
@@ -11,7 +11,9 @@ import card1 from "@/assets/images/card1.png";
 import card2 from "@/assets/images/card2.png";
 import card3 from "@/assets/images/card3.png";
 
-import qr from "@/assets/images/QRCode.png";
+import qrClient from "@/assets/images/qrcode_client.png";
+import qrBusiness from "@/assets/images/qrcode_business.png";
+
 import {
 	EMAIL_ADDRESS,
 	EMAIL_ADDRESS_LINK,
@@ -20,15 +22,24 @@ import {
 	TIKTOK_LINK,
 	YOUTUBE_LINK,
 } from "@/constants/constants";
-import {   FaInstagram } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa6";
 import { RiTiktokLine } from "react-icons/ri";
 import { FiYoutube } from "react-icons/fi";
 import { Description } from "@/components/ui/text/Description";
 import { useTranslations } from "next-intl";
+import { usePathname } from "next/navigation";
 
 const Footer = () => {
 	const t = useTranslations("Footer");
 	const navbar = useNavbar();
+
+	const pathname = usePathname();
+
+	const qrImage = useMemo(() => {
+		if (pathname.includes(PAGE.BUSINESS)) return qrBusiness;
+		return qrClient;
+	}, [pathname]);
+
 	return (
 		<footer id="footer" className="bg-[#000000] py-4 ">
 			<div className="container">
@@ -53,7 +64,7 @@ const Footer = () => {
 							</div>
 
 							<div className="flex flex-col md:hidden justify-center items-center ">
-								<Image width={115} height={115} src={qr} alt="QR" />
+								<Image style={{ borderRadius: "3px" }} width={115} height={115} src={qrImage} alt="QR" />
 								<Link
 									className="text-[18px] font-[500] text-white mt-6"
 									target={"_blank"}
@@ -73,8 +84,14 @@ const Footer = () => {
 
 					<div className="bg-[#7E7E7E] md:w-[1px] w-full md:h-[330px] h-[1px]" />
 
-					<div className="md:flex hidden flex-col justify-center items-center ">
-						<Image width={180} height={180} src={qr} alt="QR" />
+					<div className="md:flex hidden flex-col   justify-center items-center ">
+						<Image
+							style={{ borderRadius: "4px" }}
+							width={180}
+							height={180}
+							src={qrImage}
+							alt="QR"
+						/>
 						<Link
 							className="text-[28px] font-[500] text-white mt-14"
 							target={"_blank"}
