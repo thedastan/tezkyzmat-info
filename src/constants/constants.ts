@@ -40,3 +40,8 @@ export const TELEGRAM_LINK = `https://t.me/${WHATSAPP_NUMBER.split(" ").join(
 export const LOCATION_LINK = "https://go.2gis.com/HfMJe";
 
 export const TIKTOK_LINK = `https://www.tiktok.com/${TIKTOK}`;
+
+export const GOOGLE_PLEY_LINK_CLIENT = "https://play.google.com/store/apps/details?id=kg.tezkyzmat.sellerapp"
+export const GOOGLE_PLEY_LINK_BUSINESS = "https://play.google.com/store/apps/details?id=kg.tezkyzmat.clientapp"
+
+ 
