@@ -7,6 +7,7 @@ import { BsApple } from "react-icons/bs";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import useAos from "@/hooks/useAos";
+import { GOOGLE_PLEY_LINK_CLIENT } from "@/constants/constants";
 const Hero = () => {
 	const t = useTranslations("Hero");
 
@@ -64,7 +65,7 @@ export const DeviceHero = () => {
 			icon: <FaGooglePlay />,
 			span: t("App"),
 			title: "Google Play",
-			link: "/",
+			link: GOOGLE_PLEY_LINK_CLIENT,
 		},
 		{
 			icon: <BsApple />,
@@ -80,6 +81,7 @@ export const DeviceHero = () => {
 				<Link
 					key={index}
 					href={el.link}
+					target={"_blank"}
 					className="inline-flex justify-center items-center gap-2 text-black bg-white p-2 rounded-[5px] border border-black  w-full max-w-[100%]">
 					<h1 className="md:text-[26px] text-[28px]">{el.icon}</h1>
 					<div className="flex flex-col">
