@@ -64,7 +64,7 @@ const Footer = () => {
 							</div>
 
 							<div className="flex flex-col md:hidden justify-center items-center ">
-								<Image style={{ borderRadius: "4px" }} width={115} height={115} src={qrImage} alt="QR" />
+								<Image style={{ borderRadius: "3px" }} width={115} height={115} src={qrImage} alt="QR" />
 								<Link
 									className="text-[18px] font-[500] text-white mt-6"
 									target={"_blank"}
