@@ -19,7 +19,7 @@
 		"desc1": "No customers in season / <br /> bad weather",
 		"desc2": "Most don't have <br /> Instagram or a website",
 		"desc3": "Sitting at markets all <br /> day without requests",
-		"desc4": "Easy with Tez Kyzmat PRO — <br /> but you’re not in the system"
+		"desc4": "Easy with Tez Kyzmat Business — <br /> but you’re not in the system"
 	},
 	"Instruction": {
 		"solution": {
@@ -31,7 +31,7 @@
 			]
 		},
 		"advantages": {
-			"title": "Advantages <br /> of Tez Kyzmat PRO",
+			"title": "Advantages <br /> of Tez Kyzmat Business",
 			"description": [
 				"Smart request filters",
 				"Push notifications and analytics",
@@ -84,13 +84,13 @@
 			"desc": "— a service for fast search of spare parts and auto services <br /> without intermediaries."
 		},
 		"block2": {
-			"span": "Tez Kyzmat PRO (for sellers and services)",
+			"span": "Tez Kyzmat Business (for sellers and services)",
 			"desc": "— a platform for receiving requests from real clients <br /> across the country."
 		}
 	},
 	"Tariffs": {
 		"title": "Business Tariffs",
-		"desc": "Promote your business on the Tez Kyzmat PRO platform and choose a suitable plan:",
+		"desc": "Promote your business on the Tez Kyzmat Business platform and choose a suitable plan:",
 		"btn": "Start",
 		"title_card1": "Basic",
 		"desc1_card1": "Be listed in the stores",
