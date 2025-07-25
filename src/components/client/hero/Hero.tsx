@@ -22,7 +22,7 @@ const Hero = () => {
 					<div className="flex flex-col-reverse md:flex-row justify-between items-center">
 						<div data-aos="fade-up" className="flex flex-col md:gap-6 gap-4 items-start">
 							<Description className="uppercase md:flex hidden text-white">
-								Tez Kyzmat Business
+								TK Business
 							</Description>
 
 							 
@@ -45,7 +45,7 @@ const Hero = () => {
 
 						<div data-aos="fade-up" className="flex md:hidden text-center">
 							<Description className="uppercase text-white pb-8 text-center   w-full">
-								Tez Kyzmat Business
+								TK Business
 							</Description>
 						</div>
 					</div>
