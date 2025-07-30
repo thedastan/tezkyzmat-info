@@ -1,7 +1,7 @@
 {
-	"name": "tezkyzmat.info",
-	"short_name": "Tezkyzmat Info",
-	"description": "TezKyzmat — информационный сайт для продавцов и покупателей автозапчастей",
+	"name": "Tez Kyzmat",
+	"short_name": "Tez Kyzmat",
+	"description": "TezKyzmat — сервис быстрого поиска: автозапчасти, СТО, детейлинг и.т.д.",
 	"lang": "ru-RU",
 	"start_url": "/",
 	"scope": "/",
@@ -16,6 +16,6 @@
 			"type": "image/webp"
 		}
 	],
-	"categories": ["properties", "estate", "sell", "buy"],
+	"categories": ["запчасть", "авто", "машина", "автосервис", "детейлинг", "сто", "замена масла","автозапчасть"],
 	"dir": "ltr"
 }
