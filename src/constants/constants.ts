@@ -16,7 +16,6 @@ export const TIKTOK = "@tez_kyzmat";
 export const FACEBOOK = "";
 export const YOUTUBE = "@tezkyzmat";
 
-
 export const LOCATION = "Сельповская 8, Бишкек";
 
 /// links/
@@ -41,8 +40,12 @@ export const LOCATION_LINK = "https://go.2gis.com/HfMJe";
 
 export const TIKTOK_LINK = `https://www.tiktok.com/${TIKTOK}`;
 
+export const GOOGLE_PLEY_LINK_CLIENT =
+	"https://play.google.com/store/apps/details?id=kg.tezkyzmat.sellerapp";
+export const GOOGLE_PLEY_LINK_BUSINESS =
+	"https://play.google.com/store/apps/details?id=kg.tezkyzmat.clientapp";
 
-export const GOOGLE_PLEY_LINK_CLIENT = "https://play.google.com/store/apps/details?id=kg.tezkyzmat.sellerapp"
-export const GOOGLE_PLEY_LINK_BUSINESS = "https://play.google.com/store/apps/details?id=kg.tezkyzmat.clientapp"
-
- 
+export const IOS_LINK_BUSINESS =
+	"https://apps.apple.com/kg/app/tez-kyzmat/id6748315485";
+export const IOS_LINK_CLIENT =
+	"https://apps.apple.com/kg/app/tk-business/id6748307773";

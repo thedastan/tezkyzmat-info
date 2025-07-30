@@ -7,7 +7,7 @@ import { BsApple } from "react-icons/bs";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import useAos from "@/hooks/useAos";
-import { GOOGLE_PLEY_LINK_BUSINESS } from "@/constants/constants";
+import { GOOGLE_PLEY_LINK_BUSINESS, IOS_LINK_BUSINESS } from "@/constants/constants";
 const Hero = () => {
 	const t = useTranslations("Herocl");
 	useAos();
@@ -74,7 +74,7 @@ export const DeviceHero = () => {
 			icon: <BsApple />,
 			span: t("App"),
 			title: "App Store",
-			link: "/",
+			link: IOS_LINK_BUSINESS,
 		},
 	];
 
