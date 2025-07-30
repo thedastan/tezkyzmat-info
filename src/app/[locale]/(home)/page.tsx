@@ -12,11 +12,10 @@ import { generateMetadata } from "@/lib/seo";
 import React from "react";
 
 export const metadata = generateMetadata({
-	title: "Что такое TezKyzmat — Удобный сервис для поиска автозапчастей",
-	description:
-		"Узнайте, как работает TezKyzmat — сервис, который помогает клиентам находить автозапчасти быстро и удобно. Платформа соединяет клиентов с продавцами.",
-	url: "https://tezkyzmat-web.vercel.app/client",
-	image: "https://tezkyzmat-web.vercel.app/seo-img.png",
+	title: "Tez Kyzmat — быстрый поиск автозапчастей и автосервисов",
+	description: "Узнайте, как работает TezKyzmat — сервис, который помогает клиентам находить автозапчасти быстро и удобно. Платформа соединяет клиентов с продавцами.",
+	url: "https://tezkyzmat.kg/",
+	image: "https://tezkyzmat.kg/seo-img.png",
 });
 
 const Home = () => {
