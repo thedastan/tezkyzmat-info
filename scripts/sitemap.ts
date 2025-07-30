@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	];
 
 	const stream = new SitemapStream({
-		hostname: "https://tezkyzmat-web.vercel.app/",
+		hostname: "https://www.tezkyzmat.kg/",
 	});
 	res.writeHead(200, { "Content-Type": "application/xml" });
 

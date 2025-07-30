@@ -2,34 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Главная страница -->
   <url>
-    <loc>https://tezkyzmat-web.vercel.app/ru</loc>
+    <loc>https://www.tezkyzmat.kg/ru</loc>
     <lastmod>2025-06-03</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tezkyzmat-web.vercel.app/en</loc>
+    <loc>https://www.tezkyzmat.kg/en</loc>
     <lastmod>2025-06-03</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tezkyzmat-web.vercel.app/kg</loc>
+    <loc>https://www.tezkyzmat.kg/kg</loc>
     <lastmod>2025-06-03</lastmod>
     <priority>1.0</priority>
   </url>
 
   <!-- Страница /client -->
   <url>
-    <loc>https://tezkyzmat-web.vercel.app/ru/client</loc>
+    <loc>https://www.tezkyzmat.kg/ru/client</loc>
     <lastmod>2025-06-03</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tezkyzmat-web.vercel.app/en/client</loc>
+    <loc>https://www.tezkyzmat.kg/en/client</loc>
     <lastmod>2025-06-03</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://tezkyzmat-web.vercel.app/kg/client</loc>
+    <loc>https://www.tezkyzmat.kg/kg/client</loc>
     <lastmod>2025-06-03</lastmod>
     <priority>1.0</priority>
   </url>
