@@ -15,7 +15,7 @@ export const generateMetadata = ({
 	description,
   image,
 	robots: "index, follow",
-	authors: [{ name: "TezKyzmat Info" }],
+	authors: [{ name: "Tez Kyzmat" }],
 	openGraph: {
 		title,
 		description,
