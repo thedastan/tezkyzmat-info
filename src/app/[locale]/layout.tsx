@@ -3,20 +3,28 @@ import localFont from "next/font/local";
 import "@/styles/globals.scss";
 import LayoutPage from "@/components/navbar/LayoutPage";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, setRequestLocale } from "next-intl/server"; // Добавили setRequestLocale
+import { getMessages, setRequestLocale } from "next-intl/server";
 import { SITE_DESCRIPTION, SITE_NAME } from "@/constants/seo.constants";
+import { routing } from "@/i18n/routing";
 import Script from "next/script";
+import { notFound } from "next/navigation";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff", 
   variable: "--font-geist-sans",
   weight: "100 900",
 });
+
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
+
+// Генерируем статические параметры для всех языков
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export const metadata: Metadata = {
   title: SITE_NAME,
@@ -32,17 +40,27 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout(props: {
+// Исправленный интерфейс пропсов: locale теперь необязателен для валидации TS
+interface RootLayoutProps {
   children: React.ReactNode;
-  params: Promise<{ locale?: string }>;
-}) {
-  const resolvedParams = await props.params;
-  const locale = resolvedParams.locale || "ru";
+  params: Promise<{ locale?: string }>; 
+}
 
-  // Обязательно для Next.js 15/16 в продакшене
+export default async function RootLayout(props: RootLayoutProps) {
+  // 1. Обязательно дожидаемся промиса параметров
+  const resolvedParams = await props.params;
+  const locale = resolvedParams.locale || routing.defaultLocale;
+
+  // 2. Если локаль не входит в список разрешенных — отдаем 404
+  if (!routing.locales.includes(locale as any)) {
+    notFound();
+  }
+
+  // 3. Устанавливаем локаль для серверных функций (обязательно для статической генерации)
   setRequestLocale(locale);
   
-  const messages = await getMessages();
+  // 4. Загружаем сообщения именно для текущей локали
+  const messages = await getMessages({ locale });
 
   return (
     <html lang={locale}>
@@ -71,6 +89,7 @@ export default async function RootLayout(props: {
         />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        {/* 5. Передаем и локаль, и сообщения в провайдер */}
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutPage>{props.children}</LayoutPage>
         </NextIntlClientProvider>
