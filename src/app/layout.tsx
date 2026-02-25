@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "@/styles/globals.scss";
 import LayoutPage from "@/components/navbar/LayoutPage";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
+import { getMessages, setRequestLocale } from "next-intl/server"; // Добавили setRequestLocale
 import { SITE_DESCRIPTION, SITE_NAME } from "@/constants/seo.constants";
 import Script from "next/script";
 
@@ -34,17 +34,19 @@ export const metadata: Metadata = {
 
 export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: Promise<{ locale?: string }>; // Сделали locale опциональным для совместимости типов
+  params: Promise<{ locale?: string }>;
 }) {
-  // В Next.js 15+ params — это Promise, который нужно дождаться
   const resolvedParams = await props.params;
-  const locale = resolvedParams.locale || "ru"; // Дефолтный язык, если не найден в URL
+  const locale = resolvedParams.locale || "ru";
+
+  // Обязательно для Next.js 15/16 в продакшене
+  setRequestLocale(locale);
+  
   const messages = await getMessages();
 
   return (
     <html lang={locale}>
       <head>
-        {/* Yandex Metrika Script */}
         <Script
           id="yandex-metrika"
           strategy="afterInteractive"
@@ -68,14 +70,11 @@ export default async function RootLayout(props: {
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <LayoutPage>{props.children}</LayoutPage>
         </NextIntlClientProvider>
 
-        {/* Yandex Metrika noscript */}
         <noscript>
           <div>
             <img
