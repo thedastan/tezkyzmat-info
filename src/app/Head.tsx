@@ -7,6 +7,7 @@ const Head = () => {
 				name='google-site-verification'
 				content='fQ0IqJz2eTDIDxVnU7cEV8OYPUrHscc9wXzSRQaozgY'
 			/>
+			 <meta name="facebook-domain-verification" content="s4jfzui6t9wcu2b5j3jqaaiaglet98" />
 			<link
 				rel='manifest'
 				href='/manifest.json'
@@ -49,3 +50,4 @@ const Head = () => {
 }
 
 export default Head
+
