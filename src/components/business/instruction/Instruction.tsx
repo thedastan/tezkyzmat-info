@@ -11,7 +11,7 @@ const Instruction = () => {
 
 	const data = [
 		{
-			id: "advantages",
+			id: "solution",
 			image: img1,
 			title: t("solution.title"), // содержит <br /> если нужно
 			description: [
@@ -21,7 +21,7 @@ const Instruction = () => {
 			],
 		},
 		{
-			id: "solution",
+			id: "advantages",
 			image: img2,
 			title: t("advantages.title"),
 			description: [

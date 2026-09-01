@@ -70,10 +70,10 @@
 		"btn": "Contact us",
 		"member1_name": "Danyshbek Beisheev",
 		"member1_desc": "Founder and CEO. Responsible for strategic development and partnerships.",
-		"member2_name": "Samuil Zaidov",
-		"member2_desc": "Co-founder, CFO, and Head of Sales. Ensures the company's stability and growth.",
+		"member2_name": "Airas Tolonov",
+		"member2_desc": "Co-founder and Technical Director. Responsible for the technical infrastructure, reliability, and development of the platform's systems.",
 		"member3_name": "Dastan Mukeev",
-		"member3_desc": "Co-founder, CTO, and Product Manager. Oversees the technical implementation and platform development."
+		"member3_desc": "Co-founder and Chief Product Officer. Oversees the technical implementation and platform development."
 	},
 	"WeTeam": {
 		"title": "We are a team born from the real pains of Kyrgyz drivers and sellers.",
@@ -124,7 +124,7 @@
 	},
 	"BurgerMenu": {
 		"contact": "Contacts",
-		"location": "Selpovskaya 8, Bishkek"
+		"location": "Tabishalieva 3, Bishkek"
 	},
 	"Order": {
 		"title": "Didn't find the right spare part in KG? Order directly from the UAE!",
@@ -150,7 +150,7 @@
 		"desc2_2": "• Body parts",
 		"desc3_2": "• Engines",
 		"contact": "Contacts",
-		"location": "Selpovskaya 8, Bishkek"
+		"location": "Tabishalieva 3, Bishkek"
 	},
 	"Forma": {
 		"title": "Order from UAE",
@@ -225,8 +225,9 @@
 	},
 	"PrivacyPolicy": {
 		"title": "Privacy Policy",
-		"titleComponent_1": "Last updated: June 11, 2025",
-		"desc_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company, We, Us) respects users' privacy and is committed to protecting your personal data. This Privacy Policy describes what data we collect, how we use and protect it within our website and mobile application.",
+		"titleComponent_1": "Last updated: September 1, 2026",
+		"desc_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company, We, Us) respects users' privacy and is committed to protecting your personal data. This Privacy Policy describes what data we collect, how we use and protect it within our website and the Tez Kyzmat (for clients) and TK Business (for stores) mobile applications.",
+
 		"titleComponent_2": "1. General Provisions",
 		"desc_2": "This Privacy Policy is developed in accordance with the legislation of the Kyrgyz Republic, including the Law of the Kyrgyz Republic \"On Personal Data\" and other regulatory acts governing the protection of personal data.",
 		"titleComponent_3": "2. What Data We Collect",
@@ -237,7 +238,8 @@
 		"desc_3_4": "Email address",
 		"desc_3_5": "Information about requests",
 		"desc_3_6": "IP address, device type, geolocation (with your consent)",
-		"desc_3_7": "Payment data (not stored by us, transmitted in encrypted form to the payment provider)",
+		"desc_3_7": "Payment data (not stored by us, transmitted in encrypted form to the finik.kg payment system)",
+
 		"titleComponent_4": "3. Purposes of Data Collection and Use",
 		"desc_4": "We use personal data for:",
 		"desc_4_1": "Processing your requests and providing services",
@@ -252,7 +254,7 @@
 		"desc_5_3": "Requirements of the legislation of the Kyrgyz Republic",
 		"titleComponent_6": "5. Data Transfer to Third Parties",
 		"desc_6": "Personal data may be transferred to:",
-		"desc_6_1": "Payment providers for payment processing (in encrypted form)",
+		"desc_6_1": "The finik.kg payment system for payment processing (in encrypted form)",
 		"desc_6_2": "Government authorities on legal grounds",
 		"desc_6_3": "Partners and contractors providing technical support and maintenance",
 		"titleComponent_7": "6. Data Security",
@@ -280,8 +282,8 @@
 	},
 	"RublicOffer": {
 		"title": "Public Offer",
-		"lastUpdate": "Last updated: June 11, 2025",
-		"intro_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company, We, Us) invites you (the User, Client) to review the terms of service provision through the Tez Kyzmat website and mobile application.",
+		"lastUpdate": "Last updated: September 1, 2026",
+		"intro_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company, We, Us) invites you (the User, Client) to review the terms of service provision through the website and the mobile applications Tez Kyzmat (for clients) and TK Business (for stores and services).",
 		"intro_2": "This public offer constitutes an official proposal to conclude a service agreement under the terms set forth in this document.",
 		"general": {
 			"title": "General Provisions",
@@ -291,8 +293,8 @@
 		},
 		"subject": {
 			"title": "Subject of the Agreement",
-			"point_1": "The Company provides services for searching and selecting performers to carry out various tasks and services, as well as other services presented on the website and in the application.",
-			"point_2": "The User undertakes to use the services in accordance with the terms of the Offer and the legislation of the Kyrgyz Republic."
+			"point_1": "The Company provides a digital platform in the form of two mobile applications: 'Tez Kyzmat' — for clients looking for auto parts, tires, wheels, and car services, and 'TK Business' — for stores and service providers. The platform allows stores to receive requests from clients (including via push notifications), publish their products, and list vehicles for dismantling.",
+			"point_2": "Access to the applications is provided on both a free and a paid basis. Certain features (for example, listing vehicles for dismantling and advanced plans) are paid. The User undertakes to use the services in accordance with the terms of the Offer and the legislation of the Kyrgyz Republic."
 		},
 		"procedure": {
 			"title": "Procedure for Providing Services",
@@ -303,7 +305,7 @@
 		"pricing": {
 			"title": "Price and Payment Procedure",
 			"point_1": "All prices are listed in the national currency — Kyrgyz soms (KGS). Other currencies (USD, EUR, TENGE, RUB) may be indicated for user convenience.",
-			"point_2": "Payment is made using the payment systems indicated on the website and in the application (Visa, Mastercard, Elkart).",
+			"point_2": "Payment is made through the finik.kg payment system: via EL QR (payment through any financial application of the Kyrgyz Republic), as well as by Visa bank card.",
 			"point_3": "The Company is not responsible for the operation of payment systems and possible delays in processing payments."
 		},
 		"rights": {
@@ -348,7 +350,7 @@
 	},
 	"ReturnPolicy": {
 		"title": "Refund Policy",
-		"titleComponent_1": "Last updated: June 11, 2025",
+		"titleComponent_1": "Last updated: September 1, 2026",
 		"desc_1": "LLC \"Tez Kyzmat Group\" (hereinafter — the Company) establishes the following rules for refunding money when providing services through the Tez Kyzmat website and mobile application.",
 		"titleComponent_2": "1. General Provisions",
 		"desc_2": "1.1. These conditions govern the procedure for refunding money to Users who have paid for the Company's services.\n1.2. A refund is possible only if the requirements specified in this document and the current legislation of the Kyrgyz Republic are met.",

@@ -4,7 +4,6 @@ import Group from "@/components/client/group/Group";
 import Hero from "@/components/client/hero/Hero";
 import Instruction from "@/components/client/instruction/Instruction";
 import Service from "@/components/client/service/Service";
-import WeTeam from "@/components/client/we-team/WeTeam";
 import { generateMetadata } from "@/lib/seo";
 import React from "react";
 
@@ -26,7 +25,6 @@ const BusinessPage = () => {
 			<Applications />
 			{/* <Reviews /> */}
 			<Group />
-			<WeTeam />
 			{/* <Tariffs /> */}
 		</>
 	);

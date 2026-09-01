@@ -1,35 +1,22 @@
 "use client";
-import { FC, ReactNode, useState } from "react";
+import { FC, ReactNode } from "react";
+
+import { QueryProvider } from "@/providers/QueryProvider";
 import Header from "./header/Header";
 import Footer from "./footer/Footer";
-import {
-	QueryClient,
-	QueryClientProvider,
-} from "@tanstack/react-query";
 
 interface LayoutPageProps {
 	children: ReactNode;
 }
 
 const LayoutPage: FC<LayoutPageProps> = ({ children }) => {
-	const [client] = useState(
-		new QueryClient({
-			defaultOptions: {
-				queries: {
-					refetchOnWindowFocus: false,
-				},
-			},
-		})
-	);
-	// const dehydratedState = dehydrate(client);
-
 	return (
 		<div className="flex flex-col justify-between min-h-[100vh]">
-			<QueryClientProvider client={client}>
+			<QueryProvider>
 				<Header />
 				<main>{children}</main>
 				<Footer />
-			</QueryClientProvider>
+			</QueryProvider>
 		</div>
 	);
 };

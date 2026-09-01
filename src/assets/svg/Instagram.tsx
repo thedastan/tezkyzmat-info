@@ -38,22 +38,22 @@ const InstagramSvg = () => {
 					gradientUnits="userSpaceOnUse"
 					gradientTransform="translate(6.48823 26.0704) rotate(-90) scale(23.3081 21.6784)">
 					<stop
-						stop-color="#FFDD55"
+						stopColor="#FFDD55"
 						// style="stop-color:#FFDD55;stop-color:color(display-p3 1.0000 0.8667 0.3333);stop-opacity:1;"
 					/>
 					<stop
 						offset="0.1"
-						stop-color="#FFDD55"
+						stopColor="#FFDD55"
 						// style="stop-color:#FFDD55;stop-color:color(display-p3 1.0000 0.8667 0.3333);stop-opacity:1;"
 					/>
 					<stop
 						offset="0.5"
-						stop-color="#FF543E"
+						stopColor="#FF543E"
 						// style="stop-color:#FF543E;stop-color:color(display-p3 1.0000 0.3294 0.2431);stop-opacity:1;"
 					/>
 					<stop
 						offset="1"
-						stop-color="#C837AB"
+						stopColor="#C837AB"
 						// style="stop-color:#C837AB;stop-color:color(display-p3 0.7843 0.2157 0.6706);stop-opacity:1;"
 					/>
 				</radialGradient>
@@ -65,18 +65,18 @@ const InstagramSvg = () => {
 					gradientUnits="userSpaceOnUse"
 					gradientTransform="translate(-3.69819 2.43517) rotate(78.6806) scale(10.4188 42.9469)">
 					<stop
-						stop-color="#3771C8"
+						stopColor="#3771C8"
 						// style="stop-color:#3771C8;stop-color:color(display-p3 0.2157 0.4431 0.7843);stop-opacity:1;"
 					/>
 					<stop
 						offset="0.128"
-						stop-color="#3771C8"
+						stopColor="#3771C8"
 						// style="stop-color:#3771C8;stop-color:color(display-p3 0.2157 0.4431 0.7843);stop-opacity:1;"
 					/>
 					<stop
 						offset="1"
-						stop-color="#6600FF"
-						stop-opacity="0"
+						stopColor="#6600FF"
+						stopOpacity="0"
 						// style="stop-color:none;stop-opacity:0;"
 					/>
 				</radialGradient>

@@ -1,15 +1,11 @@
 "use client";
 import { PAGE } from "@/config/pages/public-page.config";
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import React, { useMemo } from "react";
 import { useNavbar } from "../../../lib/data";
 
 import logo from "@/assets/images/logo.png";
-
-import card1 from "@/assets/images/card1.png";
-import card2 from "@/assets/images/card2.png";
-import card3 from "@/assets/images/card3.png";
 
 import qrClient from "@/assets/images/qrcode_client.png";
 import qrBusiness from "@/assets/images/qrcode_business.png";
@@ -161,7 +157,7 @@ const Footer = () => {
 				<div className="flex md:mt-0 mt-10 justify-between items-center gap-10 pb-2 md:flex-row flex-col-reverse">
 					<div className="flex gap-6 md:flex-row flex-col md:text-start text-center">
 						<Description className="text-[#8F8F95]">
-							© 2025 Tez Kyzmat
+							© 2023-{new Date().getFullYear()} Tez Kyzmat
 						</Description>
 						<Link href={PAGE.PRIVACY}>
 							<Description className="text-[#8F8F95]">{t("span1")}</Description>
@@ -176,11 +172,14 @@ const Footer = () => {
 						</Link>
 					</div>
 
-					<div className="flex gap-4">
-						<Image width={80} height={24} src={card1} alt="card" />
-						<Image width={40} height={24} src={card2} alt="card" />
-						<Image width={40} height={24} src={card3} alt="card" />
-					</div>
+					<Link
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://wa.me/996559692626">
+						<Description className="text-[#8F8F95] hover:text-white transition-colors">
+							Powered by XAK Engineering
+						</Description>
+					</Link>
 				</div>
 			</div>
 		</footer>

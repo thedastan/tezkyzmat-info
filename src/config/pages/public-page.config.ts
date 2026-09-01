@@ -1,17 +1,20 @@
-class PublicPage {
-	HOME = "/";
-	FORWHOM = "#forwhom";
-	SOLUTION = "#solution";
-	ADVANTAGES = "#advantages";
-	REVIEV = "#reviews";
-	ABOUT = "#about";
+/** Маршруты и якоря публичного сайта. */
+export const PAGE = {
+	HOME: "/",
 
-	CLIENT = "/";
-	BUSINESS = "/business";
+	// Якоря секций на лендинге
+	FORWHOM: "#forwhom",
+	SOLUTION: "#solution",
+	ADVANTAGES: "#advantages",
+	REVIEV: "#reviews",
+	ABOUT: "#about",
 
-	PRIVACY = "/privacy-policy";
-	PUBLIC = "/public-offer";
-	RETURN = "/refund-policy";
-}
+	// Страницы
+	CLIENT: "/",
+	BUSINESS: "/business",
+	PRIVACY: "/privacy-policy",
+	PUBLIC: "/public-offer",
+	RETURN: "/refund-policy",
+} as const;
 
-export const PAGE = new PublicPage();
+export type PageKey = keyof typeof PAGE;

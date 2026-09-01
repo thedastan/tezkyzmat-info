@@ -3,11 +3,9 @@ import BusinessProblems from "@/components/business/business-problems/BusinessPr
 import Cards from "@/components/business/cards/Cards";
 import Hero from "@/components/business/hero/Hero";
 import Instruction from "@/components/business/instruction/Instruction";
-import Order from "@/components/business/order/Order";
 import Service from "@/components/business/service/Service";
 import Shop from "@/components/business/shop/Shop";
 import Group from "@/components/client/group/Group";
-import WeTeam from "@/components/client/we-team/WeTeam";
 import { generateMetadata } from "@/lib/seo";
 import React from "react";
 
@@ -33,14 +31,12 @@ const Home = () => {
 
 			{/* // */}
 
-			<Order />
 			<Shop />
 			<Cards />
 
 			{/* // */}
 
 			<Group />
-			<WeTeam />
 		</>
 	);
 };

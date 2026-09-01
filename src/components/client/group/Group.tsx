@@ -1,14 +1,14 @@
 "use client";
 import img from "@/assets/images/Group.png";
 import { Description } from "@/components/ui/text/Description";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { MdArrowRightAlt } from "react-icons/md";
 import ava from "@/assets/images/dastan.jpg";
-import ava2 from "@/assets/images/samuil.jpg";
-import ava3 from "@/assets/images/danyshbek2.png";
+import ava2 from "@/assets/images/airas_tat.jpeg";
+import ava3 from "@/assets/images/danysh.jpg";
 
 
-import { TbBrandInstagramFilled } from "react-icons/tb";
+import { TbBrandInstagramFilled, TbBrandLinkedin } from "react-icons/tb";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
 import useAos from "@/hooks/useAos";
@@ -18,24 +18,30 @@ const Group = () => {
 	const t = useTranslations("Group");
 	useAos();
 
-	const piple = [
+	const piple: {
+		ava: StaticImageData;
+		title: string;
+		desc: string;
+		instagram?: string;
+		linkedin?: string;
+	}[] = [
 		{
 			ava: ava3,
 			title: t("member1_name"),
-			link: "danyshbek.beisheev", 
+			instagram: "danyshbek.beisheev",
 			desc: t("member1_desc"),
-		},
-		{
-			ava: ava2,
-			title: t("member2_name"),
-			link: "zaidov_s",
-			desc: t("member2_desc"),
 		},
 		{
 			ava: ava,
 			title: t("member3_name"),
-			link: "dastan.mukeev",
+			instagram: "dastan.mukeev",
 			desc: t("member3_desc"),
+		},
+		{
+			ava: ava2,
+			title: t("member2_name"),
+			linkedin: "https://www.linkedin.com/in/t-airas-t/",
+			desc: t("member2_desc"),
 		},
 	];
 	return (
@@ -73,22 +79,54 @@ const Group = () => {
 							key={index}
 							data-aos="fade-up"
 							data-aos-delay={index * 200}
-							className="bg-[#F2F2F2] rounded-[20px] w-full">
-							<div className="w-full h-[330px] relative rounded-tl-[20px] rounded-tr-[20px] overflow-hidden">
-								<Image src={el.ava} objectFit="cover" fill alt="ava" />
-							</div>
-							<div className="bg-[#F2F2F2] rounded-[20px] p-4 flex flex-col gap-3">
-								<h1 className="text-[24px] font-[600]">{el.title}</h1>
-								<Link
-									className="text-[#292D32] flex gap-1 items-center"
-									href={`https://instagram.com/${el.link}`}
-									target={"_blank"}>
-									<span className="text-[24px]">
-										<TbBrandInstagramFilled />
-									</span>{" "}
-									@{el.link}
-								</Link>
-								<Description className="text-[#8F8F95] ">{el.desc}</Description>
+							className="relative rounded-[20px] w-full overflow-hidden">
+							{/* размытая тёмная подложка из фото */}
+							<Image
+								src={el.ava}
+								fill
+								aria-hidden
+								className="object-cover blur-2xl scale-125"
+								alt=""
+							/>
+							<div className="absolute inset-0 bg-black/55" />
+
+							{/* контент поверх подложки */}
+							<div className="relative">
+								<div className="w-full h-[330px] relative overflow-hidden">
+									<Image
+										src={el.ava}
+										fill
+										className="object-cover object-top"
+										alt="ava"
+									/>
+									<div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-black/60" />
+								</div>
+								<div className="p-4 flex flex-col gap-3">
+									<h1 className="text-[24px] font-[600] text-white">{el.title}</h1>
+									{el.instagram && (
+										<Link
+											className="text-white/90 flex gap-1 items-center"
+											href={`https://instagram.com/${el.instagram}`}
+											target={"_blank"}>
+											<span className="text-[24px]">
+												<TbBrandInstagramFilled />
+											</span>{" "}
+											@{el.instagram}
+										</Link>
+									)}
+									{el.linkedin && (
+										<Link
+											className="text-white/90 flex gap-1 items-center"
+											href={el.linkedin}
+											target={"_blank"}>
+											<span className="text-[24px]">
+												<TbBrandLinkedin />
+											</span>{" "}
+											LinkedIn
+										</Link>
+									)}
+									<Description className="text-white/75">{el.desc}</Description>
+								</div>
 							</div>
 						</div>
 					))}
