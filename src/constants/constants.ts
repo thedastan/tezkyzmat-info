@@ -16,7 +16,7 @@ export const TIKTOK = "@tez_kyzmat";
 export const FACEBOOK = "";
 export const YOUTUBE = "@tezkyzmat";
 
-export const LOCATION = "Сельповская 8, Бишкек";
+export const LOCATION = "Табышалиева 3, Бишкек";
 
 /// links/
 

@@ -24,10 +24,6 @@ export const useNavbar = () => {
 			name: t("advantages"),
 		},
 		{
-			href: PAGE.REVIEV,
-			name: t("reviews"),
-		},
-		{
 			href: PAGE.ABOUT,
 			name: t("about"),
 		},

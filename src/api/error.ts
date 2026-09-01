@@ -1,13 +1,28 @@
-import { AxiosError } from "axios";
+import { AxiosError, isAxiosError } from "axios";
 
-interface ErrorResponse {
-	message: string | string[];
+interface ApiErrorResponse {
+	message?: string | string[];
+	detail?: string;
 }
 
-export const errorCatch = (error: AxiosError<ErrorResponse>): string => {
-	const message = error?.response?.data?.message;
+/**
+ * Приводит любую ошибку запроса к человекочитаемой строке.
+ * Понимает формат ответа бэкенда (`message` / `detail`) и сетевые ошибки axios.
+ */
+export function errorCatch(error: unknown): string {
+	if (isAxiosError<ApiErrorResponse>(error)) {
+		const data = error.response?.data;
+		const message = data?.message ?? data?.detail;
 
-	if (!message) return error.message;
+		if (Array.isArray(message)) return message[0] ?? error.message;
+		if (message) return message;
 
-	return Array.isArray(message) ? message[0] : message;
-};
+		return error.message;
+	}
+
+	if (error instanceof Error) return error.message;
+
+	return "Неизвестная ошибка";
+}
+
+export type { AxiosError };

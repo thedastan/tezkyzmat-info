@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { PAGE } from "@/config/pages/public-page.config";
 import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";

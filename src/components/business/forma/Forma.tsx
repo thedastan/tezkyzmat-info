@@ -328,8 +328,11 @@ const Forma = ({ setModalOpen }: IForma) => {
 									onChange={(files) => {
 										if (files) {
 											const filesArray = Array.from(files);
-											setAllFiles((prev) => [...prev, ...filesArray]);
-											setValue("images", [...allFiles, ...filesArray]);
+											setAllFiles((prev) => {
+												const next = [...prev, ...filesArray];
+												setValue("images", next);
+												return next;
+											});
 										}
 									}}
 									onRemove={(fileToRemove) => {

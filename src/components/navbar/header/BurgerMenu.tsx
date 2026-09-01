@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import { useNavbar } from "../../../lib/data";
 import { PAGE } from "@/config/pages/public-page.config";
 import { IoCloseOutline } from "react-icons/io5";
@@ -11,7 +11,7 @@ import { TbBrandInstagramFilled } from "react-icons/tb";
 import { GoArrowUpRight } from "react-icons/go";
 import { RiWhatsappFill } from "react-icons/ri";
 import { HiLocationMarker } from "react-icons/hi";
-import { INSTAGRAM, LOCATION_LINK, WHATSAPP_LINK } from "@/constants/constants";
+import { INSTAGRAM_LINK, LOCATION_LINK, WHATSAPP_LINK } from "@/constants/constants";
 import LanguageSelect from "./LanguageModal";
 import { useTranslations } from "next-intl";
 
@@ -72,28 +72,31 @@ const BurgerMenu = ({
 						<h1 className="text-[20px] font-[600]">{t("contact")}</h1>
 
 						<div className="flex flex-col gap-4 mt-5">
-							<Link
+							<a
 								href={LOCATION_LINK}
 								target={"_blank"}
+								rel="noopener noreferrer"
 								className="text-[18px] font-[600] gap-2 flex items-center">
 								<HiLocationMarker size={26} /> {t("location")}{" "}
 								<GoArrowUpRight />
-							</Link>
+							</a>
 
-							<Link
-								href={INSTAGRAM}
+							<a
+								href={INSTAGRAM_LINK}
 								target={"_blank"}
+								rel="noopener noreferrer"
 								className="text-[18px] font-[600] gap-2 flex items-center">
 								<TbBrandInstagramFilled size={26} /> Instagram{" "}
 								<GoArrowUpRight />
-							</Link>
+							</a>
 
-							<Link
+							<a
 								href={WHATSAPP_LINK}
 								target={"_blank"}
+								rel="noopener noreferrer"
 								className="text-[18px] font-[600] gap-2 flex items-center">
 								<RiWhatsappFill size={26} /> WhatsApp <GoArrowUpRight />
-							</Link>
+							</a>
 						</div>
 					</div>
 				</div>

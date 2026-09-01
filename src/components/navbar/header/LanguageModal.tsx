@@ -1,19 +1,17 @@
- 
 "use client";
 
-import { useParams, usePathname, useRouter } from "next/navigation";
-import { useState, useRef  } from "react";
+import { useParams } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useEffect, useRef, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
-
 
 type LanguageSelectProps = {
 	textColor?: string; // например, "text-white" или "text-black"
 };
 
-
 const LanguageSelect = ({ textColor = "text-white" }: LanguageSelectProps) => {
 	const pathname = usePathname();
-	const { push: navigate } = useRouter();
+	const router = useRouter();
 	const params = useParams();
 	const { locale } = params;
 	const [isOpen, setIsOpen] = useState(false);
@@ -25,15 +23,29 @@ const LanguageSelect = ({ textColor = "text-white" }: LanguageSelectProps) => {
 		{ value: "en", label: "ENG" },
 	];
 
+	// Закрытие меню при клике вне его области
+	useEffect(() => {
+		if (!isOpen) return;
+
+		const handleClickOutside = (event: MouseEvent) => {
+			if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+				setIsOpen(false);
+			}
+		};
+
+		document.addEventListener("mousedown", handleClickOutside);
+		return () => document.removeEventListener("mousedown", handleClickOutside);
+	}, [isOpen]);
+
 	const LanguageChange = (newLocale: string) => {
-		const newPathname = pathname.replace(`/${params.locale}`, `/${newLocale}`);
-		navigate(newPathname);
-		setTimeout(() => {
-			window.location.reload();
-		}, 1000);
+		if (newLocale === locale) {
+			setIsOpen(false);
+			return;
+		}
+		// next-intl сам подставит нужный префикс локали к текущему пути
+		router.replace(pathname, { locale: newLocale });
+		setIsOpen(false);
 	};
- 
- 
 
 	return (
 		<div className="relative inline-block" ref={menuRef}>
@@ -42,7 +54,7 @@ const LanguageSelect = ({ textColor = "text-white" }: LanguageSelectProps) => {
 				onClick={() => setIsOpen(!isOpen)}>
 				{options.find((opt) => opt.value === locale)?.label}
 				<span className={`transition-transform ${isOpen ? "rotate-180" : ""}`}>
-				<IoIosArrowDown />
+					<IoIosArrowDown />
 				</span>
 			</button>
 
@@ -52,10 +64,7 @@ const LanguageSelect = ({ textColor = "text-white" }: LanguageSelectProps) => {
 						<div
 							key={option.value}
 							className="px-4 py-2 text-sm hover:bg-[#FADD13] hover:text-black cursor-pointer transition-all flex items-center gap-2"
-							onClick={() => {
-								LanguageChange(option.value);
-								setIsOpen(false);
-							}}>
+							onClick={() => LanguageChange(option.value)}>
 							{option.label}
 						</div>
 					))}
