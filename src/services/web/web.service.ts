@@ -7,7 +7,7 @@ import type {
 	IWebSitemap,
 	IWebStore,
 } from "@/models/types/web.types";
-import { API_ADDRESS } from "@/api/interceptors";
+import { env } from "@/config/env";
 import {
 	mockGetPart,
 	mockGetSimilar,
@@ -26,7 +26,7 @@ export const REVALIDATE = 300;
 export const STORE_PARTS_LIMIT = 12;
 
 const USE_MOCK = process.env.WEB_API_MOCK === "true";
-const BASE = `${API_ADDRESS}public/v1/web`;
+const BASE = `${env.apiBaseUrl}public/v1/web`;
 
 type Envelope<T> = { detail?: T; data?: T } | T;
 

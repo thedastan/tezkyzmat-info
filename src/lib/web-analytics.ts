@@ -3,7 +3,7 @@
  * Бэкенд агрегирует: просмотры по магазину/товару, клики «Открыть в приложении»,
  * источник (src=app_share&ref=userId) — чтобы продавец видел, сколько раз делились его товарами.
  */
-import { API_ADDRESS } from "@/api/interceptors";
+import { env } from "@/config/env";
 
 export type WebEventType = "web_view" | "web_open_app_click";
 
@@ -21,7 +21,7 @@ export interface WebEvent {
 	referrer: string | null;
 }
 
-const ENDPOINT = `${API_ADDRESS}public/v1/web/events/`;
+const ENDPOINT = `${env.apiBaseUrl}public/v1/web/events/`;
 const METRIKA_ID = 103506111;
 
 export const detectPlatform = (): WebEvent["platform"] => {
