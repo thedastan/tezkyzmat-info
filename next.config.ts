@@ -2,17 +2,8 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 
 const nextConfig: NextConfig = {
-	async redirects() {
-		return [
-			// Один канонический хост: www → без www (SEO: не делить вес между хостами)
-			{
-				source: "/:path*",
-				has: [{ type: "host", value: "www.tezkyzmat.kg" }],
-				destination: "https://tezkyzmat.kg/:path*",
-				permanent: true,
-			},
-		];
-	},
+	// Канонизация хоста (www ↔ без www) настраивается на стороне Vercel (Domains),
+	// чтобы избежать петли редиректов с редиректом домена в дашборде.
 	async headers() {
 		return [
 			{
