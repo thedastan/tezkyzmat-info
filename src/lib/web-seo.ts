@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { routing } from "@/i18n/routing";
 import { CLIENT_APP, DEFAULT_OG_IMAGE, SITE_URL } from "@/constants/web.constants";
 
-/** Абсолютный URL страницы с локалью: /p/x-1 → https://tezkyzmat.kg/ru/p/x-1 */
+/** Абсолютный URL страницы с локалью: /p/x-1 → https://www.tezkyzmat.kg/ru/p/x-1 */
 export const absUrl = (locale: string, path: string) =>
 	`${SITE_URL}/${locale}${path.startsWith("/") ? path : `/${path}`}`.replace(/\/$/, "");
 

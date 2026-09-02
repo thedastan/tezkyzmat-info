@@ -2,9 +2,9 @@ import { CLIENT_APP } from "@/constants/web.constants";
 
 /**
  * App Links (Android). Проверка:
- * https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://tezkyzmat.kg&relation=delegate_permission/common.handle_all_urls
+ * https://digitalassetlinks.googleapis.com/v1/statements:list?source.web.site=https://www.tezkyzmat.kg&relation=delegate_permission/common.handle_all_urls
  * Нужно: NEXT_PUBLIC_ANDROID_SHA256="AA:BB:...,CC:DD:..." (release + Play App Signing)
- * и intent-filter с android:autoVerify="true" для https://tezkyzmat.kg.
+ * и intent-filter с android:autoVerify="true" для https://www.tezkyzmat.kg.
  */
 export const dynamic = "force-static";
 

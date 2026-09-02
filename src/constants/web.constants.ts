@@ -2,9 +2,10 @@
  * Константы публичных веб-страниц (магазин / товар).
  */
 
-/** Канонический хост. Один на весь сайт — без www (см. next.config redirects). */
+/** Канонический хост. Один на весь сайт — с www (apex → www редиректит Vercel). */
 export const SITE_URL =
-	process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") || "https://tezkyzmat.kg";
+	process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
+	"https://www.tezkyzmat.kg";
 
 export const DEFAULT_OG_IMAGE = `${SITE_URL}/seo-img.png`;
 

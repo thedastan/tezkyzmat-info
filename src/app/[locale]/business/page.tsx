@@ -11,8 +11,8 @@ export const metadata = generateMetadata({
 	title: "TK Business — Заявки для вашего автобизнеса",
 	description:
 		"Узнайте, как продавцам автозапчастей использовать TK Business для расширения аудитории и удобного взаимодействия с клиентами.",
-	url: "https://tezkyzmat.kg/ru/business",
-	image: "https://tezkyzmat.kg/seo-img.png",
+	url: "https://www.tezkyzmat.kg/ru/business",
+	image: "https://www.tezkyzmat.kg/seo-img.png",
 });
 
 const BusinessPage = () => {
