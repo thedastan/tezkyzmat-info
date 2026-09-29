@@ -16,7 +16,14 @@ export interface IImage {
 	file: string;
 }
 
-export type ItemKind = "part" | "tyre" | "wheel";
+// Виды товара из ItemKindChoices бэкенда (все шесть).
+export type ItemKind =
+	| "part" // запчасть
+	| "disc" // диск
+	| "tyre" // шина
+	| "wheel" // колесо в сборе
+	| "accessory" // аксессуар
+	| "oil_chemistry"; // масла и химия
 
 /** Характеристика товара (произвольная пара) — бэкенд отдаёт готовые подписи. */
 export interface ISpec {
