@@ -36,12 +36,10 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 			noindex: true,
 		});
 	}
-	const place = store.addresses
-		.map((a) => [a.market, a.city].filter(Boolean).join(", "))
-		.filter(Boolean)[0];
-	const cats = store.categories.map((c) => c.name).slice(0, 4).join(", ");
-	const brands = store.brands.map((b) => b.name).slice(0, 5).join(", ");
-	const title = `${store.store_name}${place ? ` — ${place}` : ""}`;
+	const place = [store.market, store.city].filter(Boolean).join(", ");
+	const cats = store.categories.slice(0, 4).join(", ");
+	const brands = store.brands.slice(0, 5).join(", ");
+	const title = `${store.name}${place ? ` — ${place}` : ""}`;
 	const description = [
 		store.parts_count ? `${store.parts_count} ${t("parts")}` : null,
 		cats,
@@ -57,7 +55,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
 		title: page && page !== "1" ? `${title} — ${t("page")} ${page}` : title,
 		description,
 		image: store.images[0]?.file || store.logo,
-		noindex: !store.is_active || (!!page && page !== "1"),
+		noindex: store.is_active === false || (!!page && page !== "1"),
 	});
 }
 
@@ -67,7 +65,7 @@ export default async function StorePage({ params, searchParams }: Props) {
 	setRequestLocale(locale);
 
 	const store = await getStore(slug);
-	if (!store || !store.is_active) notFound();
+	if (!store || store.is_active === false) notFound();
 
 	const page = Math.max(1, Number(pageRaw) || 1);
 	const [t, parts] = await Promise.all([
@@ -84,7 +82,7 @@ export default async function StorePage({ params, searchParams }: Props) {
 	const ld = {
 		"@context": "https://schema.org",
 		"@type": "AutoPartsStore",
-		name: store.store_name,
+		name: store.name,
 		url: absUrl(locale, path),
 		image: [store.logo, ...store.images.map((i) => i.file)].filter(Boolean),
 		description: store.description ?? undefined,
@@ -97,21 +95,13 @@ export default async function StorePage({ params, searchParams }: Props) {
 					addressCountry: "KG",
 			  }
 			: undefined,
-		aggregateRating:
-			store.rating && store.reviews_count
-				? {
-						"@type": "AggregateRating",
-						ratingValue: store.rating,
-						reviewCount: store.reviews_count,
-				  }
-				: undefined,
 	};
 
 	return (
 		<article className="container pb-[96px] pt-4 md:pb-8 md:pt-8">
 			<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd(ld) }} />
 			<TrackView entity="store" entityId={store.id} locale={locale} />
-			<Breadcrumbs items={[{ name: t("home"), href: `/${locale}` }, { name: store.store_name }]} />
+			<Breadcrumbs items={[{ name: t("home"), href: `/${locale}` }, { name: store.name }]} />
 
 			{/* Обложка */}
 			{store.images[0] ? (
@@ -119,7 +109,7 @@ export default async function StorePage({ params, searchParams }: Props) {
 					{/* eslint-disable-next-line @next/next/no-img-element */}
 					<img
 						src={store.images[0].file}
-						alt={store.store_name}
+						alt={store.name}
 						className="h-full w-full object-cover"
 						fetchPriority="high"
 					/>
@@ -130,18 +120,17 @@ export default async function StorePage({ params, searchParams }: Props) {
 				<div className="h-[88px] w-[88px] shrink-0 overflow-hidden rounded-2xl border-4 border-white bg-[#F3F3F3] shadow md:h-[120px] md:w-[120px]">
 					{store.logo ? (
 						// eslint-disable-next-line @next/next/no-img-element
-						<img src={store.logo} alt={store.store_name} className="h-full w-full object-cover" />
+						<img src={store.logo} alt={store.name} className="h-full w-full object-cover" />
 					) : null}
 				</div>
 				<div className="min-w-0 flex-1 pb-1">
 					<h1 className="text-[24px] font-semibold leading-[120%] text-black md:text-[32px]">
-						{store.store_name}
+						{store.name}
 					</h1>
 					<p className="mt-1 text-[14px] text-[#777]">
 						{[
-							addr ? [addr.market, addr.city].filter(Boolean).join(", ") : null,
+							[store.market, store.city].filter(Boolean).join(", ") || null,
 							store.parts_count ? `${store.parts_count} ${t("parts")}` : null,
-							store.rating ? `★ ${store.rating.toFixed(1)} · ${store.reviews_count} ${t("reviews")}` : null,
 						]
 							.filter(Boolean)
 							.join(" · ")}
@@ -206,8 +195,8 @@ export default async function StorePage({ params, searchParams }: Props) {
 						<section className="rounded-2xl border border-black/5 p-4">
 							<h2 className="mb-2 text-[15px] font-semibold text-black">{t("addresses")}</h2>
 							<ul className="flex flex-col gap-3">
-								{store.addresses.map((a) => (
-									<li key={a.id} className="text-[14px] leading-[140%] text-[#333]">
+								{store.addresses.map((a, i) => (
+									<li key={i} className="text-[14px] leading-[140%] text-[#333]">
 										<p className="font-medium text-black">
 											{[a.market, a.city].filter(Boolean).join(", ")}
 										</p>
@@ -216,9 +205,9 @@ export default async function StorePage({ params, searchParams }: Props) {
 												{[a.street, a.district, a.region].filter(Boolean).join(", ")}
 											</p>
 										) : null}
-										{a.map_url ? (
+										{a.url_2gis ? (
 											<a
-												href={a.map_url}
+												href={a.url_2gis}
 												target="_blank"
 												rel="noopener noreferrer"
 												className="mt-1 inline-block text-[13px] underline underline-offset-2">
@@ -235,9 +224,9 @@ export default async function StorePage({ params, searchParams }: Props) {
 						<section>
 							<h2 className="mb-2 text-[15px] font-semibold text-black">{t("categories")}</h2>
 							<div className="flex flex-wrap gap-2">
-								{store.categories.map((c) => (
-									<span key={c.id} className="rounded-full bg-[#F3F3F3] px-3 py-1 text-[13px] text-black">
-										{c.name}
+								{store.categories.map((c, i) => (
+									<span key={i} className="rounded-full bg-[#F3F3F3] px-3 py-1 text-[13px] text-black">
+										{c}
 									</span>
 								))}
 							</div>
@@ -248,9 +237,9 @@ export default async function StorePage({ params, searchParams }: Props) {
 						<section>
 							<h2 className="mb-2 text-[15px] font-semibold text-black">{t("brands")}</h2>
 							<div className="flex flex-wrap gap-2">
-								{store.brands.map((b) => (
-									<span key={b.id} className="rounded-full border border-black/10 px-3 py-1 text-[13px] text-black">
-										{b.name}
+								{store.brands.map((b, i) => (
+									<span key={i} className="rounded-full border border-black/10 px-3 py-1 text-[13px] text-black">
+										{b}
 									</span>
 								))}
 							</div>

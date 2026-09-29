@@ -109,8 +109,22 @@ export async function getSimilarDismantleCars(
 	return Array.isArray(data) ? data : data.items;
 }
 
-export async function getSitemap(): Promise<IWebSitemap> {
+export async function getSitemap(opts?: {
+	type?: "stores" | "parts" | "dismantle";
+	page?: number;
+}): Promise<IWebSitemap> {
+	const params = new URLSearchParams();
+	if (opts?.type) params.set("type", opts.type);
+	if (opts?.page) params.set("page", String(opts.page));
+	const qs = params.toString();
 	return (
-		(await get<IWebSitemap>(`/sitemap/`)) ?? { stores: [], parts: [], dismantle: [] }
+		(await get<IWebSitemap>(`/sitemap/${qs ? `?${qs}` : ""}`)) ?? {
+			stores: [],
+			parts: [],
+			dismantle: [],
+			pages: { stores: 0, parts: 0, dismantle: 0 },
+			page: 1,
+			page_size: 50000,
+		}
 	);
 }
