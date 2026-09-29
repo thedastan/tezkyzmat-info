@@ -26,12 +26,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const now = new Date();
 	const data = await getSitemap();
 
+	// URL строит Next: у товара/авто ключ — id, slug для SEO (`/p/{slug}-{id}`),
+	// у магазина — slug. Первая страница каждого типа; полный охват (>50k) —
+	// через sitemap index (generateSitemaps), отдельная задача.
 	return [
 		...STATIC_PATHS.flatMap((p) => entry(p, now, "weekly", p === "" ? 1 : 0.6)),
 		...data.stores.flatMap((s) => entry(`/s/${s.slug}`, new Date(s.updated_at), "daily", 0.8)),
-		...data.parts.flatMap((p) => entry(`/p/${p.slug}`, new Date(p.updated_at), "weekly", 0.7)),
-		...(data.dismantle ?? []).flatMap((c) =>
-			entry(`/d/${c.slug}`, new Date(c.updated_at), "weekly", 0.7)
+		...data.parts.flatMap((p) =>
+			entry(`/p/${p.slug}-${p.id}`, new Date(p.updated_at), "weekly", 0.7)
+		),
+		...data.dismantle.flatMap((c) =>
+			entry(`/d/${c.slug}-${c.id}`, new Date(c.updated_at), "weekly", 0.7)
 		),
 	];
 }

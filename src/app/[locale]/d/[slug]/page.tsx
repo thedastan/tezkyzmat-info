@@ -25,7 +25,7 @@ interface Props {
 	params: Promise<{ locale: string; slug: string }>;
 }
 
-/** «Toyota Camry 50, 2012–2017» — марка + модель + годы */
+/** «Toyota Camry 50» — марка + модель */
 const carTitle = (c: IWebDismantleCar) =>
 	[c.brand, c.brand_model].filter(Boolean).join(" ") || "Авто на разбор";
 
@@ -43,11 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 			noindex: true,
 		});
 	}
-	const title = [
-		carTitle(car),
-		car.year_raw,
-		t("dismantleCars").toLowerCase(),
-	]
+	const title = [carTitle(car), car.year, t("dismantleCars").toLowerCase()]
 		.filter(Boolean)
 		.join(", ");
 	const description = [
@@ -65,7 +61,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		path: dismantlePath(car),
 		title,
 		description,
-		image: car.images[0]?.file,
+		image: car.image ?? car.images[0]?.file,
 		noindex: !car.is_active,
 	});
 }
@@ -85,7 +81,7 @@ export default async function DismantleCarPage({ params }: Props) {
 	const t = await getTranslations("Web");
 	const localePath = `/${locale}${path}`;
 	const title = carTitle(car);
-	const storeHref = car.store ? `/${locale}${storePath(car.store)}` : null;
+	const storeHref = car.seller ? `/${locale}${storePath(car.seller)}` : null;
 
 	// Неактивное авто: страница «недоступно» + ссылка на магазин/приложение
 	if (!car.is_active) {
@@ -97,11 +93,11 @@ export default async function DismantleCarPage({ params }: Props) {
 					</h1>
 					<p className="mt-2 text-[15px] text-[#666]">{t("carUnavailableText")}</p>
 					<div className="mt-6 flex flex-col gap-3">
-						{car.store && storeHref ? (
+						{car.seller && storeHref ? (
 							<Link
 								href={storeHref}
 								className="rounded-xl border border-black px-5 py-3 text-[15px] font-medium text-black hover:bg-black hover:text-white">
-								{car.store.store_name} →
+								{car.seller.name} →
 							</Link>
 						) : null}
 						<OpenInAppButton
@@ -133,16 +129,16 @@ export default async function DismantleCarPage({ params }: Props) {
 	const crumbs = [
 		{ name: t("home"), href: `/${locale}` },
 		{ name: t("dismantleCars") },
-		...(storeHref && car.store
-			? [{ name: car.store.store_name, href: storeHref }]
+		...(storeHref && car.seller
+			? [{ name: car.seller.name, href: storeHref }]
 			: []),
 		{ name: title },
 	];
 
 	const subtitle = [
-		car.year_raw,
+		car.year,
 		car.volume ? `${car.volume} л` : null,
-		car.country,
+		car.manufacturer_country,
 	]
 		.filter(Boolean)
 		.join(" · ");
@@ -181,13 +177,8 @@ export default async function DismantleCarPage({ params }: Props) {
 
 					<OpenInAppButton path={localePath} entity="dismantle" entityId={car.id} locale={locale} />
 
-					{car.store && storeHref ? (
-						<StoreBadge
-							store={car.store}
-							locale={locale}
-							partsLabel={t("parts")}
-							goToStoreLabel={t("goToStore")}
-						/>
+					{car.seller ? (
+						<StoreBadge seller={car.seller} locale={locale} goToStoreLabel={t("goToStore")} />
 					) : null}
 
 					<section>
@@ -195,12 +186,12 @@ export default async function DismantleCarPage({ params }: Props) {
 						<dl>
 							<Row label={t("brand")} value={car.brand} />
 							<Row label={t("model")} value={car.brand_model} />
-							<Row label={t("years")} value={car.year_raw} />
+							<Row label={t("years")} value={car.year} />
 							<Row label={t("volume")} value={car.volume ? `${car.volume} л` : null} />
 							<Row label={t("mileage")} value={car.mileage_title} />
 							<Row label={t("steering")} value={car.steering_title} />
 							<Row label={t("condition")} value={car.condition_title} />
-							<Row label={t("country")} value={car.country} />
+							<Row label={t("country")} value={car.manufacturer_country} />
 							<Row label={t("status")} value={car.status_title} />
 							<Row label={t("location")} value={car.location_title} />
 						</dl>

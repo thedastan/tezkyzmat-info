@@ -30,25 +30,24 @@ interface Props {
 const seoTitle = (p: IWebPart) => {
 	const name = p.name.toLowerCase();
 	const bits = [p.name];
-	const brand = p.brand?.name;
-	const model = p.brand_model?.name?.split(/[\s(]/)[0];
+	const model = p.brand_model?.split(/[\s(]/)[0];
 	const fit = [
-		brand && !name.includes(brand.toLowerCase()) ? brand : null,
-		model && !name.includes(model.toLowerCase()) ? p.brand_model?.name : null,
+		p.brand && !name.includes(p.brand.toLowerCase()) ? p.brand : null,
+		model && !name.includes(model.toLowerCase()) ? p.brand_model : null,
 	]
 		.filter(Boolean)
 		.join(" ");
 	if (fit) bits.push(fit);
-	if (p.year_raw) bits.push(p.year_raw);
-	if (p.part_condition?.name) bits.push(p.part_condition.name.toLowerCase());
+	if (p.year) bits.push(p.year);
+	if (p.condition) bits.push(p.condition.toLowerCase());
 	return bits.join(", ");
 };
 
 /** «Автомир Кудайберген, Бишкек» — не дублируем рынок, если он уже в названии магазина */
-const storePlace = (p: IWebPart) => {
-	const s = p.store;
-	const market = s.market && !s.store_name.toLowerCase().includes(s.market.toLowerCase()) ? s.market : null;
-	return [s.store_name, market, s.city].filter(Boolean).join(", ");
+const sellerPlace = (p: IWebPart) => {
+	const s = p.seller;
+	const market = s.market && !s.name.toLowerCase().includes(s.market.toLowerCase()) ? s.market : null;
+	return [s.name, market, s.city].filter(Boolean).join(", ");
 };
 
 const priceText = (p: IWebPart, onRequest: string) =>
@@ -69,35 +68,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 		});
 	}
 	const path = partPath(part);
-	const title = `${seoTitle(part)} — ${storePlace(part)}`;
-	const description = [
-		priceText(part, t("priceOnRequest")),
-		part.part_condition?.name,
-		part.manufacturer_country?.name,
-		part.oem ? `OEM ${part.oem}` : null,
-		part.summary,
-	]
+	const description = [seoTitle(part), sellerPlace(part), part.summary]
 		.filter(Boolean)
 		.join(" · ")
 		.slice(0, 160);
 	return webMetadata({
 		locale,
 		path,
-		title,
+		title: `${seoTitle(part)} — ${sellerPlace(part)}`,
 		description,
-		image: `${absUrl(locale, path)}/opengraph-image`,
+		image: part.image ?? part.images[0]?.file,
 		noindex: !part.is_active,
 	});
-}
-
-function Row({ label, value }: { label: string; value?: string | number | null }) {
-	if (value === null || value === undefined || value === "") return null;
-	return (
-		<div className="flex justify-between gap-4 border-b border-black/5 py-2.5 text-[14px] last:border-0">
-			<dt className="text-[#777]">{label}</dt>
-			<dd className="text-right font-medium text-black">{value}</dd>
-		</div>
-	);
 }
 
 export default async function PartPage({ params }: Props) {
@@ -114,7 +96,7 @@ export default async function PartPage({ params }: Props) {
 
 	const t = await getTranslations("Web");
 	const localePath = `/${locale}${path}`;
-	const storeHref = `/${locale}${storePath(part.store)}`;
+	const storeHref = `/${locale}${storePath(part.seller)}`;
 	const price = priceText(part, t("priceOnRequest"));
 
 	// Неактивный товар: 410-сценарий — страница «недоступен» + ссылка на магазин
@@ -130,12 +112,12 @@ export default async function PartPage({ params }: Props) {
 						<Link
 							href={storeHref}
 							className="rounded-xl border border-black px-5 py-3 text-[15px] font-medium text-black hover:bg-black hover:text-white">
-							{part.store.store_name} →
+							{part.seller.name} →
 						</Link>
 						<OpenInAppButton
-							path={`/${locale}${storePath(part.store)}`}
+							path={`/${locale}${storePath(part.seller)}`}
 							entity="store"
-							entityId={part.store.id}
+							entityId={part.seller.id}
 							locale={locale}
 							variant="inline"
 						/>
@@ -153,12 +135,12 @@ export default async function PartPage({ params }: Props) {
 		name: part.name,
 		image: part.images.map((i) => i.file),
 		description: part.summary ?? undefined,
-		sku: part.oem ?? undefined,
-		mpn: part.oem ?? undefined,
-		brand: part.brand ? { "@type": "Brand", name: part.brand.name } : undefined,
+		sku: part.oem_number ?? undefined,
+		mpn: part.oem_number ?? undefined,
+		brand: part.brand ? { "@type": "Brand", name: part.brand } : undefined,
 		itemCondition:
-			part.part_condition?.name.toLowerCase().includes("нов") ||
-			part.part_condition?.name.toLowerCase().includes("new")
+			part.condition?.toLowerCase().includes("нов") ||
+			part.condition?.toLowerCase().includes("new")
 				? "https://schema.org/NewCondition"
 				: "https://schema.org/UsedCondition",
 		offers:
@@ -169,19 +151,18 @@ export default async function PartPage({ params }: Props) {
 						priceCurrency: part.currency,
 						price: part.price,
 						availability: "https://schema.org/InStock",
-						seller: { "@type": "Organization", name: part.store.store_name },
+						seller: { "@type": "Organization", name: part.seller.name },
 				  }
 				: undefined,
 	};
 
 	const crumbs = [
 		{ name: t("home"), href: `/${locale}` },
-		{ name: part.store.store_name, href: storeHref },
-		...(part.category ? [{ name: part.category.name }] : []),
+		{ name: part.seller.name, href: storeHref },
 		{ name: part.name },
 	];
 
-	const fit = [part.brand?.name, part.brand_model?.name].filter(Boolean).join(" ");
+	const fit = [part.brand, part.brand_model].filter(Boolean).join(" ");
 
 	return (
 		<article className="container pb-[96px] pt-4 md:pb-8 md:pt-8">
@@ -197,41 +178,34 @@ export default async function PartPage({ params }: Props) {
 						<h1 className="text-[22px] font-semibold leading-[125%] text-black md:text-[28px]">
 							{part.name}
 						</h1>
-						{fit || part.year_raw ? (
+						{fit || part.year ? (
 							<p className="mt-1 text-[14px] text-[#777]">
-								{[fit, part.year_raw].filter(Boolean).join(" · ")}
+								{[fit, part.year].filter(Boolean).join(" · ")}
 							</p>
 						) : null}
 					</div>
 
 					<div className="flex items-baseline gap-3">
 						<span className="text-[28px] font-bold text-black md:text-[32px]">{price}</span>
-						{part.old_price && !part.price_hidden ? (
-							<span className="text-[16px] text-[#999] line-through">
-								{formatPrice(part.old_price, part.currency)}
-							</span>
-						) : null}
 					</div>
 
 					<OpenInAppButton path={localePath} entity="part" entityId={part.id} locale={locale} />
 
 					<StoreBadge
-						store={part.store}
+						seller={part.seller}
 						locale={locale}
-						partsLabel={t("parts")}
 						goToStoreLabel={t("goToStore")}
 					/>
 
 					<section>
 						<h2 className="mb-1 text-[16px] font-semibold text-black">{t("attributes")}</h2>
 						<dl>
-							<Row label={t("category")} value={part.category?.name} />
-							<Row label={t("brand")} value={part.brand?.name} />
-							<Row label={t("model")} value={part.brand_model?.name} />
-							<Row label={t("years")} value={part.year_raw} />
-							<Row label={t("condition")} value={part.part_condition?.name} />
-							<Row label={t("country")} value={part.manufacturer_country?.name} />
-							<Row label={t("oem")} value={part.oem} />
+							<Row label={t("brand")} value={part.brand} />
+							<Row label={t("model")} value={part.brand_model} />
+							<Row label={t("years")} value={part.year} />
+							<Row label={t("condition")} value={part.condition} />
+							<Row label={t("country")} value={part.manufacturer} />
+							<Row label={t("oem")} value={part.oem_number} />
 							{part.item_kind !== "part" ? (
 								<>
 									<Row
@@ -242,14 +216,17 @@ export default async function PartPage({ params }: Props) {
 									<Row label={t("pcd")} value={part.wheel_pcd} />
 								</>
 							) : null}
+							{(part.specs ?? []).map((s, i) => (
+								<Row key={i} label={s.label} value={s.value} />
+							))}
 						</dl>
 					</section>
 
-					{part.summary ? (
+					{part.description || part.summary ? (
 						<section>
 							<h2 className="mb-1 text-[16px] font-semibold text-black">{t("description")}</h2>
 							<p className="whitespace-pre-line text-[15px] leading-[150%] text-[#333]">
-								{part.summary}
+								{part.description || part.summary}
 							</p>
 						</section>
 					) : null}
@@ -272,5 +249,15 @@ export default async function PartPage({ params }: Props) {
 				</section>
 			) : null}
 		</article>
+	);
+}
+
+function Row({ label, value }: { label: string; value?: string | number | null }) {
+	if (value === null || value === undefined || value === "") return null;
+	return (
+		<div className="flex justify-between gap-4 border-b border-black/5 py-2 text-[14px] last:border-0">
+			<dt className="text-[#777]">{label}</dt>
+			<dd className="text-right font-medium text-black">{value}</dd>
+		</div>
 	);
 }

@@ -36,8 +36,8 @@ export default function DismantleCard({ car, locale }: Props) {
 				<p className="line-clamp-2 text-[14px] font-medium leading-[130%] text-black">
 					{title}
 				</p>
-				{car.year_raw ? (
-					<p className="line-clamp-1 text-[12px] text-[#777]">{car.year_raw}</p>
+				{car.year ? (
+					<p className="line-clamp-1 text-[12px] text-[#777]">{car.year}</p>
 				) : null}
 			</div>
 		</Link>

@@ -27,9 +27,9 @@ export default function PartCard({ part, locale, priceOnRequestLabel }: Props) {
 						className="h-full w-full object-cover transition duration-300 group-hover:scale-[1.03]"
 					/>
 				) : null}
-				{part.part_condition ? (
+				{part.condition ? (
 					<span className="absolute left-2 top-2 rounded-md bg-white/90 px-2 py-0.5 text-[12px] font-medium text-black">
-						{part.part_condition}
+						{part.condition}
 					</span>
 				) : null}
 			</div>
