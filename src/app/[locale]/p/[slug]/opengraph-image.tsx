@@ -46,11 +46,11 @@ export default async function OgImage({ params }: Props) {
 			? "Баасы суроо боюнча"
 			: "Цена по запросу";
 	const sub = part
-		? [part.brand?.name, part.brand_model?.name, part.year_raw, part.part_condition?.name]
+		? [part.brand, part.brand_model, part.year, part.condition]
 				.filter(Boolean)
 				.join(" · ")
 		: "";
-	const store = part ? [part.store.store_name, part.store.city].filter(Boolean).join(", ") : "";
+	const store = part ? [part.seller.name, part.seller.city].filter(Boolean).join(", ") : "";
 
 	const [regular, bold] = await Promise.all([
 		readFile(path.join(process.cwd(), "src/app/fonts/Inter-Regular-og.ttf")),
