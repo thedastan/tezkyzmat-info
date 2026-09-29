@@ -422,6 +422,14 @@
 		"next": "Next",
 		"installHint": "Get the Tez Kyzmat app — find parts and send requests to sellers in a minute.",
 		"shareTitle": "{name} — {price} at {store}",
-		"home": "Home"
+		"home": "Home",
+		"volume": "Engine volume",
+		"mileage": "Mileage",
+		"steering": "Steering",
+		"status": "Status",
+		"location": "Location",
+		"dismantleCars": "Cars for parts",
+		"carUnavailableTitle": "This car is no longer being dismantled",
+		"carUnavailableText": "The seller removed the listing. Browse other cars and parts in the app."
 	}
 }

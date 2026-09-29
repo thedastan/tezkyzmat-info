@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { CLIENT_APP, SITE_URL } from "@/constants/web.constants";
-import { detectPlatform, trackWebEvent } from "@/lib/web-analytics";
+import { detectPlatform, trackWebEvent, type WebEntity } from "@/lib/web-analytics";
 
 type Platform = "ios" | "android" | "other";
 
@@ -33,7 +33,7 @@ const buildHref = (platform: Platform, path: string) => {
 interface Props {
 	/** Путь страницы с локалью, напр. /ru/p/radiator-1001 */
 	path: string;
-	entity: "part" | "store";
+	entity: WebEntity;
 	entityId: number;
 	locale: string;
 	variant?: "sticky" | "inline";

@@ -7,9 +7,11 @@ import { env } from "@/config/env";
 
 export type WebEventType = "web_view" | "web_open_app_click";
 
+export type WebEntity = "part" | "store" | "dismantle";
+
 export interface WebEvent {
 	type: WebEventType;
-	entity: "part" | "store";
+	entity: WebEntity;
 	entity_id: number;
 	/** ?src=app_share | instagram | direct … */
 	src: string | null;

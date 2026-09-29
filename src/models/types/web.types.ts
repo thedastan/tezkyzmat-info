@@ -1,12 +1,14 @@
 /**
- * Типы публичных веб-страниц (магазин / товар).
+ * Типы публичных веб-страниц (магазин / товар / авто на разбор).
  * Контракт для новых эндпоинтов бэкенда:
  *   GET /api/public/v1/web/parts/{id}/
  *   GET /api/public/v1/web/parts/{id}/similar/
  *   GET /api/public/v1/web/stores/{slug}/
  *   GET /api/public/v1/web/stores/{slug}/parts/?page=&limit=
- * Поля повторяют PartDetailOutSchema / StoreOutSchema из private API,
- * без контактов продавца и внутренних счётчиков.
+ *   GET /api/public/v1/web/dismantle-cars/{id}/
+ *   GET /api/public/v1/web/dismantle-cars/{id}/similar/
+ * Поля повторяют PartDetailOutSchema / StoreOutSchema / DismantleCarOutSchema
+ * из private API, без контактов продавца и внутренних счётчиков.
  */
 
 export interface IClassifier {
@@ -100,6 +102,45 @@ export interface IWebStore {
 	updated_at: string;
 }
 
+/**
+ * Авто на разбор (`/dismantle-cars/`). Цены нет — покупатель связывается с
+ * продавцом. Строковые поля `*_title` бэкенд отдаёт уже готовыми (пробег
+ * «120 000 км», состояние «Среднее», руль «Правый руль») — веб показывает как есть.
+ */
+export interface IWebDismantleCar {
+	id: number;
+	slug: string;
+	brand: string | null;
+	brand_model: string | null;
+	year_raw: string | null;
+	/** Объём двигателя, литры */
+	volume: number | null;
+	country: string | null;
+	location_title: string | null;
+	mileage_title: string | null;
+	condition_title: string | null;
+	steering_title: string | null;
+	status: string | null;
+	status_title: string | null;
+	arrival_date: string | null;
+	description: string | null;
+	images: IImage[];
+	store: IWebStoreShort | null;
+	is_active: boolean;
+	created_at: string;
+	updated_at: string;
+}
+
+export interface IWebDismantleCarCard {
+	id: number;
+	slug: string;
+	brand: string | null;
+	brand_model: string | null;
+	year_raw: string | null;
+	image: string | null;
+	status_title: string | null;
+}
+
 export interface IPaginated<T> {
 	items: T[];
 	page: number;
@@ -115,4 +156,6 @@ export interface ISitemapEntry {
 export interface IWebSitemap {
 	stores: ISitemapEntry[];
 	parts: ISitemapEntry[];
+	/** Авто на разбор — опционально, пока бэкенд их не отдаёт в sitemap */
+	dismantle?: ISitemapEntry[];
 }
