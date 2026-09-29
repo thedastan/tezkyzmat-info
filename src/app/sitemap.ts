@@ -30,5 +30,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		...STATIC_PATHS.flatMap((p) => entry(p, now, "weekly", p === "" ? 1 : 0.6)),
 		...data.stores.flatMap((s) => entry(`/s/${s.slug}`, new Date(s.updated_at), "daily", 0.8)),
 		...data.parts.flatMap((p) => entry(`/p/${p.slug}`, new Date(p.updated_at), "weekly", 0.7)),
+		...(data.dismantle ?? []).flatMap((c) =>
+			entry(`/d/${c.slug}`, new Date(c.updated_at), "weekly", 0.7)
+		),
 	];
 }

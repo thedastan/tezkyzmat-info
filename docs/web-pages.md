@@ -1,26 +1,30 @@
-# Публичные страницы магазина и товара
+# Публичные страницы магазина, товара и авто на разбор
 
-Маршруты: `/{locale}/s/{slug}` — магазин, `/{locale}/p/{slug}-{id}` — товар (id в конце обязателен, slug — для SEO; чужой slug → 301 на канонический).
+Маршруты: `/{locale}/s/{slug}` — магазин, `/{locale}/p/{slug}-{id}` — товар,
+`/{locale}/d/{slug}-{id}` — авто на разбор (id в конце обязателен, slug — для
+SEO; чужой slug → 301 на канонический).
 
 ## Запуск
 
+Данные идут только с бэкенда (моков нет). Нужны живые публичные эндпоинты
+`/api/public/v1/web/*` (см. раздел «Бэкенду»).
+
 ```bash
-cp .env.example .env.local   # WEB_API_MOCK=true — страницы на мок-данных
 npm run dev
-# http://localhost:3000/ru/s/avtomir-kudaibergen
-# http://localhost:3000/ru/p/radiator-ohlazhdeniya-toyota-camry-50-1001
-# http://localhost:3000/ru/p/bamper-1007  ← неактивный товар
+# http://localhost:3000/ru/s/{slug}
+# http://localhost:3000/ru/p/{slug}-{id}
+# http://localhost:3000/ru/d/{slug}-{id}
 ```
 
 ## Что где
 
 | Файл | Зачем |
 |---|---|
-| `src/services/web/web.service.ts` | fetch к `/api/public/v1/web/*`, ISR 5 мин, мок-переключатель |
-| `src/services/web/mock.ts` | мок-данные (1 магазин, 8 товаров, `public/mock/*.jpg`) |
+| `src/services/web/web.service.ts` | fetch к `/api/public/v1/web/*`, ISR 5 мин |
 | `src/models/types/web.types.ts` | **контракт для бэкенда** — какие поля ждём |
 | `src/app/[locale]/p/[slug]/` | страница товара + `opengraph-image.tsx` (превью для мессенджеров) |
 | `src/app/[locale]/s/[slug]/` | страница магазина, пагинация `?page=` |
+| `src/app/[locale]/d/[slug]/` | страница авто на разбор + похожие |
 | `src/components/web/` | кнопка «Открыть в приложении», галерея, карточки |
 | `src/lib/web-seo.ts` | metadata: canonical, hreflang, OG, Smart App Banner |
 | `src/lib/slug.ts` | транслит для slug — тот же алгоритм нужен на бэкенде |
@@ -30,20 +34,23 @@ npm run dev
 
 ## Бэкенду (Айрас)
 
-Нужны 5 эндпоинтов без auth, формат ответа — как в `web.types.ts` (можно в обёртке `{detail: ...}`):
+Нужны эндпоинты без auth, формат ответа — как в `web.types.ts` (можно в обёртке `{detail: ...}`):
 
 - `GET /api/public/v1/web/parts/{id}/` → `IWebPart` (404 если нет; неактивный — отдавать с `is_active: false`)
 - `GET /api/public/v1/web/parts/{id}/similar/` → `IWebPartCard[]`
-- `GET /api/public/v1/web/stores/{slug}/` → `IWebStore`
+- `GET /api/public/v1/web/stores/{slug}/` → `IWebStore` (принимать и slug, и числовой id — приложение делится ссылкой по id, пока не отдаёте slug)
 - `GET /api/public/v1/web/stores/{slug}/parts/?page=&limit=` → `{items, page, limit, total}`
-- `GET /api/public/v1/web/sitemap/` → `{stores: [{slug, updated_at}], parts: [{slug: "name-slug-123", updated_at}]}`
+- `GET /api/public/v1/web/dismantle-cars/{id}/` → `IWebDismantleCar` (без цены; строки `*_title` — готовые)
+- `GET /api/public/v1/web/dismantle-cars/{id}/similar/` → `IWebDismantleCarCard[]` (по марке+модели)
+- `GET /api/public/v1/web/sitemap/` → `{stores: [{slug, updated_at}], parts: [{slug: "name-slug-123", updated_at}], dismantle: [{slug: "toyota-camry-2001", updated_at}]}`
 
-Без контактов продавца и счётчиков. `price_hidden: true` → `price: null`. Картинки — абсолютные URL. `Cache-Control: public, max-age=300`, rate limit по IP. После этого: `WEB_API_MOCK=false`.
+Без контактов продавца и внутренних счётчиков. `price_hidden: true` → `price: null`. Картинки — абсолютные URL. `Cache-Control: public, max-age=300`, rate limit по IP.
 
 ## Приложению (Flutter)
 
-- Кнопка «Поделиться» отдаёт `https://tezkyzmat.kg/ru/p/{slug}-{id}?src=app_share` (только https, без `tezkyzmat://`).
-- iOS: Associated Domains `applinks:tezkyzmat.kg`; Android: intent-filter `autoVerify` на `https://tezkyzmat.kg` пути `/*/p/*`, `/*/s/*`.
+- Кнопка «Поделиться» отдаёт `https://tezkyzmat.kg/{locale}/{p|s|d}/{id}?src=app_share` (только https, без `tezkyzmat://`).
+- ⚠️ Локаль: приложение использует `ky` (кыргызский), а веб — `kg`. В ссылке приложение маппит `ky → kg`, иначе `/ky/...` не сматчится.
+- iOS: Associated Domains `applinks:tezkyzmat.kg`; Android: intent-filter `autoVerify` на `https://tezkyzmat.kg` пути `/*/p/*`, `/*/s/*`, `/*/d/*`.
 - Заполнить в Vercel env: `NEXT_PUBLIC_IOS_APP_ID` (TEAMID.bundleId), `NEXT_PUBLIC_ANDROID_SHA256`.
 - Проверить, что `CLIENT_APP` в `src/constants/web.constants.ts` указывает на клиентское приложение (в `constants.ts` ссылки CLIENT/BUSINESS выглядят перепутанными).
 
@@ -60,7 +67,7 @@ npm run dev
   "referrer": "https://… | null", "visitor_id": "<uuid из localStorage>", "ts": "ISO" }
 ```
 
-Плюс событие из приложения при нажатии «Поделиться»: `POST /private/v1/parts/{id}/share/` и `/stores/{id}/share/` (auth, фиксирует кто поделился).
+Плюс событие из приложения при нажатии «Поделиться»: `POST .../parts/{id}/share/`, `.../stores/{id}/share/`, `.../dismantle-cars/{id}/share/`. ⚠️ Сейчас они на `private` — гость поделиться может, но событие не зафиксируется (401). Сделать share-эндпоинты публичными; авторизованному — привязывать user_id.
 
 Что агрегировать (нужно продавцам в приложении и нам в дашборде):
 - по товару и по магазину: `shares_count` (сколько раз делились), `web_views` (уникальные по `visitor_id`), `open_app_clicks`;

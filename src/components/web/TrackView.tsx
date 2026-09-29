@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect } from "react";
-import { trackWebEvent } from "@/lib/web-analytics";
+import { trackWebEvent, type WebEntity } from "@/lib/web-analytics";
 
 interface Props {
-	entity: "part" | "store";
+	entity: WebEntity;
 	entityId: number;
 	locale: string;
 }
