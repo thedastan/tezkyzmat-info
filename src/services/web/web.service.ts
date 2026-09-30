@@ -6,6 +6,7 @@ import type {
 	IWebDismantleCarCard,
 	IWebPart,
 	IWebPartCard,
+	IWebSellerShort,
 	IWebSitemap,
 	IWebStore,
 } from "@/models/types/web.types";
@@ -61,11 +62,23 @@ export const parsePartId = (slugWithId: string): number | null => {
 	return Number.isFinite(id) && id > 0 ? id : null;
 };
 
-export const partPath = (p: Pick<IWebPart, "slug" | "id">) =>
-	`/p/${p.slug}-${p.id}`;
+/**
+ * Канонический путь товара/авто: `{магазин}-{товар}-{id}` — чтобы в ссылке был
+ * виден магазин (SEO + доверие). Веб резолвит по хвостовому id, префикс —
+ * косметика; если магазина нет, вернётся `{товар}-{id}`. Этот путь управляет
+ * и `<link rel=canonical>`, и 301-редиректом со страницы, поэтому любой вход
+ * (голый id, старый slug) нормализуется к нему.
+ */
+const storePrefix = (seller?: Pick<IWebSellerShort, "slug"> | null) =>
+	seller?.slug ? `${seller.slug}-` : "";
+
+export const partPath = (
+	p: Pick<IWebPart, "slug" | "id"> & { seller?: Pick<IWebSellerShort, "slug"> | null }
+) => `/p/${storePrefix(p.seller)}${p.slug}-${p.id}`;
 export const storePath = (s: Pick<IWebStore, "slug">) => `/s/${s.slug}`;
-export const dismantlePath = (c: Pick<IWebDismantleCar, "slug" | "id">) =>
-	`/d/${c.slug}-${c.id}`;
+export const dismantlePath = (
+	c: Pick<IWebDismantleCar, "slug" | "id"> & { seller?: Pick<IWebSellerShort, "slug"> | null }
+) => `/d/${storePrefix(c.seller)}${c.slug}-${c.id}`;
 
 export async function getPart(id: number): Promise<IWebPart | null> {
 	return get<IWebPart>(`/parts/${id}/`);

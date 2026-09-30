@@ -182,6 +182,12 @@ export interface ISitemapEntry {
 	id: number;
 	slug: string;
 	updated_at: string;
+	/**
+	 * Слаг магазина-владельца (для канонического URL `{магазин}-{товар}-{id}`).
+	 * Пока бэкенд не отдаёт — sitemap строит `{товар}-{id}`, а страница 301-редиректит
+	 * на канонический вид. Как только поле появится — sitemap сразу отдаёт финальный URL.
+	 */
+	seller_slug?: string | null;
 }
 
 /**
