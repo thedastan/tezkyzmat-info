@@ -10,18 +10,23 @@ import { routing } from "@/i18n/routing";
 export const dynamic = "force-static";
 
 export function GET() {
-	const paths = routing.locales.flatMap((l) => [`/${l}/p/*`, `/${l}/s/*`]);
+	const paths = routing.locales.flatMap((l) => [
+		`/${l}/p/*`,
+		`/${l}/s/*`,
+		`/${l}/d/*`,
+	]);
 	const body = {
 		applinks: {
 			apps: [],
 			details: [
 				{
 					appID: CLIENT_APP.ios.appId,
-					paths: [...paths, "/p/*", "/s/*"],
+					paths: [...paths, "/p/*", "/s/*", "/d/*"],
 					components: [
 						...routing.locales.flatMap((l) => [
 							{ "/": `/${l}/p/*`, comment: "Part page" },
 							{ "/": `/${l}/s/*`, comment: "Store page" },
+							{ "/": `/${l}/d/*`, comment: "Dismantle car page" },
 						]),
 					],
 				},
