@@ -34,10 +34,18 @@ export const detectPlatform = (): WebEvent["platform"] => {
 	return "other";
 };
 
-const params = () => {
+const params = (): { src: string | null; ref: string | null } => {
 	if (typeof window === "undefined") return { src: null, ref: null };
 	const q = new URLSearchParams(window.location.search);
-	return { src: q.get("src"), ref: q.get("ref") };
+	if (q.get("src")) return { src: q.get("src"), ref: q.get("ref") };
+	// После 301 на канонический URL query потерян — метки лежат в короткой
+	// cookie от middleware (src|ref). Читаем один раз и гасим, чтобы следующие
+	// просмотры не приписались тому же источнику.
+	const m = document.cookie.match(/(?:^|;\s*)tk_src=([^;]*)/);
+	if (!m) return { src: null, ref: null };
+	document.cookie = "tk_src=; Max-Age=0; path=/";
+	const [src = "", ref = ""] = decodeURIComponent(m[1]).split("|");
+	return { src: src || null, ref: ref || null };
 };
 
 /** Анонимный id посетителя (localStorage) — чтобы считать уникальных, без PII */
