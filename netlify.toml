@@ -4,3 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Convert Next.js output into Netlify routes, functions, and static assets.
+# Publishing the raw .next directory without this adapter returns Netlify 404s.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"

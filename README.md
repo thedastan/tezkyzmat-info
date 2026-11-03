@@ -32,8 +32,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## Deploy on Netlify
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The deployment settings are defined in `netlify.toml`. Netlify runs `npm run build`
+and uses `@netlify/plugin-nextjs` to adapt the `.next` output into static assets,
+server functions, and routing rules. The plugin is explicitly enabled so deployment
+does not depend on automatic framework detection.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Do not upload `.next` directly as a static site: its HTML lives under internal
+paths such as `server/app/ru.html`, and it does not include the deployed handlers
+needed for localized routes, middleware, or dynamic pages. This produces Netlify's
+"Page not found" response even when the Next.js build succeeds.
+
+After deployment, check that `/` redirects to a supported locale and that `/ru`,
+`/en`, and `/kg` load. The deploy summary must include the generated Next.js
+server function and routing rules.
